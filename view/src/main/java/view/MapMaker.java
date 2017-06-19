@@ -2,35 +2,37 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.ArrayList;
 
 public class MapMaker {
-	private ArrayList<Sprite> sprites;
+	private Sprite[][] sprites = new Sprite[22][40];
 	private Image map[][] = new Image[22][40];
-	private int x = 0, y = 0;
+	private int x = 0, y = 0, ligne = 0, colonne = 0;
 
 	/*
-	 * constructeur de MapMaker créer une ArrayList<Sprite>
+	 * constructeur de MapMaker, il recupère la map
 	 */
 
 	public MapMaker(TranslateMap translate) {
-		sprites = new ArrayList<>();
 		this.map = translate.getMap();
 	}
 
 	/*
 	 * Créer les 880 sprites contenu dans la map en leur donnant une position et
-	 * les met dans l'ArrayList
+	 * les met dans le tableau de sprites
 	 */
 
 	public void spritesCreation() {
 		for (Image sousImg[] : map) {
 			x = 0;
+			colonne = 0;
 			for (Image img : sousImg) {
-				this.addSprite(new Sprite(img, x, y));
+				// this.addSprite(new Sprite(img, x, y));
+				sprites[ligne][colonne] = new Sprite(img, x, y);
 				x = x + 16;
+				colonne++;
 			}
 			y = y + 16;
+			ligne++;
 		}
 	}
 
@@ -39,22 +41,17 @@ public class MapMaker {
 	 */
 
 	public void drawMap(Graphics graphics) {
-		for (Sprite mdl : this.getSprites()) {
-			graphics.drawImage(mdl.getImage(), mdl.getX(), mdl.getY(), null);
+		for (Sprite[] sousSpit : this.getSprites()) {
+			for(Sprite spit : sousSpit){
+			graphics.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
+			}
 		}
 	}
 
 	/*
-	 * return l'ArrayList sprites
+	 * return le tableau bidimensionnel sprites
 	 */
-	public ArrayList<Sprite> getSprites() {
-		return this.sprites;
-	}
-
-	/*
-	 * met les sprites créer dans l'ArrayList
-	 */
-	public void addSprite(Sprite sprite) {
-		this.sprites.add(sprite);
+	public Sprite[][] getSprites() {
+		return sprites;
 	}
 }
