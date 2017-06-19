@@ -1,3 +1,10 @@
+package main;
+
+import model.dao.DAOTest;
+import view.MapMaker;
+import view.TranslateMap;
+import view.Window;
+
 public class Main implements Runnable{
 	
 	static MapMaker maker = null;
