@@ -1,33 +1,25 @@
 package main;
 
-import java.sql.SQLException;
+import model.dao.DAOTest;
+import view.MapMaker;
+import view.TranslateMap;
+import view.Window;
 
-import controller.ControllerFacade;
-import model.ModelFacade;
-import view.ViewFacade;
+public class Main {
 
-/**
- * <h1>The Class Main.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
-public abstract class Main {
-
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
-
-        try {
-            controller.start();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
-    }
-
+	public static void main(String[] args) {
+		
+		DAOTest connectionBDD = new DAOTest();
+		
+		connectionBDD.connection();
+		connectionBDD.executeQuery();
+		connectionBDD.setQueryIntoTable();
+		
+		TranslateMap translate = new TranslateMap(connectionBDD);
+		MapMaker maker = new MapMaker(translate);
+		maker.spritesCreation();
+		Window window = new Window(maker);
+		
+	}
 }
+
