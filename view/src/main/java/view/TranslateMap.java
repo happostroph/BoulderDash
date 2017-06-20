@@ -13,10 +13,10 @@ import model.IDAOTest;
 public class TranslateMap {
 	private HashMap<Character, Image> translator = new HashMap<>();
 	private Image image[] = new Image[9];
-	private char tab[][] = new char[3][5];
+	private char tab[][];
 	private Image map[][] = new Image[22][40];
 
-	/*
+	/**
 	 * remplis un tableau d'Image avec les différents Sprites
 	 */
 
@@ -38,13 +38,13 @@ public class TranslateMap {
 
 	}
 
-	/*
+	/**
 	 * Constructeur de TranslateMap remplis le translator avec les Image
 	 * correspondant aux valeurs
 	 */
 	public TranslateMap(IDAOTest test) {
 
-		/*
+		/**
 		 * remplis le translator avec les images correspondant aux valeurs
 		 */
 
@@ -58,13 +58,13 @@ public class TranslateMap {
 		this.translator.put('S', image[7]);
 		this.translator.put('m', image[8]);
 
-		/*
+		/**
 		 * recupère le tableau de DAOTest et le met dans tab
 		 */
 
 		tab = test.getTab();
 
-		/*
+		/**
 		 * rempli un tableau d'Image bidimensionnel en fonction de ce que
 		 * contient tab
 		 */
@@ -83,7 +83,7 @@ public class TranslateMap {
 		}
 	}
 
-	/*
+	/**
 	 * renvoie map
 	 */
 	

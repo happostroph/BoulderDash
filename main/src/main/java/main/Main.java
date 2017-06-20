@@ -10,8 +10,6 @@ public class Main implements Runnable{
 	static MapMaker maker = null;
 	
 	public void run(){
-		System.out.println("Thread is running");
-		
 		maker.spritesCreation();
 		Window window = new Window(maker);
 	}

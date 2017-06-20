@@ -78,12 +78,12 @@ public class DAOTest implements IDAOTest{
 		 * 
 		 */
 
-		// for (char sousTab[] : tab){
-		// for(char str : sousTab){
-		// System.out.print(str);
-		// }
-		// System.out.println("");
-		// }
+//		 for (char sousTab[] : tab){
+//		 for(char str : sousTab){
+//		 System.out.print(str);
+//		 }
+//		 System.out.println("");
+//		 }
 
 	}
 
