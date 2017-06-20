@@ -6,8 +6,12 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
-public class Audio {
-
+public class Audio implements IAudio{
+ /**
+  * Play a sound in wav formats
+  * @param Sound
+  * 			String which contain the path to the sound
+  */
 	
 	 public static void PlaySound(File Sound) {
 		try{

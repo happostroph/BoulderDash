@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import model.IDAOTest;
 
-public class DAOTest implements IDAOTest{
+public class DAOTest implements IDAOTest {
 	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
 	private String LOGIN = "Senuin";
 	private String PASSWORD = "Senuin";
@@ -17,9 +17,8 @@ public class DAOTest implements IDAOTest{
 	private ResultSet result;
 	private char tab[][] = new char[22][40];
 
-	/*
-	 * Permet de se connecter à la Base de donnée
-	 * 
+	/**
+	 * Connection to the remote database
 	 */
 
 	public void connection() {
@@ -36,8 +35,8 @@ public class DAOTest implements IDAOTest{
 		}
 	}
 
-	/*
-	 * Execute une requete SQL statiquement
+	/**
+	 * Execute a static SQL request
 	 * 
 	 */
 
@@ -51,10 +50,9 @@ public class DAOTest implements IDAOTest{
 		}
 	}
 
-	/*
-	 * récupère les données de la requete éxécuté et mets les valeurs des maps
-	 * dans un tableau de char
-	 * 
+	/**
+	 * Take the data of the executed request and put character of the map in a
+	 * character table
 	 */
 
 	public void setQueryIntoTable() {
@@ -73,22 +71,22 @@ public class DAOTest implements IDAOTest{
 		}
 
 		/*
-		 * ceci permet d'afficher le tableau contenant la requete dans la
-		 * console
+		 * Show the map in the console in the form of characters
 		 * 
 		 */
 
-//		 for (char sousTab[] : tab){
-//		 for(char str : sousTab){
-//		 System.out.print(str);
-//		 }
-//		 System.out.println("");
-//		 }
+		// for (char sousTab[] : tab){
+		// for(char str : sousTab){
+		// System.out.print(str);
+		// }
+		// System.out.println("");
+		// }
 
 	}
 
-	/*
-	 * renvoie le tableau contenant la requete
+	/**
+	 * @return tab
+	 * 				the table which contains the result of the executed query
 	 * 
 	 */
 

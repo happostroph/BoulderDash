@@ -6,24 +6,32 @@ import java.io.Serializable;
 
 import javax.swing.JPanel;
 
-public class Panel extends JPanel implements Serializable {
+public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
 	protected Image buffer[][] = new Image[22][40];
 	int ligne = 0, colonne = 0;
 	private MapMaker maker;
-/*
- * constructeur de Panel, recupère un MapMaker et le met dans this.maker
- */
-	
+
+	/**
+	 * The constructor of Panel
+	 * 
+	 * @param maker
+	 *            the maker of the map
+	 */
+
 	public Panel(MapMaker maker) {
 		this.maker = maker;
 	}
-/*
- * appel la fonction d'affichage des Sprites
- */
-	
+
+	/**
+	 * Calls the drow function of MapMaker
+	 * 
+	 * @param g
+	 * 
+	 */
+
 	public void paintComponent(Graphics g) {
 		this.maker.drawMap(g);
 	}
-		
+
 }

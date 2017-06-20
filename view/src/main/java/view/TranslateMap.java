@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -10,14 +9,13 @@ import javax.imageio.ImageIO;
 
 import model.IDAOTest;
 
-public class TranslateMap {
+public class TranslateMap implements ITranslateMap {
 	private HashMap<Character, Image> translator = new HashMap<>();
 	private Image image[] = new Image[9];
-	private char tab[][];
 	private Image map[][] = new Image[22][40];
 
 	/**
-	 * remplis un tableau d'Image avec les différents Sprites
+	 * Fill a Image table with the differents sprites which are possible
 	 */
 
 	{
@@ -39,13 +37,16 @@ public class TranslateMap {
 	}
 
 	/**
-	 * Constructeur de TranslateMap remplis le translator avec les Image
-	 * correspondant aux valeurs
+	 * The constructor of TranslateMap
+	 * 
+	 * @param tab
+	 *            the character table which contains the map in the form of
+	 *            characters
 	 */
-	public TranslateMap(IDAOTest test) {
+	public TranslateMap(char[][] tab) {
 
-		/**
-		 * remplis le translator avec les images correspondant aux valeurs
+		/*
+		 * Fill translator with the pictures which correspond to the characters
 		 */
 
 		this.translator.put('#', image[0]);
@@ -58,16 +59,11 @@ public class TranslateMap {
 		this.translator.put('S', image[7]);
 		this.translator.put('m', image[8]);
 
-		/**
-		 * recupère le tableau de DAOTest et le met dans tab
+
+		/*
+		 * Fill a two-dimensional Image table in terms of what contains tab
 		 */
 
-		tab = test.getTab();
-
-		/**
-		 * rempli un tableau d'Image bidimensionnel en fonction de ce que
-		 * contient tab
-		 */
 		int ligne = 0, colonne = 0;
 		for (char sousTab[] : tab) {
 			colonne = 0;
@@ -83,10 +79,10 @@ public class TranslateMap {
 		}
 	}
 
-	/**
-	 * renvoie map
-	 */
-	
+/**
+ * @return map
+ * 				a two-dimensional Image table which contains the map in the form of pictures
+ */
 	public Image[][] getMap() {
 		return map;
 	}
