@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public class MapMaker implements IMapMaker {
-	private Sprite[][] sprites = new Sprite[22][40];
+	private ISprite[][] sprites = new Sprite[22][40];
 	private Image map[][] = new Image[22][40];
 	private int x = 0, y = 0, ligne = 0, colonne = 0, characterX =0, characterY =0;
 
@@ -51,8 +51,8 @@ public class MapMaker implements IMapMaker {
 	 */
 
 	public void drawMap(Graphics graphics) {
-		for (Sprite[] sousSpit : this.getSprites()) {
-			for (Sprite spit : sousSpit) {
+		for (ISprite[] sousSpit : this.getSprites()) {
+			for (ISprite spit : sousSpit) {
 				graphics.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
 			}
 		}
@@ -67,11 +67,15 @@ public class MapMaker implements IMapMaker {
 	 * 
 	 * @return a two-dimensional table of Sprite
 	 */
-	public Sprite[][] getSprites() {
+	public ISprite[][] getSprites() {
 		return sprites;
 	}
 	
-	public Sprite getCharacter(int colonne, int ligne){
+	public ISprite getCharacter(int colonne, int ligne){
 		return sprites[colonne][ligne];
+	}
+
+	public void setSprites(ISprite[][] sprites) {
+		this.sprites = sprites;
 	}
 }

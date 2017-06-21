@@ -7,4 +7,9 @@ public interface IMapMaker {
 
 	public void drawMap(Graphics graphics);
 	public void drawcharacter(Graphics g, ISprite sprite);
+	public ISprite[][] getSprites();
+	
+	public ISprite getCharacter(int colonne, int ligne);
+
+	public void setSprites(ISprite[][] sprites);
 }
