@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.Serializable;
@@ -10,7 +11,8 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
 	protected Image buffer[][] = new Image[22][40];
 	int ligne = 0, colonne = 0;
-	private MapMaker maker;
+	private IMapMaker maker;
+	private ISprite sprite;
 
 	/**
 	 * The constructor of Panel
@@ -22,7 +24,10 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	public Panel(MapMaker maker) {
 		this.maker = maker;
 	}
-
+	public Panel(IMapMaker maker, ISprite sprite) {
+		this.maker = maker;
+		this.sprite = sprite;
+	}
 	/**
 	 * Calls the draw function of MapMaker
 	 * 
@@ -31,7 +36,15 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 */
 
 	public void paintComponent(Graphics g) {
-		this.maker.drawMap(g);
+		//this.maker.drawMap(g);
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		this.maker.drawcharacter(g, this.sprite);
+	}
+
+	@Override
+	public void update() {
+		this.repaint();
 	}
 
 }

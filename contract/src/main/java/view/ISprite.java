@@ -13,4 +13,6 @@ public interface ISprite {
 	public void setY(int y);
 
 	public Image getImage();
+
+	public void setImage(Image image);
 }

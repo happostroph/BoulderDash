@@ -56,6 +56,10 @@ public class MapMaker implements IMapMaker {
 			}
 		}
 	}
+	
+	public void drawcharacter(Graphics g, ISprite sprite){
+		g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
+	}
 
 	/**
 	 * 

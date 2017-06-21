@@ -59,4 +59,10 @@ public class Sprite implements ISprite {
 	public Image getImage() {
 		return image;
 	}
+
+	@Override
+	public void setImage(Image image) {
+		// TODO Auto-generated method stub
+		
+	}
 }

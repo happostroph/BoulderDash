@@ -1,46 +1,74 @@
 package main;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
-import model.dao.*;
-import view.Audio;
-import view.*;
+import javax.imageio.ImageIO;
 
-public class Main implements Runnable{
-	
+import controller.BDKeyListener;
+import controller.Controller;
+import model.dao.DAOTest;
+import view.Audio;
+import view.MapMaker;
+import view.Sprite;
+import view.TranslateMap;
+import view.Window;
+
+public class Main implements Runnable {
+	Image image;
 	static MapMaker maker = null;
 	static File music = null;
-	
+
 	final int SET_SIZE = 16;
-	
+
 	/**
-	 * Multi-threading for the window, to get better perform, and for playing the sound in the same times of the launch time of the window
+	 * Multi-threading for the window, to get better perform, and for playing
+	 * the sound in the same times of the launch time of the window
 	 */
-	
-	public void run(){
-		maker.spritesCreation(SET_SIZE);
-		new Window(maker);
-		
-		Audio.PlaySound(music);
+
+	public void run() {
+		try {
+			image = ImageIO.read(new File("image/01.png"));
+			Sprite sprite = new Sprite(image, 0, 0);
+			maker.spritesCreation(SET_SIZE);
+			BDKeyListener bdkeyListener = new BDKeyListener();
+			Window window = new Window(maker, sprite, bdkeyListener);
+			Controller controller = new Controller(sprite, window.getPanel());
+			bdkeyListener.setController(controller);
+			
+			Audio.PlaySound(music);
+			try {
+				controller.play();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-		
+
 	public static void main(String[] args) throws IOException {
-		
+
 		DAOTest connectionBDD = new DAOTest();
-		
+
 		connectionBDD.connection();
 		connectionBDD.executeQuery();
 		connectionBDD.setQueryIntoTable();
-		
+
 		TranslateMap translate = new TranslateMap(connectionBDD.getTab());
 		maker = new MapMaker(translate.getMap());
+
+
+
 		music = new File("music/pokemon.wav");
-		
+
 		Main m1 = new Main();
-		Thread t1 =new Thread(m1);  
+		Thread t1 = new Thread(m1);
 		t1.start();
-		
+
 	}
 }
-

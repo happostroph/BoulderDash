@@ -6,5 +6,5 @@ public interface IMapMaker {
 	public void spritesCreation(final int SET_SIZE);
 
 	public void drawMap(Graphics graphics);
-
+	public void drawcharacter(Graphics g, ISprite sprite);
 }
