@@ -7,34 +7,10 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import model.IDAOTest;
-
 public class TranslateMap implements ITranslateMap {
 	private HashMap<Character, Image> translator = new HashMap<>();
-	private Image image[] = new Image[9];
 	private Image map[][] = new Image[22][40];
 
-	/**
-	 * Fill a Image table with the differents sprites which are possible
-	 */
-
-	{
-		try {
-			image[0] = ImageIO.read(new File("image/01.png"));
-			image[1] = ImageIO.read(new File("image/02.png"));
-			image[2] = ImageIO.read(new File("image/03.png"));
-			image[3] = ImageIO.read(new File("image/04.png"));
-			image[4] = ImageIO.read(new File("image/05.png"));
-			image[5] = ImageIO.read(new File("image/06.png"));
-			image[6] = ImageIO.read(new File("image/07.png"));
-			image[7] = ImageIO.read(new File("image/08.png"));
-			image[8] = ImageIO.read(new File("image/09.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 
 	/**
 	 * The constructor of TranslateMap
@@ -42,22 +18,23 @@ public class TranslateMap implements ITranslateMap {
 	 * @param tab
 	 *            the character table which contains the map in the form of
 	 *            characters
+	 * @throws IOException 
 	 */
-	public TranslateMap(char[][] tab) {
+	public TranslateMap(char[][] tab) throws IOException {
 
 		/*
 		 * Fill translator with the pictures which correspond to the characters
 		 */
 
-		this.translator.put('#', image[0]);
-		this.translator.put('X', image[1]);
-		this.translator.put('_', image[2]);
-		this.translator.put('O', image[3]);
-		this.translator.put('V', image[4]);
-		this.translator.put('E', image[5]);
-		this.translator.put('M', image[6]);
-		this.translator.put('S', image[7]);
-		this.translator.put('m', image[8]);
+		this.translator.put('#', ImageIO.read(new File("image/01.png")));
+		this.translator.put('X', ImageIO.read(new File("image/02.png")));
+		this.translator.put('_', ImageIO.read(new File("image/03.png")));
+		this.translator.put('O', ImageIO.read(new File("image/04.png")));
+		this.translator.put('V', ImageIO.read(new File("image/05.png")));
+		this.translator.put('E', ImageIO.read(new File("image/06.png")));
+		this.translator.put('M', ImageIO.read(new File("image/07.png")));
+		this.translator.put('S', ImageIO.read(new File("image/08.png")));
+		this.translator.put('m', ImageIO.read(new File("image/09.png")));
 
 
 		/*

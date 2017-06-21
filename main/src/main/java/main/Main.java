@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
 
 import model.dao.*;
 import view.Audio;
@@ -16,15 +17,15 @@ public class Main implements Runnable{
 	/**
 	 * Multi-threading for the window, to get better perform, and for playing the sound in the same times of the launch time of the window
 	 */
+	
 	public void run(){
 		maker.spritesCreation(SET_SIZE);
-		Window window = new Window(maker);
+		new Window(maker);
 		
 		Audio.PlaySound(music);
 	}
 		
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws IOException {
 		
 		DAOTest connectionBDD = new DAOTest();
 		
