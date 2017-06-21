@@ -11,14 +11,13 @@ public class TranslateMap implements ITranslateMap {
 	private HashMap<Character, Image> translator = new HashMap<>();
 	private Image map[][] = new Image[22][40];
 
-
 	/**
 	 * The constructor of TranslateMap
 	 * 
 	 * @param tab
 	 *            the character table which contains the map in the form of
 	 *            characters
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public TranslateMap(char[][] tab) throws IOException {
 
@@ -35,7 +34,6 @@ public class TranslateMap implements ITranslateMap {
 		this.translator.put('M', ImageIO.read(new File("image/07.png")));
 		this.translator.put('S', ImageIO.read(new File("image/08.png")));
 		this.translator.put('m', ImageIO.read(new File("image/09.png")));
-
 
 		/*
 		 * Fill a two-dimensional Image table in terms of what contains tab
@@ -56,10 +54,10 @@ public class TranslateMap implements ITranslateMap {
 		}
 	}
 
-/**
- * @return map
- * 				a two-dimensional Image table which contains the map in the form of pictures
- */
+	/**
+	 * @return map a two-dimensional Image table which contains the map in the
+	 *         form of pictures
+	 */
 	public Image[][] getMap() {
 		return map;
 	}

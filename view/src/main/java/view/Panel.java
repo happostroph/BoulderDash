@@ -24,7 +24,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	}
 
 	/**
-	 * Calls the drow function of MapMaker
+	 * Calls the draw function of MapMaker
 	 * 
 	 * @param g
 	 * 
