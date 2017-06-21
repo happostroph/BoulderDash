@@ -20,15 +20,15 @@ public class TranslateMap implements ITranslateMap {
 
 	{
 		try {
-			image[0] = ImageIO.read(new File("01.png"));
-			image[1] = ImageIO.read(new File("02.png"));
-			image[2] = ImageIO.read(new File("03.png"));
-			image[3] = ImageIO.read(new File("04.png"));
-			image[4] = ImageIO.read(new File("05.png"));
-			image[5] = ImageIO.read(new File("06.png"));
-			image[6] = ImageIO.read(new File("07.png"));
-			image[7] = ImageIO.read(new File("08.png"));
-			image[8] = ImageIO.read(new File("09.png"));
+			image[0] = ImageIO.read(new File("image/01.png"));
+			image[1] = ImageIO.read(new File("image/02.png"));
+			image[2] = ImageIO.read(new File("image/03.png"));
+			image[3] = ImageIO.read(new File("image/04.png"));
+			image[4] = ImageIO.read(new File("image/05.png"));
+			image[5] = ImageIO.read(new File("image/06.png"));
+			image[6] = ImageIO.read(new File("image/07.png"));
+			image[7] = ImageIO.read(new File("image/08.png"));
+			image[8] = ImageIO.read(new File("image/09.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

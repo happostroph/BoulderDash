@@ -34,7 +34,7 @@ public class Main implements Runnable{
 		
 		TranslateMap translate = new TranslateMap(connectionBDD.getTab());
 		maker = new MapMaker(translate.getMap());
-		music = new File("music/died.wav");
+		music = new File("music/pokemon.wav");
 		
 		Main m1 = new Main();
 		Thread t1 =new Thread(m1);  
