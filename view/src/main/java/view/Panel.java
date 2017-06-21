@@ -36,10 +36,10 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 */
 
 	public void paintComponent(Graphics g) {
-		//this.maker.drawMap(g);
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		this.maker.drawcharacter(g, this.sprite);
+		this.maker.drawMap(g);
+//		g.setColor(Color.WHITE);
+//		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+//		this.maker.drawcharacter(g, this.sprite);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import view.TranslateMap;
 import view.Window;
 
 public class Main implements Runnable {
-	Image image;
+//	Image image;
 	static MapMaker maker = null;
 	static File music = null;
 
@@ -29,12 +29,19 @@ public class Main implements Runnable {
 
 	public void run() {
 		try {
-			image = ImageIO.read(new File("image/01.png"));
-			Sprite sprite = new Sprite(image, 0, 0);
+//			image = ImageIO.read(new File("image/01.png"));
+//			Sprite sprite = new Sprite(image, 0, 0);
+			DAOTest connectionBDD = new DAOTest();
+
+			connectionBDD.connection();
+			connectionBDD.executeQuery();
+			connectionBDD.setQueryIntoTable();
+			TranslateMap translate = new TranslateMap(connectionBDD.getTab());
+			maker = new MapMaker(translate);
 			maker.spritesCreation(SET_SIZE);
 			BDKeyListener bdkeyListener = new BDKeyListener();
-			Window window = new Window(maker, sprite, bdkeyListener);
-			Controller controller = new Controller(sprite, window.getPanel());
+			Window window = new Window(maker, bdkeyListener);
+			Controller controller = new Controller(maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel());
 			bdkeyListener.setController(controller);
 			
 			Audio.PlaySound(music);
@@ -53,14 +60,10 @@ public class Main implements Runnable {
 
 	public static void main(String[] args) throws IOException {
 
-		DAOTest connectionBDD = new DAOTest();
 
-		connectionBDD.connection();
-		connectionBDD.executeQuery();
-		connectionBDD.setQueryIntoTable();
 
-		TranslateMap translate = new TranslateMap(connectionBDD.getTab());
-		maker = new MapMaker(translate.getMap());
+
+
 
 
 

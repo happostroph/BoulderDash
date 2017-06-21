@@ -6,7 +6,7 @@ import java.awt.Image;
 public class MapMaker implements IMapMaker {
 	private Sprite[][] sprites = new Sprite[22][40];
 	private Image map[][] = new Image[22][40];
-	private int x = 0, y = 0, ligne = 0, colonne = 0;
+	private int x = 0, y = 0, ligne = 0, colonne = 0, characterX =0, characterY =0;
 
 	/**
 	 * The constructor of MapMaker, 
@@ -15,8 +15,10 @@ public class MapMaker implements IMapMaker {
 	 * 				the map of the level
 	 */
 
-	public MapMaker(Image map[][]) {
-		this.map = map;
+	public MapMaker(TranslateMap translate) {
+		this.map = translate.getMap();
+		this.characterX = translate.getCharacterX();
+		this.characterY = translate.getCharacterY();
 	}
 
 	/**
@@ -32,7 +34,6 @@ public class MapMaker implements IMapMaker {
 			x = 0;
 			colonne = 0;
 			for (Image img : sousImg) {
-				// this.addSprite(new Sprite(img, x, y));
 				sprites[ligne][colonne] = new Sprite(img, x, y);
 				x = x + SET_SIZE;
 				colonne++;
@@ -55,6 +56,7 @@ public class MapMaker implements IMapMaker {
 				graphics.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
 			}
 		}
+		graphics.drawImage(sprites[characterX][characterY].getImage(), sprites[characterX][characterY].getX(), sprites[characterX][characterY].getY(), null);
 	}
 	
 	public void drawcharacter(Graphics g, ISprite sprite){
@@ -67,5 +69,9 @@ public class MapMaker implements IMapMaker {
 	 */
 	public Sprite[][] getSprites() {
 		return sprites;
+	}
+	
+	public Sprite getCharacter(int colonne, int ligne){
+		return sprites[colonne][ligne];
 	}
 }

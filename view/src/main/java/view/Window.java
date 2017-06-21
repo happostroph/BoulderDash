@@ -13,7 +13,7 @@ public class Window extends JFrame implements IWindow {
 	/**
 	 * The constructor of Window
 	 */
-	public Window(MapMaker maker, Sprite sprite, IBDKeyListener listener) {
+	public Window(MapMaker maker, IBDKeyListener listener) {
 
 		/*
 		 * Create a new window
@@ -29,7 +29,7 @@ public class Window extends JFrame implements IWindow {
 		/*
 		 * Create a new Panel
 		 */
-		panel = new Panel(maker, sprite);
+		panel = new Panel(maker);
 
 		/*
 		 * Fill the panel

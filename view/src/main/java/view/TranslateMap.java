@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 public class TranslateMap implements ITranslateMap {
 	private HashMap<Character, Image> translator = new HashMap<>();
 	private Image map[][] = new Image[22][40];
+	private int characterX = 0, characterY = 0;
 
 	/**
 	 * The constructor of TranslateMap
@@ -45,6 +46,11 @@ public class TranslateMap implements ITranslateMap {
 			for (char chr : sousTab) {
 				if (this.translator.containsKey(chr)) {
 					map[ligne][colonne] = this.translator.get(chr);
+					if(chr == 'S'){
+						characterX = ligne;
+						characterY = colonne;
+					}
+
 				} else {
 					System.out.println("Error TranslateMap");
 				}
@@ -60,5 +66,13 @@ public class TranslateMap implements ITranslateMap {
 	 */
 	public Image[][] getMap() {
 		return map;
+	}
+
+	public int getCharacterX() {
+		return characterX;
+	}
+
+	public int getCharacterY() {
+		return characterY;
 	}
 }

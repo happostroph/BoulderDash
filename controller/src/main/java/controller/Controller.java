@@ -25,11 +25,12 @@ public class Controller implements IController{
 	}
 
 	public final void play() throws InterruptedException {
-		while (i < 200) {
+		while (i < 2000) {
 			Thread.sleep(40);
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				sprite.setX(sprite.getX() + 16);
+				System.out.println("right");
 				break;
 			case LEFT:
 				sprite.setX(sprite.getX() - 16);
