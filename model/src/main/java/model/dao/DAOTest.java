@@ -10,8 +10,8 @@ import model.IDAOTest;
 
 public class DAOTest implements IDAOTest {
 	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
-	private String LOGIN = "Swatnes";
-	private String PASSWORD = "Swatnes";
+	private String LOGIN = "boulderdash";
+	private String PASSWORD = "boulderdash";
 	private Connection connection = null;
 	private Statement statement = null;
 	private ResultSet result;
@@ -103,12 +103,12 @@ public class DAOTest implements IDAOTest {
 		 * 
 		 */
 
-		 for (char sousTab[] : tab){
-		 for(char str : sousTab){
-		 System.out.print(str);
-		 }
-		 System.out.println("");
-		 }
+//		 for (char sousTab[] : tab){
+//		 for(char str : sousTab){
+//		 System.out.print(str);
+//		 }
+//		 System.out.println("");
+//		 }
 
 	}
 

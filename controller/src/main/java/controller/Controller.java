@@ -65,7 +65,7 @@ public class Controller implements IController {
 			default:
 				break;
 			}
-			
+			gravity.makeThemSlide(maker.getSprites());
 			gravity.makeThemFall(maker.getSprites());
 			panel.update();
 			stackOrder = UserOrder.NOOP;
