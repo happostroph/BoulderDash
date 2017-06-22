@@ -1,6 +1,6 @@
 package view;
 
-public interface IMapModifier {
+public interface IMove {
 	
 	public void setMapModifier(ISprite[][] sprites, int SET_SIZE);
 	

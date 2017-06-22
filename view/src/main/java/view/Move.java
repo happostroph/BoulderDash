@@ -3,7 +3,7 @@ package view;
 import model.Permeability;
 import view.Element.Background;
 
-public class MapModifier implements IMapModifier {
+public class Move implements IMove {
 	ISprite[][] sprites;
 	int SET_SIZE;
 

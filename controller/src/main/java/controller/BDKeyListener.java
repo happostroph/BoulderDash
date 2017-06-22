@@ -2,10 +2,11 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Observable;
 
 import model.UserOrder;
 
-public class BDKeyListener implements KeyListener, IBDKeyListener{
+public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
 	IController controller;
 	
 	public BDKeyListener(){
@@ -44,6 +45,8 @@ public class BDKeyListener implements KeyListener, IBDKeyListener{
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
+		setChanged();
+		notifyObservers(keyEvent);
 	}
 
 	@Override

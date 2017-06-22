@@ -6,14 +6,8 @@ import java.io.IOException;
 import controller.BDKeyListener;
 import controller.Controller;
 import model.dao.DAOTest;
-import view.Audio;
-import view.CreateMenu;
-import view.Gravity;
-import view.LevelObservator;
-import view.MapMaker;
-import view.MapModifier;
-import view.TranslateMap;
-import view.Window;
+import view.*;
+
 
 public class Main implements LevelObservator {
 	static MapMaker maker = null;
@@ -26,9 +20,8 @@ public class Main implements LevelObservator {
 
 	public static void main(String[] args) throws IOException {
 		menu = new CreateMenu();
-		Main toto = new Main();
-		menu.getObservators().add(toto);
-
+		Main game = new Main();
+		menu.getObservators().add(game);
 	}
 
 	@Override
@@ -43,7 +36,6 @@ public class Main implements LevelObservator {
 				music = new File("music/pokemon.wav");
 
 				connectionBDD.connection();
-				System.out.println("test");
 				connectionBDD.executeQuery(level);
 				connectionBDD.setQueryIntoTable();
 
@@ -56,17 +48,18 @@ public class Main implements LevelObservator {
 					Audio.PlaySound(music);
 
 					BDKeyListener bdkeyListener = new BDKeyListener();
+					
 					Window window = new Window(maker, bdkeyListener);
 
-					MapModifier modifier = new MapModifier();
+					Move move = new Move();
 					Gravity gravity = new Gravity();
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, modifier, maker, gravity);
-
+							SET_SIZE, move, maker, gravity);
+					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
 
-					controller.directionControl();
+					//controller.directionControl();
 
 				} catch (Exception e1) {
 					e1.printStackTrace();

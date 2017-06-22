@@ -36,14 +36,12 @@ public class Gravity implements IGravity {
 							&& isSpriteNextToBackground(sprites[ligne + 1][colonne + 1])) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setX(spit.getX() + 16);
-						spit.setHasMoved(true);
 						sprites[ligne][colonne + 1] = spit;
 					} else if (isSpriteNextToBackground(sprites[ligne][colonne - 1])
 							&& isSpriteNextToBackground(sprites[ligne + 1][colonne - 1])) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setX(spit.getX() - 16);
 						sprites[ligne][colonne - 1] = spit;
-						spit.setHasMoved(true);
 					}
 				}
 				colonne++;
