@@ -121,14 +121,3 @@ public class DAOTest implements IDAOTest {
 		return tab;
 	}
 }
-
-// ResultSetMetaData resultMeta;
-// resultMeta = (ResultSetMetaData) result.getMetaData();
-
-// On affiche le nom des colonnes
-
-// for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
-// // resultMeta récupère les métadonnées de la requête
-// System.out.print("*" + "\t" +
-// resultMeta.getColumnName(i).toUpperCase() + "\t *");
-// }

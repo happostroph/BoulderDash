@@ -14,26 +14,6 @@ public abstract class Sprite implements ISprite {
 	protected boolean hasMoved = false;
 
 	/**
-	 * The constructor of Sprite, a Sprite is a picture with a size of 16x16
-	 * pixels
-	 * 
-	 * @param image
-	 *            the path of the file were the picture is stored
-	 * @param x
-	 *            the position on the X axle
-	 * @param y
-	 *            the position on the Y axle
-	 */
-	
-//	public Sprite(Image image, int x, int y) {
-//		this.image = image;
-//		this.x = x;
-//		this.y = y;
-//	}
-	
-
-
-	/**
 	 * @return x the position on the X axle
 	 */
 	

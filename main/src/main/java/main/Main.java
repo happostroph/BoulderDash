@@ -25,38 +25,6 @@ public class Main implements LevelObservator {
 	static CreateMenu menu;
 
 	public static void main(String[] args) throws IOException {
-
-		// DAOTest connectionBDD = new DAOTest();
-		//
-		// music = new File("music/pokemon.wav");
-		//
-		// connectionBDD.connection();
-		// System.out.println("test");
-		// connectionBDD.executeQuery(1);
-		// connectionBDD.setQueryIntoTable();
-		//
-		// TranslateMap translate;
-		// try {
-		// translate = new TranslateMap(connectionBDD.getTab());
-		// maker = new MapMaker(translate);
-		// maker.spritesCreation(SET_SIZE);
-		//
-		// Audio.PlaySound(music);
-		//
-		// BDKeyListener bdkeyListener = new BDKeyListener();
-		// Window window = new Window(maker, bdkeyListener);
-		//
-		// MapModifier modifier = new MapModifier();
-		// Gravity gravity = new Gravity();
-		// Controller controller = new
-		// Controller(maker.getCharacter(translate.getCharacterX(),
-		// translate.getCharacterY()), window.getPanel(), SET_SIZE, modifier,
-		// maker, gravity);
-		//
-		// bdkeyListener.setController(controller);
-		//
-		// controller.directionControl();
-
 		menu = new CreateMenu();
 		Main toto = new Main();
 		menu.getObservators().add(toto);
@@ -103,12 +71,7 @@ public class Main implements LevelObservator {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-
 			}
 		})).start();
-
-		
-
 	}
-
 }

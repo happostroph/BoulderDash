@@ -12,4 +12,6 @@ public interface IMapMaker {
 	public ISprite getCharacter(int colonne, int ligne);
 
 	public void setSprites(ISprite[][] sprites);
+	
+	public void setAllHasMovedToFalse(ISprite[][] sprites);
 }

@@ -43,7 +43,10 @@ public class Controller implements IController {
 	
 	public final void directionControl() throws InterruptedException {
 		while (true) {
-			Thread.sleep(40);
+			Thread.sleep(100);
+			maker.setAllHasMovedToFalse(maker.getSprites());
+			gravity.makeThemSlide(maker.getSprites());
+			gravity.makeThemFall(maker.getSprites());
 			colonne = sprite.getX() / SET_SIZE;
 			ligne = sprite.getY() / SET_SIZE;
 
@@ -65,8 +68,7 @@ public class Controller implements IController {
 			default:
 				break;
 			}
-			gravity.makeThemSlide(maker.getSprites());
-			gravity.makeThemFall(maker.getSprites());
+
 			panel.update();
 			stackOrder = UserOrder.NOOP;
 

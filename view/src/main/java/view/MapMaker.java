@@ -116,4 +116,12 @@ public class MapMaker implements IMapMaker {
 	public void setSprites(ISprite[][] sprites) {
 		this.sprites = sprites;
 	}
+	
+	public void setAllHasMovedToFalse(ISprite[][] sprites){
+		for(ISprite sousSpit[] : sprites){
+			for(ISprite spit : sousSpit){
+				spit.setHasMoved(false);
+			}
+		}
+	}
 }

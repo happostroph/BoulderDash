@@ -46,7 +46,6 @@ public class CreateMenu extends JFrame {
 				JOptionPane jop = new JOptionPane();
 				String name = (String) jop.showInputDialog(null, "Choose your level!", "The choise",
 						JOptionPane.QUESTION_MESSAGE, null, level, level[2]);
-				System.out.println(name);
 
 				if (name == "Level 1") {
 					choice = 1;
@@ -63,7 +62,6 @@ public class CreateMenu extends JFrame {
 				if (name == "Level 5") {
 					choice = 5;
 				}
-				// System.out.println(choice);
 				for (LevelObservator observator : observators) {
 					observator.onLevelSelected(choice);
 				}
@@ -74,8 +72,6 @@ public class CreateMenu extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().add(boutonPane, BorderLayout.SOUTH);
 		this.setVisible(true);
-		System.out.println(choice);
-
 	}
 
 	public int getChoice() {
