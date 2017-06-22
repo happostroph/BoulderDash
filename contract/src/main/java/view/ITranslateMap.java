@@ -1,9 +1,11 @@
 package view;
 
-import java.awt.Image;
-
 public interface ITranslateMap {
 	
-	public Image[][] getMap();
-	
+
+
+	public int getCharacterX();
+
+	public int getCharacterY();
+
 }

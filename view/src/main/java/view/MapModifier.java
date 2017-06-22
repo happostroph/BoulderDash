@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import view.Element.Sprite;
+
 public class MapModifier implements IMapModifier{
 	ISprite[][] sprites;
 	int SET_SIZE;

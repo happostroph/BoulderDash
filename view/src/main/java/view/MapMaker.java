@@ -3,9 +3,11 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import view.Element.Sprite;
+
 public class MapMaker implements IMapMaker {
 	private ISprite[][] sprites = new Sprite[22][40];
-	private Image map[][] = new Image[22][40];
+	private SpriteType map[][];
 	private int x = 0, y = 0, ligne = 0, colonne = 0, characterX =0, characterY =0;
 
 	/**
@@ -31,10 +33,10 @@ public class MapMaker implements IMapMaker {
 
 	public void spritesCreation(final int SET_SIZE) {
 		ligne =0;
-		for (Image sousImg[] : map) {
+		for (SpriteType sousImg[] : map) {
 			x = 0;
 			colonne = 0;
-			for (Image img : sousImg) {
+			for (SpriteType img : sousImg) {
 				sprites[ligne][colonne] = new Sprite(img, x, y);
 				x = x + SET_SIZE;
 				colonne++;

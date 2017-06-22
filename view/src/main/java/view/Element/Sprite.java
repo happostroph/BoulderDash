@@ -1,10 +1,14 @@
-package view;
+package view.Element;
 
 import java.awt.Image;
 
-public class Sprite implements ISprite {
-	private Image image;
-	private int x = 0, y = 0;
+import model.IPermeability;
+import view.ISprite;
+
+public abstract class Sprite implements ISprite {
+	protected Image image;
+	protected int x = 0, y = 0;
+	protected IPermeability permeability;
 
 	/**
 	 * The constructor of Sprite, a Sprite is a picture with a size of 16x16
@@ -18,11 +22,11 @@ public class Sprite implements ISprite {
 	 *            the position on the Y axle
 	 */
 	
-	public Sprite(Image image, int x, int y) {
-		this.image = image;
-		this.x = x;
-		this.y = y;
-	}
+//	public Sprite(Image image, int x, int y) {
+//		this.image = image;
+//		this.x = x;
+//		this.y = y;
+//	}
 
 	/**
 	 * @return x the position on the X axle
@@ -69,5 +73,13 @@ public class Sprite implements ISprite {
 	@Override
 	public void setImage(Image image) {
 		this.image = image;
+	}
+
+	public IPermeability getPermeability() {
+		return permeability;
+	}
+
+	public void setPermeability(IPermeability permeability) {
+		this.permeability = permeability;
 	}
 }

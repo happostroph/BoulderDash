@@ -1,16 +1,13 @@
 package view;
 
-import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
-import javax.imageio.ImageIO;
+import java.util.Map;
 
 public class TranslateMap implements ITranslateMap {
-	private HashMap<Character, Image> translator = new HashMap<>();
-	private Image map[][] = new Image[22][40];
+	private Map<Character, SpriteType> translator = new HashMap<>();
 	private int characterX = 0, characterY = 0;
+	private SpriteType map[][];
 
 	/**
 	 * The constructor of TranslateMap
@@ -26,15 +23,15 @@ public class TranslateMap implements ITranslateMap {
 		 * Fill translator with the pictures which correspond to the characters
 		 */
 
-		this.translator.put('#', ImageIO.read(new File("image/01.png")));
-		this.translator.put('X', ImageIO.read(new File("image/02.png")));
-		this.translator.put('_', ImageIO.read(new File("image/03.png")));
-		this.translator.put('O', ImageIO.read(new File("image/04.png")));
-		this.translator.put('V', ImageIO.read(new File("image/05.png")));
-		this.translator.put('E', ImageIO.read(new File("image/06.png")));
-		this.translator.put('M', ImageIO.read(new File("image/07.png")));
-		this.translator.put('S', ImageIO.read(new File("image/08.png")));
-		this.translator.put('m', ImageIO.read(new File("image/09.png")));
+		this.translator.put('#', SpriteType.UNBREAKABLE);//('#', SpriteType.UNBREAKABLE);
+		this.translator.put('X', SpriteType.DIRT);
+		this.translator.put('_', SpriteType.BACKGROUND);
+		this.translator.put('O', SpriteType.ROCK);
+		this.translator.put('V', SpriteType.DIAMOND);
+		this.translator.put('E', SpriteType.EXIT);
+		this.translator.put('M', SpriteType.MONSTER);
+		this.translator.put('S', SpriteType.CHARACTER);
+		this.translator.put('m', SpriteType.MONSTER);
 
 		/*
 		 * Fill a two-dimensional Image table in terms of what contains tab
@@ -61,10 +58,10 @@ public class TranslateMap implements ITranslateMap {
 	}
 
 	/**
-	 * @return map a two-dimensional Image table which contains the map in the
-	 *         form of pictures
+	 * @return map a two-dimensional SpriteType table which contains the map in the
+	 *         form of enum
 	 */
-	public Image[][] getMap() {
+	public SpriteType[][] getMap() {
 		return map;
 	}
 
@@ -75,4 +72,6 @@ public class TranslateMap implements ITranslateMap {
 	public int getCharacterY() {
 		return characterY;
 	}
+
+
 }
