@@ -21,4 +21,6 @@ public interface ISprite {
 	public Permeability getPermeability();
 
 	public void setPermeability(Permeability permeability);
+	
+	public SpriteType getType();
 }

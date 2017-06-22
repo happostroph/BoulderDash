@@ -4,11 +4,13 @@ import java.awt.Image;
 
 import model.Permeability;
 import view.ISprite;
+import view.SpriteType;
 
 public abstract class Sprite implements ISprite {
 	protected Image image;
 	protected int x = 0, y = 0;
 	protected Permeability permeability;
+	protected SpriteType type;
 
 	/**
 	 * The constructor of Sprite, a Sprite is a picture with a size of 16x16
@@ -83,5 +85,9 @@ public abstract class Sprite implements ISprite {
 
 	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
+	}
+
+	public SpriteType getType() {
+		return type;
 	}
 }

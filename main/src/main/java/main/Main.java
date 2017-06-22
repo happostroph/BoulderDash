@@ -7,6 +7,7 @@ import controller.BDKeyListener;
 import controller.Controller;
 import model.dao.DAOTest;
 import view.Audio;
+import view.Gravity;
 import view.MapMaker;
 import view.MapModifier;
 import view.TranslateMap;
@@ -37,7 +38,8 @@ public class Main {
 		Window window = new Window(maker, bdkeyListener);
 		
 		MapModifier modifier = new MapModifier();
-		Controller controller = new Controller(maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(), SET_SIZE, modifier, maker);
+		Gravity gravity = new Gravity();
+		Controller controller = new Controller(maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(), SET_SIZE, modifier, maker, gravity);
 		
 		bdkeyListener.setController(controller);
 		

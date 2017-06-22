@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import model.Permeability;
+import view.SpriteType;
 
 public class Unbreakable extends Sprite{
 	
@@ -14,6 +15,7 @@ public class Unbreakable extends Sprite{
 		this.permeability = Permeability.BLOCKING;
 		this.x = x;
 		this.y = y;
+		this.type = SpriteType.UNBREAKABLE;
 		
 		try {
 			image = ImageIO.read(new File("image/01.png"));

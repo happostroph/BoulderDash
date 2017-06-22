@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import model.Permeability;
+import view.SpriteType;
 
 public class Rock extends Sprite{
 	
@@ -14,6 +15,7 @@ public class Rock extends Sprite{
 		this.permeability = Permeability.BLOCKING;
 		this.x = x;
 		this.y = y;
+		this.type = SpriteType.ROCK;
 		
 		try {
 			image = ImageIO.read(new File("image/04.png"));

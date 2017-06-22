@@ -2,6 +2,7 @@ package controller;
 
 import model.Permeability;
 import model.UserOrder;
+import view.IGravity;
 import view.IMapMaker;
 import view.IMapModifier;
 import view.IPanel;
@@ -14,6 +15,7 @@ public class Controller implements IController {
 	ISprite sprite;
 	IMapMaker maker;
 	IMapModifier modifier;
+	IGravity gravity;
 
 	/**
 	 * Constructor of Controller
@@ -24,12 +26,13 @@ public class Controller implements IController {
 	 * @param maker
 	 */
 	
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMapModifier modifier, IMapMaker maker) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMapModifier modifier, IMapMaker maker, IGravity gravity) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
 		this.modifier = modifier;
 		this.maker = maker;
+		this.gravity = gravity;
 		modifier.setMapModifier(maker.getSprites(), SET_SIZE);
 	}
 
@@ -63,7 +66,7 @@ public class Controller implements IController {
 				break;
 			}
 			
-			
+			gravity.makeThemFall(maker.getSprites());
 			panel.update();
 			stackOrder = UserOrder.NOOP;
 
