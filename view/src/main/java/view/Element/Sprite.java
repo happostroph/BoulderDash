@@ -12,6 +12,7 @@ public abstract class Sprite implements ISprite {
 	protected Permeability permeability;
 	protected SpriteType type;
 	protected boolean hasMoved = false;
+	protected boolean isNearCharacter = false;
 
 	/**
 	 * @return x the position on the X axle
@@ -19,6 +20,14 @@ public abstract class Sprite implements ISprite {
 	
 	public int getX() {
 		return x;
+	}
+
+	public boolean isNearCharacter() {
+		return isNearCharacter;
+	}
+
+	public void setNearCharacter(boolean isNearCharacter) {
+		this.isNearCharacter = isNearCharacter;
 	}
 
 	/**

@@ -27,4 +27,8 @@ public interface ISprite {
 	public boolean isHasMoved();
 
 	public void setHasMoved(boolean hasMoved);
+	
+	public boolean isNearCharacter();
+
+	public void setNearCharacter(boolean isNearCharacter);
 }

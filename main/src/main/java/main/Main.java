@@ -30,7 +30,6 @@ public class Main implements LevelObservator {
 
 			@Override
 			public void run() {
-				menu.dispose();
 				DAOTest connectionBDD = new DAOTest();
 
 				music = new File("music/pokemon.wav");
@@ -52,14 +51,12 @@ public class Main implements LevelObservator {
 					Window window = new Window(maker, bdkeyListener);
 
 					Move move = new Move();
-					Gravity gravity = new Gravity();
+					Gravity gravity = new Gravity(window);
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
 							SET_SIZE, move, maker, gravity);
 					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
-
-					//controller.directionControl();
 
 				} catch (Exception e1) {
 					e1.printStackTrace();

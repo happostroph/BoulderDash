@@ -6,6 +6,11 @@ import view.Element.Background;
 
 public class Gravity implements IGravity {
 	int ligne = 0, colonne = 0;
+	Window window;
+
+	public Gravity(Window window) {
+		this.window = window;
+	}
 
 	public ISprite[][] makeThemFall(ISprite[][] sprites) {
 		ligne = 0;
@@ -13,21 +18,29 @@ public class Gravity implements IGravity {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-						&& isSpriteNextToBackground(sprites[ligne + 1][colonne]) && !sprites[ligne][colonne].isHasMoved()) {
+						&& isSpriteNextToBackground(sprites[ligne + 1][colonne])
+						&& !sprites[ligne][colonne].isHasMoved()) {
 					sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 					spit.setY(spit.getY() + 16);
 					spit.setHasMoved(true);
 					sprites[ligne + 1][colonne] = spit;
+					System.out.println("test2");
+					if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
+							&& isSpriteAboveCharacter(sprites[ligne + 1][colonne])){
+							
+						System.out.println("test1");
+						if (sprites[ligne][colonne].isNearCharacter()) {
+							sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
+							spit.setY(spit.getY() + 16);
+							spit.setHasMoved(true);
+							sprites[ligne + 1][colonne] = spit;
+							gameOver();
+						} else {
+							sprites[ligne][colonne].setNearCharacter(true);
+							System.out.println("test");
+						}
+					}
 				}
-				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-						&& isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && !sprites[ligne][colonne].isHasMoved()) {
-					sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
-					spit.setY(spit.getY() + 16);
-					spit.setHasMoved(true);
-					sprites[ligne + 1][colonne] = spit;
-					gameOver();
-				}
-				
 				colonne++;
 			}
 			ligne++;
@@ -41,7 +54,8 @@ public class Gravity implements IGravity {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-						&& isSpriteAboveRockOrDiamond(sprites[ligne + 1][colonne]) && !sprites[ligne][colonne].isHasMoved()) {
+						&& isSpriteAboveRockOrDiamond(sprites[ligne + 1][colonne])
+						&& !sprites[ligne][colonne].isHasMoved()) {
 
 					if (isSpriteNextToBackground(sprites[ligne][colonne + 1])
 							&& isSpriteNextToBackground(sprites[ligne + 1][colonne + 1])) {
@@ -73,12 +87,13 @@ public class Gravity implements IGravity {
 	public Boolean isSpriteNextToBackground(ISprite sprites) {
 		return sprites.getType() == SpriteType.BACKGROUND;
 	}
-	
+
 	public Boolean isSpriteAboveCharacter(ISprite sprites) {
 		return sprites.getType() == SpriteType.CHARACTER;
 	}
-	
-	public void gameOver(){
+
+	public void gameOver() {
 		JOptionPane.showMessageDialog(null, "Game Over");
+		this.window.dispose();
 	}
 }
