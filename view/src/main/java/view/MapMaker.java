@@ -11,8 +11,8 @@ public class MapMaker implements IMapMaker {
 	/**
 	 * The constructor of MapMaker, 
 	 * 
-	 * @param map 
-	 * 				the map of the level
+	 * @param translate 
+	 * 				the translation of the query
 	 */
 
 	public MapMaker(TranslateMap translate) {
@@ -47,30 +47,31 @@ public class MapMaker implements IMapMaker {
 	/**
 	 * Show the 880 sprites and their position
 	 * 
-	 * @param graphics
+	 * @param g
 	 * 					
 	 */
 
-	public void drawMap(Graphics graphics) {
+	public void drawMap(Graphics g) {
 		for (ISprite[] sousSpit : this.getSprites()) {
 			for (ISprite spit : sousSpit) {
-				graphics.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
+				g.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
 			}
 		}
-		graphics.drawImage(sprites[characterY][characterX].getImage(), sprites[characterY][characterX].getX(), sprites[characterY][characterX].getY(), null);
-	}
-	
-	public void drawcharacter(Graphics g, ISprite sprite){
-		g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), null);
 	}
 
 	/**
 	 * 
 	 * @return a two-dimensional table of Sprite
 	 */
+	
 	public ISprite[][] getSprites() {
 		return sprites;
 	}
+	
+	/**
+	 * 
+	 * @return a Sprite in the two-dimensional table 
+	 */
 	
 	public ISprite getCharacter(int colonne, int ligne){
 		return sprites[ligne][colonne];

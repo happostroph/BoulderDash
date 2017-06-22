@@ -11,8 +11,8 @@ import model.UserOrder;
  * @version 1.0
  */
 public interface IController {
-	public void play() throws InterruptedException;
+	public void directionControl() throws InterruptedException;
 	
-	public void orderPerform(final UserOrder userOrder) throws IOException;
+	public void setStackOrder(final UserOrder userOrder);
 
 }

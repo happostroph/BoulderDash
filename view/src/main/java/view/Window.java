@@ -38,7 +38,8 @@ public class Window extends JFrame implements IWindow {
 		this.setContentPane(panel);
 		this.setVisible(true);
 	}
-
+	
+	
 	public Panel getPanel() {
 		return panel;
 	}

@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 
 import model.UserOrder;
 
@@ -12,6 +11,13 @@ public class BDKeyListener implements KeyListener, IBDKeyListener{
 	public BDKeyListener(){
 		
 	}
+	
+	/**
+	 * It return the direction corresponding to the key pressed
+	 * @param keyCode
+	 * 			The value corresponding to the key pressed
+	 * @return userOrder
+	 */
 	
 	public UserOrder keyCodeToUserOrder(final int keyCode) {
 		UserOrder userOrder;
@@ -37,12 +43,7 @@ public class BDKeyListener implements KeyListener, IBDKeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
-		try {
-			this.getController().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
 	}
 
 	@Override

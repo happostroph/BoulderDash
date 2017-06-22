@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.Serializable;
@@ -9,10 +8,10 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
+
 	protected Image buffer[][] = new Image[22][40];
 	int ligne = 0, colonne = 0;
 	private IMapMaker maker;
-	private ISprite sprite;
 
 	/**
 	 * The constructor of Panel
@@ -24,12 +23,9 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	public Panel(MapMaker maker) {
 		this.maker = maker;
 	}
-	public Panel(IMapMaker maker, ISprite sprite) {
-		this.maker = maker;
-		this.sprite = sprite;
-	}
+
 	/**
-	 * Calls the draw function of MapMaker
+	 * Calls the draw functions of MapMaker
 	 * 
 	 * @param g
 	 * 
@@ -37,14 +33,14 @@ public class Panel extends JPanel implements Serializable, IPanel {
 
 	public void paintComponent(Graphics g) {
 		this.maker.drawMap(g);
-//		g.setColor(Color.WHITE);
-//		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-//		this.maker.drawcharacter(g, this.sprite);
 	}
+
+	/**
+	 * Update the map when a mouvement is done
+	 */
 
 	@Override
 	public void update() {
 		this.repaint();
 	}
-
 }

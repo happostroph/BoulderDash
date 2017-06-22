@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.IOException;
-
 import model.UserOrder;
 import view.IMapMaker;
 import view.IMapModifier;
@@ -16,6 +14,15 @@ public class Controller implements IController {
 	IMapMaker maker;
 	IMapModifier modifier;
 
+	/**
+	 * Constructor of Controller
+	 * @param sprite
+	 * @param panel
+	 * @param SET_SIZE
+	 * @param modifier
+	 * @param maker
+	 */
+	
 	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMapModifier modifier, IMapMaker maker) {
 		this.panel = panel;
 		this.sprite = sprite;
@@ -25,29 +32,18 @@ public class Controller implements IController {
 		modifier.setMapModifier(maker.getSprites(), SET_SIZE);
 	}
 
-	public Controller(ISprite sprite, IMapMaker maker) {
-		this.sprite = sprite;
-		this.maker = maker;
-
-	}
-
-	public final void play() throws InterruptedException {
-		while (i < 2000) {
+	
+	/**
+	 * move the character
+	 */
+	
+	public final void directionControl() throws InterruptedException {
+		while (true) {
 			Thread.sleep(40);
 			colonne = sprite.getX() / SET_SIZE;
 			ligne = sprite.getY() / SET_SIZE;
-			if (colonne <= 0) {
-				colonne = 0;
-			}
-			if (colonne >= 40) {
-				colonne = 40;
-			}
-			if (ligne <= 0) {
-				ligne = 0;
-			}
-			if (ligne >= 22) {
-				ligne = 22;
-			}
+
+			
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				maker.setSprites(modifier.digRight(colonne, ligne, sprite));
@@ -65,21 +61,18 @@ public class Controller implements IController {
 			default:
 				break;
 			}
+			
+			
 			panel.update();
 			stackOrder = UserOrder.NOOP;
-			i++;
 
 		}
-	}
-
-	public final void orderPerform(final UserOrder userOrder) throws IOException {
-		this.setStackOrder(userOrder);
 	}
 
 	public UserOrder getStackOrder() {
 		return stackOrder;
 	}
-
+	
 	public void setStackOrder(UserOrder stackOrder) {
 		this.stackOrder = stackOrder;
 	}
