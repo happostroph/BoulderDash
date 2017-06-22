@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 import view.Element.Background;
 
 public class Gravity implements IGravity {
@@ -77,6 +79,6 @@ public class Gravity implements IGravity {
 	}
 	
 	public void gameOver(){
-		
+		JOptionPane.showMessageDialog(null, "Game Over");
 	}
 }
