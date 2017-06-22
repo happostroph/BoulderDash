@@ -5,14 +5,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import model.IPermeability;
+import model.Permeability;
 
 public class Character extends Sprite{
 
 	
-	public Character(int x, int y, IPermeability permeability){
+	public Character(int x, int y){
 		super();
-		this.permeability = permeability;
+		this.permeability = Permeability.PERMEABLE;
 		this.x = x;
 		this.y = y;
 		

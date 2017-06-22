@@ -5,13 +5,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import model.IPermeability;
+import model.Permeability;
 
 public class Exit extends Sprite{
 	
-	public Exit(int x, int y, IPermeability permeability){
+	public Exit(int x, int y){
 		super();
-		this.permeability = permeability;
+		this.permeability = Permeability.PERMEABLE;
 		this.x = x;
 		this.y = y;
 		

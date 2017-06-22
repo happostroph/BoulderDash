@@ -7,7 +7,7 @@ import java.util.Map;
 public class TranslateMap implements ITranslateMap {
 	private Map<Character, SpriteType> translator = new HashMap<>();
 	private int characterX = 0, characterY = 0;
-	private SpriteType map[][];
+	private SpriteType map[][] = new SpriteType[22][40];
 
 	/**
 	 * The constructor of TranslateMap

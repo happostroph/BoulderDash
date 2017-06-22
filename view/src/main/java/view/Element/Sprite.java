@@ -2,13 +2,13 @@ package view.Element;
 
 import java.awt.Image;
 
-import model.IPermeability;
+import model.Permeability;
 import view.ISprite;
 
 public abstract class Sprite implements ISprite {
 	protected Image image;
 	protected int x = 0, y = 0;
-	protected IPermeability permeability;
+	protected Permeability permeability;
 
 	/**
 	 * The constructor of Sprite, a Sprite is a picture with a size of 16x16
@@ -27,6 +27,8 @@ public abstract class Sprite implements ISprite {
 //		this.x = x;
 //		this.y = y;
 //	}
+	
+
 
 	/**
 	 * @return x the position on the X axle
@@ -75,11 +77,11 @@ public abstract class Sprite implements ISprite {
 		this.image = image;
 	}
 
-	public IPermeability getPermeability() {
+	public Permeability getPermeability() {
 		return permeability;
 	}
 
-	public void setPermeability(IPermeability permeability) {
+	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
 }

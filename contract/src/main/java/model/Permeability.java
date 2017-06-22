@@ -1,6 +1,6 @@
 package model;
 
-public enum Permeability implements IPermeability{
+public enum Permeability{
 	BLOCKING,
 	PERMEABLE,
 	KILL

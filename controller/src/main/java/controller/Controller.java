@@ -1,5 +1,6 @@
 package controller;
 
+import model.Permeability;
 import model.UserOrder;
 import view.IMapMaker;
 import view.IMapModifier;

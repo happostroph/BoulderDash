@@ -5,13 +5,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import model.IPermeability;
+import model.Permeability;
 
 public class Monster extends Sprite{
 
-	public Monster(int x, int y, IPermeability permeability){
+	public Monster(int x, int y){
 		super();
-		this.permeability = permeability;
+		this.permeability = Permeability.KILL;
 		this.x = x;
 		this.y = y;
 		

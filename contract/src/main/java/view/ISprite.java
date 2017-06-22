@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Image;
 
+import model.Permeability;
+
 public interface ISprite {
 	
 	public int getX();
@@ -15,4 +17,8 @@ public interface ISprite {
 	public Image getImage();
 
 	public void setImage(Image image);
+	
+	public Permeability getPermeability();
+
+	public void setPermeability(Permeability permeability);
 }

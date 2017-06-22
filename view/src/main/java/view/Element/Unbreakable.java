@@ -5,13 +5,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import model.IPermeability;
+import model.Permeability;
 
 public class Unbreakable extends Sprite{
 	
-	public Unbreakable(int x, int y, IPermeability permeability){
+	public Unbreakable(int x, int y){
 		super();
-		this.permeability = permeability;
+		this.permeability = Permeability.BLOCKING;
 		this.x = x;
 		this.y = y;
 		
