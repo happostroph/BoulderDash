@@ -9,6 +9,7 @@ import view.IMapMaker;
 import view.IMove;
 import view.IPanel;
 import view.ISprite;
+import view.SpriteType;
 
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
@@ -29,8 +30,7 @@ public class Controller implements IController, Observer {
 	 * @param maker
 	 */
 
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker,
-			IGravity gravity) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
@@ -45,34 +45,35 @@ public class Controller implements IController, Observer {
 	 */
 
 	public final void directionControl() throws InterruptedException {
-		Thread.sleep(100);
-		maker.setAllHasMovedToFalse(maker.getSprites());
+		if (sprite.getType() == SpriteType.CHARACTER) {
+			Thread.sleep(100);
+			maker.setAllHasMovedToFalse(maker.getSprites());
 
-		colonne = sprite.getX() / SET_SIZE;
-		ligne = sprite.getY() / SET_SIZE;
+			colonne = sprite.getX() / SET_SIZE;
+			ligne = sprite.getY() / SET_SIZE;
 
-		switch (this.getStackOrder()) {
-		case RIGHT:
-			maker.setSprites(move.digRight(colonne, ligne, sprite));
-			break;
-		case LEFT:
-			maker.setSprites(move.digLeft(colonne, ligne, sprite));
-			break;
-		case DOWN:
-			maker.setSprites(move.digDown(colonne, ligne, sprite));
-			break;
-		case UP:
-			maker.setSprites(move.digUp(colonne, ligne, sprite));
-			break;
-		case NOOP:
-		default:
-			break;
+			switch (this.getStackOrder()) {
+			case RIGHT:
+				maker.setSprites(move.digRight(colonne, ligne, sprite));
+				break;
+			case LEFT:
+				maker.setSprites(move.digLeft(colonne, ligne, sprite));
+				break;
+			case DOWN:
+				maker.setSprites(move.digDown(colonne, ligne, sprite));
+				break;
+			case UP:
+				maker.setSprites(move.digUp(colonne, ligne, sprite));
+				break;
+			case NOOP:
+			default:
+				break;
+			}
+			gravity.makeThemSlide(maker.getSprites());
+			gravity.makeThemFall(maker.getSprites());
+			panel.update();
+			stackOrder = UserOrder.NOOP;
 		}
-		gravity.makeThemSlide(maker.getSprites());
-		gravity.makeThemFall(maker.getSprites());
-		panel.update();
-		stackOrder = UserOrder.NOOP;
-
 	}
 
 	public UserOrder getStackOrder() {

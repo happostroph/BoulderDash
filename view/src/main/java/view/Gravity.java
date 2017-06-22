@@ -17,6 +17,15 @@ public class Gravity implements IGravity {
 					spit.setHasMoved(true);
 					sprites[ligne + 1][colonne] = spit;
 				}
+				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
+						&& isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && !sprites[ligne][colonne].isHasMoved()) {
+					sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
+					spit.setY(spit.getY() + 16);
+					spit.setHasMoved(true);
+					sprites[ligne + 1][colonne] = spit;
+					gameOver();
+				}
+				
 				colonne++;
 			}
 			ligne++;
@@ -61,5 +70,13 @@ public class Gravity implements IGravity {
 
 	public Boolean isSpriteNextToBackground(ISprite sprites) {
 		return sprites.getType() == SpriteType.BACKGROUND;
+	}
+	
+	public Boolean isSpriteAboveCharacter(ISprite sprites) {
+		return sprites.getType() == SpriteType.CHARACTER;
+	}
+	
+	public void gameOver(){
+		
 	}
 }
