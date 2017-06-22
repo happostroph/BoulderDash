@@ -23,4 +23,8 @@ public interface ISprite {
 	public void setPermeability(Permeability permeability);
 	
 	public SpriteType getType();
+	
+	public boolean isHasMoved();
+
+	public void setHasMoved(boolean hasMoved);
 }

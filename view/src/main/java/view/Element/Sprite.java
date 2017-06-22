@@ -11,6 +11,7 @@ public abstract class Sprite implements ISprite {
 	protected int x = 0, y = 0;
 	protected Permeability permeability;
 	protected SpriteType type;
+	protected boolean hasMoved = false;
 
 	/**
 	 * The constructor of Sprite, a Sprite is a picture with a size of 16x16
@@ -89,5 +90,13 @@ public abstract class Sprite implements ISprite {
 
 	public SpriteType getType() {
 		return type;
+	}
+
+	public boolean isHasMoved() {
+		return hasMoved;
+	}
+
+	public void setHasMoved(boolean hasMoved) {
+		this.hasMoved = hasMoved;
 	}
 }
