@@ -30,6 +30,7 @@ public class MapMaker implements IMapMaker {
 	 */
 
 	public void spritesCreation(final int SET_SIZE) {
+		ligne =0;
 		for (Image sousImg[] : map) {
 			x = 0;
 			colonne = 0;
@@ -56,7 +57,7 @@ public class MapMaker implements IMapMaker {
 				graphics.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
 			}
 		}
-		graphics.drawImage(sprites[characterX][characterY].getImage(), sprites[characterX][characterY].getX(), sprites[characterX][characterY].getY(), null);
+		graphics.drawImage(sprites[characterY][characterX].getImage(), sprites[characterY][characterX].getX(), sprites[characterY][characterX].getY(), null);
 	}
 	
 	public void drawcharacter(Graphics g, ISprite sprite){
@@ -72,7 +73,7 @@ public class MapMaker implements IMapMaker {
 	}
 	
 	public ISprite getCharacter(int colonne, int ligne){
-		return sprites[colonne][ligne];
+		return sprites[ligne][colonne];
 	}
 
 	public void setSprites(ISprite[][] sprites) {

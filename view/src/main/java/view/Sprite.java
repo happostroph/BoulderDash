@@ -62,7 +62,6 @@ public class Sprite implements ISprite {
 
 	@Override
 	public void setImage(Image image) {
-		// TODO Auto-generated method stub
-		
+		this.image = image;
 	}
 }

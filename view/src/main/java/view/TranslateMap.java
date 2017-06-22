@@ -47,8 +47,8 @@ public class TranslateMap implements ITranslateMap {
 				if (this.translator.containsKey(chr)) {
 					map[ligne][colonne] = this.translator.get(chr);
 					if(chr == 'S'){
-						characterX = ligne;
-						characterY = colonne;
+						characterX = colonne;
+						characterY = ligne;
 					}
 
 				} else {
