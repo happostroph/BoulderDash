@@ -17,8 +17,14 @@ public class DAOTest implements IDAOTest {
 	private ResultSet result;
 	private char tab[][] = new char[22][40];
 	private int choice = 0;
+	private int finalDiamonds;
 
-//	public DAOTest(int choice){
+public int getFinalDiamonds() {
+		return finalDiamonds;
+	}
+
+
+	//	public DAOTest(int choice){
 //		this.choice = choice;
 //	}
 	/**
@@ -44,7 +50,7 @@ public class DAOTest implements IDAOTest {
 	 * 
 	 */
 
-	public void executeQuery(int choice) {
+	public void executeQuery(int choice){
 		try {
 			switch (choice) {
 			case 1:
@@ -53,19 +59,23 @@ public class DAOTest implements IDAOTest {
 				
 			case 2:
 				result = statement.executeQuery("call `procédure_LV2`");
+				
 				break;
 				
 			case 3:
 				//result = statement.executeQuery("call `procédure_LV3`");
-				result = statement.executeQuery("call `test`");
+				result = statement.executeQuery("call `procédure_LV3`");
+				
 				break;
 				
 			case 4:
 				result = statement.executeQuery("call `procédure_LV4`");
+				
 				break;
 				
 			case 5:
 				result = statement.executeQuery("call `procédure_LV5`");
+				
 				break;
 				
 			default:
@@ -79,10 +89,45 @@ public class DAOTest implements IDAOTest {
 		}
 	}
 
+	
+	public void executeDiamondQuery(int choice) throws SQLException{
+		switch (choice) {
+		case 1:
+			result = statement.executeQuery("call `GetDiamonds_1`()");
+			break;
+			
+		case 2:
+			result = statement.executeQuery("call `GetDiamonds_2`()");
+			break;
+			
+		case 3:
+			result = statement.executeQuery("call `GetDiamonds_3`()");
+			break;
+			
+		case 4:
+			result = statement.executeQuery("call `GetDiamonds_4`()");
+			break;
+		case 5:
+			result = statement.executeQuery("call `GetDiamonds_5`()");
+			break;
+		default:
+			System.out.print("System error");
+			break;
+		}
+			
+		}
+	
 	/**
 	 * Take the data of the executed request and put character of the map in a
 	 * character table
+	 * @throws SQLException 
 	 */
+	
+	public void setQueryDiamonds() throws SQLException{
+		result.next();
+		finalDiamonds =  result.getInt(1);
+		System.out.println(finalDiamonds);
+	}
 
 	public void setQueryIntoTable() {
 		try {

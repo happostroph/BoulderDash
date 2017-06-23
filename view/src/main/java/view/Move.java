@@ -32,7 +32,7 @@ public class Move implements IMove {
 
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
 		if (nextToDiamond(sprite)){
-			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+			this.panel.setDiamondsGet(this.panel.getDiamondsGet()+1);
 		}
 		if (isSpriteOn(this.sprites[ligne][colonne - 1])) {
 			return this.sprites;
@@ -56,7 +56,7 @@ public class Move implements IMove {
 
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
 		if (nextToDiamond(this.sprites[ligne][colonne + 1])){
-			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+			this.panel.setDiamondsGet(this.panel.getDiamondsGet()+1);
 		}
 		if (isSpriteOn(this.sprites[ligne][colonne + 1])) {
 			return this.sprites;
@@ -79,7 +79,7 @@ public class Move implements IMove {
 
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
 		if (nextToDiamond(this.sprites[ligne - 1][colonne])){
-			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+			this.panel.setDiamondsGet(this.panel.getDiamondsGet()+1);
 		}
 		if (isSpriteOn(this.sprites[ligne - 1][colonne])) {
 			return this.sprites;
@@ -103,7 +103,7 @@ public class Move implements IMove {
 
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
 		if (nextToDiamond(this.sprites[ligne + 1][colonne])){
-			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+			this.panel.setDiamondsGet(this.panel.getDiamondsGet()+1);
 		}
 		if (isSpriteOn(this.sprites[ligne + 1][colonne])) {
 			return this.sprites;

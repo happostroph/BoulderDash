@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import controller.BDKeyListener;
 import controller.Controller;
@@ -37,6 +38,15 @@ public class Main implements LevelObservator {
 				connectionBDD.connection();
 				connectionBDD.executeQuery(level);
 				connectionBDD.setQueryIntoTable();
+				try {
+					
+					connectionBDD.executeDiamondQuery(level);
+					connectionBDD.setQueryDiamonds();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				TranslateMap translate;
 				try {
@@ -48,7 +58,7 @@ public class Main implements LevelObservator {
 
 					BDKeyListener bdkeyListener = new BDKeyListener();
 					
-					Window window = new Window(maker, bdkeyListener);
+					Window window = new Window(maker, bdkeyListener, connectionBDD.getFinalDiamonds());
 
 					Move move = new Move();
 					Gravity gravity = new Gravity();

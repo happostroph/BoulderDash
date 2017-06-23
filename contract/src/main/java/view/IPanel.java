@@ -7,7 +7,7 @@ public interface IPanel {
 
 	public void update();
 	
-	public int getDiamonds();
+	public int getDiamondsGet();
 
-	public void setDiamonds(int diamonds);
+	public void setDiamondsGet(int diamondsGet);
 }

@@ -13,8 +13,9 @@ public class Panel extends JPanel implements Serializable, IPanel {
 
 	protected Image buffer[][] = new Image[22][40];
 	Font font = new Font("Courier", Font.BOLD, 15);
-	private int ligne = 0, colonne = 0, diamonds = 0;
+	private int ligne = 0, colonne = 0, diamondsGet = 0;
 	private IMapMaker maker;
+	private int finalDiamonds;
 
 	/**
 	 * The constructor of Panel
@@ -23,8 +24,9 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 *            the maker of the map
 	 */
 
-	public Panel(MapMaker maker) {
+	public Panel(MapMaker maker, int finalDiamonds) {
 		this.maker = maker;
+		this.finalDiamonds = finalDiamonds;
 	}
 
 	/**
@@ -34,15 +36,21 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 * 
 	 */
 
-	public void compteurDiamond(Graphics g){
+	public void counterDiamond(Graphics g){
 		g.setFont(font);
 		g.setColor(Color.black);
-		g.drawString("Diamonds : " + diamonds , 10, 365);
+		g.drawString("Diamonds : " + diamondsGet + "/" + finalDiamonds, 10, 365);
 		
 	}
 	
+	public void updateCount(Graphics g){
+		g.setColor(Color.white);
+		g.fillRect(10, 350, 200, 20);
+	}
+	
 	public void paintComponent(Graphics g) {
-		this.compteurDiamond(g);
+		this.updateCount(g);
+		this.counterDiamond(g);
 		this.maker.drawMap(g);
 		
 	}
@@ -56,11 +64,11 @@ public class Panel extends JPanel implements Serializable, IPanel {
 		this.repaint();
 	}
 
-	public int getDiamonds() {
-		return diamonds;
+	public int getDiamondsGet() {
+		return diamondsGet;
 	}
 
-	public void setDiamonds(int diamonds) {
-		this.diamonds = diamonds;
+	public void setDiamondsGet(int diamondsGet) {
+		this.diamondsGet = diamondsGet;
 	}
 }
