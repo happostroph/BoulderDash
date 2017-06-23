@@ -116,12 +116,28 @@ public class MapMaker implements IMapMaker {
 	public void setSprites(ISprite[][] sprites) {
 		this.sprites = sprites;
 	}
-	
-	public void setAllHasMovedToFalse(ISprite[][] sprites){
-		for(ISprite sousSpit[] : sprites){
-			for(ISprite spit : sousSpit){
+
+	public void setAllHasMovedToFalse(ISprite[][] sprites) {
+		for (ISprite sousSpit[] : sprites) {
+			for (ISprite spit : sousSpit) {
 				spit.setHasMoved(false);
 			}
 		}
 	}
+
+//	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE) {
+//		ligne = 0;
+//		for (ISprite sousSpit[] : sprites) {
+//			x = 0;
+//			colonne = 0;
+//			for (ISprite spit : sousSpit) {
+//				if (spit.getType() == SpriteType.BACKGROUND || spit.getType() == SpriteType.DIRT) {
+//					sprites[ligne][colonne] = new Diamond(x, y);
+//				}
+//				x = x + SET_SIZE;
+//			}
+//			y = y + SET_SIZE;
+//		}
+//		return sprites;
+//	}
 }

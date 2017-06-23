@@ -13,7 +13,8 @@ public abstract class Sprite implements ISprite {
 	protected SpriteType type;
 	protected boolean hasMoved = false;
 	protected boolean isNearCharacter = false;
-
+	private int direction = 0;
+	
 	/**
 	 * @return x the position on the X axle
 	 */
@@ -87,5 +88,12 @@ public abstract class Sprite implements ISprite {
 
 	public void setHasMoved(boolean hasMoved) {
 		this.hasMoved = hasMoved;
+	}
+	
+	public int getDirection() {
+		return direction;
+	}
+	public void setDirection(int direction) {
+		this.direction = direction;
 	}
 }

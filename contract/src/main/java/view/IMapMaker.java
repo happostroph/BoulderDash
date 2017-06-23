@@ -14,4 +14,6 @@ public interface IMapMaker {
 	public void setSprites(ISprite[][] sprites);
 	
 	public void setAllHasMovedToFalse(ISprite[][] sprites);
+	
+//	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE);
 }

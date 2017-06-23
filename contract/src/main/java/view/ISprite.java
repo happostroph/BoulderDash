@@ -31,4 +31,8 @@ public interface ISprite {
 	public boolean isNearCharacter();
 
 	public void setNearCharacter(boolean isNearCharacter);
+	
+	public int getDirection();
+	
+	public void setDirection(int direction);
 }

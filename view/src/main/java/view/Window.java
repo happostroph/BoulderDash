@@ -10,16 +10,17 @@ public class Window extends JFrame implements IWindow {
 	private static final long serialVersionUID = 8164118974463460991L;
 	Panel panel;
 	int finalDiamonds;
+
 	/**
 	 * The constructor of Window
 	 */
-	public Window(MapMaker maker, IBDKeyListener listener, int finalDiamonds) {
+	public Window(MapMaker maker, IBDKeyListener listener, int finalDiamonds, int title) {
 
 		/*
 		 * Create a new window
 		 */
 		this.finalDiamonds = finalDiamonds;
-		this.setTitle("Test");
+		this.setTitle("BoulderDash level " + title);
 		this.setSize(645, 410);
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);

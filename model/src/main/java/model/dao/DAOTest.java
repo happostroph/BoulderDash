@@ -64,7 +64,7 @@ public int getFinalDiamonds() {
 				
 			case 3:
 				//result = statement.executeQuery("call `procédure_LV3`");
-				result = statement.executeQuery("call `procédure_LV3`");
+				result = statement.executeQuery("call `test`");
 				
 				break;
 				
@@ -165,5 +165,10 @@ public int getFinalDiamonds() {
 
 	public char[][] getTab() {
 		return tab;
+	}
+
+
+	public int getChoice() {
+		return choice;
 	}
 }

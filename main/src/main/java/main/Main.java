@@ -7,7 +7,15 @@ import java.sql.SQLException;
 import controller.BDKeyListener;
 import controller.Controller;
 import model.dao.DAOTest;
-import view.*;
+import view.Audio;
+import view.CreateMenu;
+import view.Gravity;
+import view.LevelObservator;
+import view.MapMaker;
+import view.Move;
+import view.TranslateMap;
+import view.Window;
+import view.Element.MonsterMove;
 
 
 public class Main implements LevelObservator {
@@ -58,13 +66,14 @@ public class Main implements LevelObservator {
 
 					BDKeyListener bdkeyListener = new BDKeyListener();
 					
-					Window window = new Window(maker, bdkeyListener, connectionBDD.getFinalDiamonds());
+					Window window = new Window(maker, bdkeyListener, connectionBDD.getFinalDiamonds(), level);
 
 					Move move = new Move();
 					Gravity gravity = new Gravity();
+					MonsterMove monsterMove = new MonsterMove();
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, move, maker, gravity, window);
+							SET_SIZE, move, maker, gravity, window, monsterMove, connectionBDD.getFinalDiamonds());
 					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
 

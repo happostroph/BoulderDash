@@ -6,5 +6,6 @@ public interface IDAOTest {
 	public void setQueryIntoTable();
 	public char[][] getTab();
 	public int getFinalDiamonds();
+	public int getChoice();
 	
 }

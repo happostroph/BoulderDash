@@ -24,4 +24,5 @@ public class Monster extends Sprite{
 			e.printStackTrace();
 		}
 	}
+
 }
