@@ -18,7 +18,7 @@ import view.SpriteType;
 
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
-	int i = 0, SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
+	private int i = 0, SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
 	private IPanel panel;
 	private ISprite sprite;
 	private IMapMaker maker;
