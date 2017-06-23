@@ -1,5 +1,11 @@
 package view;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import model.Permeability;
 import view.Element.Background;
 import view.Element.Monster;
@@ -10,6 +16,7 @@ public class Move implements IMove {
 	private int SET_SIZE;
 	private IPanel panel;
 	private boolean gameOver = false, victory = false;
+	private Image image;
 
 	/**
 	 * initialize MapModifier
@@ -34,6 +41,12 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
+		try {
+			image = ImageIO.read(new File("image/g1.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (nextToDiamond(this.sprites[ligne][colonne - 1])) {
 			this.panel.setDiamondsGet(this.panel.getDiamondsGet() + 1);
 		} else if (nextToOpenedExit(this.sprites[ligne][colonne - 1])) {
@@ -48,6 +61,7 @@ public class Move implements IMove {
 		if (nextToRock(this.sprites[ligne][colonne - 1]) && nextToBackground(sprites[ligne][colonne - 2])){
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() - 16);
+			sprite.setImage(image);
 			this.sprites[ligne][colonne - 1] = sprite;
 			this.sprites[ligne][colonne - 2] = new Rock((sprite.getX() - 16), sprite.getY());
 			return this.sprites;
@@ -59,6 +73,7 @@ public class Move implements IMove {
 		else {
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() - 16);
+			sprite.setImage(image);
 			this.sprites[ligne][colonne - 1] = sprite;
 			return this.sprites;
 		}
@@ -75,6 +90,12 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
+		try {
+			image = ImageIO.read(new File("image/d1.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (nextToDiamond(this.sprites[ligne][colonne + 1])) {
 			this.panel.setDiamondsGet(this.panel.getDiamondsGet() + 1);
 		} else if (nextToOpenedExit(this.sprites[ligne][colonne + 1])) {
@@ -89,6 +110,7 @@ public class Move implements IMove {
 		if (nextToRock(this.sprites[ligne][colonne + 1]) && nextToBackground(sprites[ligne][colonne + 2])){
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() + 16);
+			sprite.setImage(image);
 			this.sprites[ligne][colonne + 1] = sprite;
 			this.sprites[ligne][colonne + 2] = new Rock((sprite.getX() + 16), sprite.getY());
 			return this.sprites;
@@ -100,6 +122,7 @@ public class Move implements IMove {
 		else {
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() + 16);
+			sprite.setImage(image);
 			this.sprites[ligne][colonne + 1] = sprite;
 			return this.sprites;
 		}
@@ -115,6 +138,12 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
+		try {
+			image = ImageIO.read(new File("image/11.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (nextToDiamond(this.sprites[ligne - 1][colonne])) {
 			this.panel.setDiamondsGet(this.panel.getDiamondsGet() + 1);
 		}else if (nextToOpenedExit(this.sprites[ligne - 1][colonne])) {
@@ -127,18 +156,12 @@ public class Move implements IMove {
 			gameOver();
 			return this.sprites;
 		}
-//		else if (nextToRock(this.sprites[ligne - 1][colonne])){
-//			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
-//			sprite.setX(sprite.getY() - 16);
-//			this.sprites[ligne - 1][colonne] = sprite;
-//			this.sprites[ligne][colonne - 2] = new Rock((sprite.getX() - 16), sprite.getY());
-//			return this.sprites;
-//		}
 		if (isSpriteOn(this.sprites[ligne - 1][colonne])) {
 			return this.sprites;
 		} else {
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() - 16);
+			sprite.setImage(image);
 			this.sprites[ligne - 1][colonne] = sprite;
 			return this.sprites;
 		}
@@ -155,6 +178,12 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
+		try {
+			image = ImageIO.read(new File("image/11.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (nextToDiamond(this.sprites[ligne + 1][colonne])) {
 			this.panel.setDiamondsGet(this.panel.getDiamondsGet() + 1);
 		} else if (nextToOpenedExit(this.sprites[ligne + 1][colonne])) {
@@ -166,18 +195,12 @@ public class Move implements IMove {
 			gameOver();
 			return this.sprites;
 		}
-//		else if (nextToRock(this.sprites[ligne + 1][colonne])){
-//			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
-//			sprite.setX(sprite.getY() + 16);
-//			this.sprites[ligne + 1][colonne] = sprite;
-//			this.sprites[ligne][colonne + 2] = new Rock((sprite.getX() + 16), sprite.getY());
-//			return this.sprites;
-//		}
 		if (isSpriteOn(this.sprites[ligne + 1][colonne])) {
 			return this.sprites;
 		} else {
 			this.sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() + 16);
+			sprite.setImage(image);
 			this.sprites[ligne + 1][colonne] = sprite;
 			return this.sprites;
 		}
