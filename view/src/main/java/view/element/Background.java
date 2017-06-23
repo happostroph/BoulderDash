@@ -16,13 +16,12 @@ public class Background extends Sprite {
 		this.x = x;
 		this.y = y;
 		this.type = SpriteType.BACKGROUND;
-
+		
 		try {
 			image = ImageIO.read(new File("image/03.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
 	}
 }

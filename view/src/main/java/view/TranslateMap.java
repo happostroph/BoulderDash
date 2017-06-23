@@ -22,8 +22,8 @@ public class TranslateMap implements ITranslateMap {
 		/*
 		 * Fill translator with the pictures which correspond to the characters
 		 */
-
-		this.translator.put('#', SpriteType.UNBREAKABLE);//('#', SpriteType.UNBREAKABLE);
+		this.translator.put('#', SpriteType.UNBREAKABLE);// ('#',
+															// SpriteType.UNBREAKABLE);
 		this.translator.put('X', SpriteType.DIRT);
 		this.translator.put('_', SpriteType.BACKGROUND);
 		this.translator.put('O', SpriteType.ROCK);
@@ -36,18 +36,16 @@ public class TranslateMap implements ITranslateMap {
 		/*
 		 * Fill a two-dimensional Image table in terms of what contains tab
 		 */
-
 		int ligne = 0, colonne = 0;
 		for (char sousTab[] : tab) {
 			colonne = 0;
 			for (char chr : sousTab) {
 				if (this.translator.containsKey(chr)) {
 					map[ligne][colonne] = this.translator.get(chr);
-					if(chr == 'S'){
+					if (chr == 'S') {
 						characterX = colonne;
 						characterY = ligne;
 					}
-
 				} else {
 					System.out.println("Error TranslateMap");
 				}
@@ -58,8 +56,8 @@ public class TranslateMap implements ITranslateMap {
 	}
 
 	/**
-	 * @return map a two-dimensional SpriteType table which contains the map in the
-	 *         form of enum
+	 * @return map a two-dimensional SpriteType table which contains the map in
+	 *         the form of enum
 	 */
 	public SpriteType[][] getMap() {
 		return map;
@@ -72,6 +70,4 @@ public class TranslateMap implements ITranslateMap {
 	public int getCharacterY() {
 		return characterY;
 	}
-
-
 }

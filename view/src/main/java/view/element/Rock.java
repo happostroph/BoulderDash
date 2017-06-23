@@ -24,5 +24,4 @@ public class Rock extends Sprite{
 			e.printStackTrace();
 		}
 	}
-
 }

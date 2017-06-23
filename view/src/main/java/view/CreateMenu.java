@@ -16,10 +16,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class CreateMenu extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int choice = 0;
-
 	List<LevelObservator> observators = new ArrayList<>();
-	
+
 	public List<LevelObservator> getObservators() {
 		return observators;
 	}
@@ -29,16 +32,12 @@ public class CreateMenu extends JFrame {
 	}
 
 	public CreateMenu() {
-
 		setSize(new Dimension(700, 400));
-
 		setLayout(new BorderLayout());
 		JLabel background = new JLabel(new ImageIcon("image/menu.png"));
 		add(background);
 		background.setLayout(new FlowLayout());
-
 		JPanel boutonPane = new JPanel();
-
 		JButton bouton2 = new JButton("Choose Level");
 		bouton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -46,7 +45,6 @@ public class CreateMenu extends JFrame {
 				JOptionPane jop = new JOptionPane();
 				String name = (String) jop.showInputDialog(null, "Choose your level!", "The choise",
 						JOptionPane.QUESTION_MESSAGE, null, level, level[2]);
-
 				if (name == "Level 1") {
 					choice = 1;
 				}
@@ -67,7 +65,6 @@ public class CreateMenu extends JFrame {
 				}
 			}
 		});
-
 		boutonPane.add(bouton2);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().add(boutonPane, BorderLayout.SOUTH);
@@ -77,5 +74,4 @@ public class CreateMenu extends JFrame {
 	public int getChoice() {
 		return choice;
 	}
-
 }

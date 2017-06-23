@@ -15,11 +15,9 @@ public class MonsterMove implements IMonsterMove {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.MONSTER)) {
-
 					if ((isSpriteNearToBackground(sprites[ligne + 1][colonne])
 							|| isSpriteNearToBackground(sprites[ligne - 1][colonne]))
 							&& !sprites[ligne][colonne].isHasMoved()) {
-
 						if ((isSpriteNearCharacter(sprites[ligne + 1][colonne])
 								|| isSpriteNearCharacter(sprites[ligne - 1][colonne]))
 								&& !sprites[ligne][colonne].isHasMoved()) {
@@ -44,29 +42,23 @@ public class MonsterMove implements IMonsterMove {
 								if (sprites[ligne - 1][colonne].getType() == SpriteType.BACKGROUND) {
 									MoveUp(sprites, spit);
 								} else {
-
 									spit.setDirection(2);
 									MoveDown(sprites, spit);
 								}
 							} else if (spit.getDirection() == 2) {
-
 								if (sprites[ligne + 1][colonne].getType() == SpriteType.BACKGROUND) {
 									MoveDown(sprites, spit);
-
 								} else {
 									spit.setDirection(1);
 									MoveUp(sprites, spit);
 								}
-							}
-
-							else if (isSpriteNearToBackground(sprites[ligne + 1][colonne])) {
+							} else if (isSpriteNearToBackground(sprites[ligne + 1][colonne])) {
 								MoveDown(sprites, spit);
 							} else if (isSpriteNearToBackground(sprites[ligne - 1][colonne])) {
 								MoveUp(sprites, spit);
 							}
 						}
 					}
-
 				}
 				colonne++;
 			}
@@ -100,7 +92,7 @@ public class MonsterMove implements IMonsterMove {
 	public Boolean isSpriteNearCharacter(ISprite sprites) {
 		return sprites.getType() == SpriteType.CHARACTER;
 	}
-	
+
 	public void gameOver() {
 		gameOver = true;
 	}

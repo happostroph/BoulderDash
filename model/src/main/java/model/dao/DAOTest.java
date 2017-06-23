@@ -19,20 +19,14 @@ public class DAOTest implements IDAOTest {
 	private int choice = 0;
 	private int finalDiamonds;
 
-public int getFinalDiamonds() {
+	public int getFinalDiamonds() {
 		return finalDiamonds;
 	}
 
-
-	//	public DAOTest(int choice){
-//		this.choice = choice;
-//	}
 	/**
 	 * Connection to the remote database
 	 */
-
 	public void connection() {
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
@@ -50,60 +44,46 @@ public int getFinalDiamonds() {
 	 * 
 	 */
 
-	public void executeQuery(int choice){
+	public void executeQuery(int choice) {
 		try {
 			switch (choice) {
 			case 1:
 				result = statement.executeQuery("call `procédure_LV1`");
 				break;
-				
 			case 2:
 				result = statement.executeQuery("call `procédure_LV2`");
-				
 				break;
-				
 			case 3:
 				result = statement.executeQuery("call `procédure_LV3`");
-				//result = statement.executeQuery("call `test`");
-				
+				// result = statement.executeQuery("call `test`");
 				break;
-				
 			case 4:
 				result = statement.executeQuery("call `procédure_LV4`");
-				
 				break;
-				
 			case 5:
 				result = statement.executeQuery("call `procédure_LV5`");
-				
 				break;
-				
 			default:
 				System.out.print("System error");
 				break;
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	
-	public void executeDiamondQuery(int choice) throws SQLException{
+	public void executeDiamondQuery(int choice) throws SQLException {
 		switch (choice) {
 		case 1:
 			result = statement.executeQuery("call `GetDiamonds_1`()");
 			break;
-			
 		case 2:
 			result = statement.executeQuery("call `GetDiamonds_2`()");
 			break;
-			
 		case 3:
 			result = statement.executeQuery("call `GetDiamonds_3`()");
 			break;
-			
 		case 4:
 			result = statement.executeQuery("call `GetDiamonds_4`()");
 			break;
@@ -114,18 +94,18 @@ public int getFinalDiamonds() {
 			System.out.print("System error");
 			break;
 		}
-			
-		}
-	
+	}
+
 	/**
 	 * Take the data of the executed request and put character of the map in a
 	 * character table
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
-	
-	public void setQueryDiamonds() throws SQLException{
+
+	public void setQueryDiamonds() throws SQLException {
 		result.next();
-		finalDiamonds =  result.getInt(1);
+		finalDiamonds = result.getInt(1);
 	}
 
 	public void setQueryIntoTable() {
@@ -137,7 +117,6 @@ public int getFinalDiamonds() {
 				}
 				ligne++;
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,14 +126,12 @@ public int getFinalDiamonds() {
 		 * Show the map in the console in the form of characters
 		 * 
 		 */
-
-//		 for (char sousTab[] : tab){
-//		 for(char str : sousTab){
-//		 System.out.print(str);
-//		 }
-//		 System.out.println("");
-//		 }
-
+		// for (char sousTab[] : tab){
+		// for(char str : sousTab){
+		// System.out.print(str);
+		// }
+		// System.out.println("");
+		// }
 	}
 
 	/**
@@ -165,7 +142,6 @@ public int getFinalDiamonds() {
 	public char[][] getTab() {
 		return tab;
 	}
-
 
 	public int getChoice() {
 		return choice;

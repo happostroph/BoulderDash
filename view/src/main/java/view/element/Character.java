@@ -10,14 +10,12 @@ import view.SpriteType;
 
 public class Character extends Sprite{
 
-	
 	public Character(int x, int y){
 		super();
 		this.permeability = Permeability.PERMEABLE;
 		this.x = x;
 		this.y = y;
 		this.type = SpriteType.CHARACTER;
-		
 		try {
 			image = ImageIO.read(new File("image/13.png"));
 		} catch (IOException e) {

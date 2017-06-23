@@ -28,7 +28,6 @@ public class Move implements IMove {
 	 * @param sprites
 	 * @param SET_SIZE
 	 */
-
 	public void setMapModifier(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		this.sprites = sprites;
 		this.SET_SIZE = SET_SIZE;
@@ -43,7 +42,6 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
 		GoToLeft left = new GoToLeft();
 		return left.goLeft(colonne, ligne, sprite, this.sprites, this.panel);
@@ -58,7 +56,6 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
 		GoToRight right = new GoToRight();
 		return right.goRight(colonne, ligne, sprite, this.sprites, this.panel);
@@ -72,7 +69,6 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
 		GoToUp up = new GoToUp();
 		return up.goUp(colonne, ligne, sprite, this.sprites, this.panel);
@@ -87,7 +83,6 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
 		GoToDown down = new GoToDown();
 		return down.goDown(colonne, ligne, sprite, this.sprites, this.panel);
@@ -104,7 +99,7 @@ public class Move implements IMove {
 	public Boolean nextToMonster(ISprite sprite) {
 		return sprite.getType() == SpriteType.MONSTER;
 	}
-	
+
 	public Boolean nextToBackground(ISprite sprite) {
 		return sprite.getType() == SpriteType.BACKGROUND;
 	}
@@ -112,6 +107,7 @@ public class Move implements IMove {
 	public Boolean nextToRock(ISprite sprite) {
 		return sprite.getType() == SpriteType.ROCK;
 	}
+
 	public Boolean nextToOpenedExit(ISprite sprite) {
 		return (sprite.getType() == SpriteType.EXIT && sprite.getPermeability() == Permeability.PERMEABLE);
 	}
@@ -131,6 +127,4 @@ public class Move implements IMove {
 	public void setVictory(boolean victory) {
 		this.victory = victory;
 	}
-	
-
 }

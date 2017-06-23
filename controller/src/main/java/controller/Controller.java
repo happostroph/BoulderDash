@@ -21,7 +21,7 @@ public class Controller implements IController, Observer {
 	private Window window;
 	private IMonsterMove monsterMove;
 	private IVictoryDiamonds victoryDiamonds;
-	
+
 	/**
 	 * Constructor of Controller
 	 * 
@@ -32,7 +32,8 @@ public class Controller implements IController, Observer {
 	 * @param maker
 	 */
 
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity, Window window, IMonsterMove monsterMove, int finalDiamonds, IVictoryDiamonds victoryDiamonds) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity,
+			Window window, IMonsterMove monsterMove, int finalDiamonds, IVictoryDiamonds victoryDiamonds) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
@@ -52,7 +53,7 @@ public class Controller implements IController, Observer {
 
 	public final void directionControl() throws InterruptedException {
 		if (sprite.getType() == SpriteType.CHARACTER) {
-			
+
 			Thread.sleep(100);
 			maker.setAllHasMovedToFalse(maker.getSprites());
 			monsterMove.toMoveTheMonsters(maker.getSprites());
@@ -78,25 +79,24 @@ public class Controller implements IController, Observer {
 			}
 			gravity.makeThemSlide(maker.getSprites());
 			gravity.makeThemFall(maker.getSprites());
-	
 
 			stackOrder = UserOrder.NOOP;
 
-			if(panel.getDiamondsGet() == finalDiamonds){
+			if (panel.getDiamondsGet() == finalDiamonds) {
 				setExitToPermeable(maker.getSprites());
 			}
-			if(gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()){
+			if (gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()) {
 				panel.update();
 				JOptionPane.showMessageDialog(null, "Game Over!");
 				window.dispose();
 			}
-			if(move.isVictory()){
+			if (move.isVictory()) {
 				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
 				panel.update();
 				JOptionPane.showMessageDialog(null, "Victory!");
 				window.dispose();
 			}
-			
+
 			panel.update();
 		}
 	}
@@ -120,15 +120,14 @@ public class Controller implements IController, Observer {
 			}
 		}
 	}
-	
-	public void setExitToPermeable(ISprite[][] sprites){
-		for(ISprite[] sousSpit : sprites){
-			for(ISprite spit : sousSpit){
-				if(spit.getType() == SpriteType.EXIT){
+
+	public void setExitToPermeable(ISprite[][] sprites) {
+		for (ISprite[] sousSpit : sprites) {
+			for (ISprite spit : sousSpit) {
+				if (spit.getType() == SpriteType.EXIT) {
 					spit.setPermeability(Permeability.PERMEABLE);
 				}
 			}
 		}
 	}
-
 }

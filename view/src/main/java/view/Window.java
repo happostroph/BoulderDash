@@ -35,7 +35,6 @@ public class Window extends JFrame implements IWindow {
 		/*
 		 * Fill the panel
 		 */
-
 		this.setContentPane(panel);
 		this.setVisible(true);
 	}

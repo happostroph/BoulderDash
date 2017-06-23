@@ -10,10 +10,9 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
-
 	protected Image buffer[][] = new Image[22][40];
 	Font font = new Font("Courier", Font.BOLD, 15);
-	private int ligne = 0, colonne = 0, diamondsGet = 0;
+	private int diamondsGet = 0;
 	private IMapMaker maker;
 	private int finalDiamonds;
 
@@ -23,7 +22,6 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 * @param maker
 	 *            the maker of the map
 	 */
-
 	public Panel(MapMaker maker, int finalDiamonds) {
 		this.maker = maker;
 		this.finalDiamonds = finalDiamonds;
@@ -35,12 +33,10 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 * @param g
 	 * 
 	 */
-
 	public void counterDiamond(Graphics g){
 		g.setFont(font);
 		g.setColor(Color.black);
 		g.drawString("Diamonds : " + diamondsGet + "/" + finalDiamonds, 10, 365);
-		
 	}
 	
 	public void updateCount(Graphics g){
@@ -52,13 +48,11 @@ public class Panel extends JPanel implements Serializable, IPanel {
 		this.updateCount(g);
 		this.counterDiamond(g);
 		this.maker.drawMap(g);
-		
 	}
 
 	/**
 	 * Update the map when a mouvement is done
 	 */
-
 	@Override
 	public void update() {
 		this.repaint();

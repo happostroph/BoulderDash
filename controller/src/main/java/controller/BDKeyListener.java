@@ -9,10 +9,6 @@ import model.UserOrder;
 public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
 	IController controller;
 	
-	public BDKeyListener(){
-		
-	}
-	
 	/**
 	 * It return the direction corresponding to the key pressed
 	 * @param keyCode
@@ -52,13 +48,11 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	public IController getController() {
@@ -68,5 +62,4 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 	public void setController(IController controller) {
 		this.controller =  controller;
 	}
-
 }

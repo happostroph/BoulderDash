@@ -23,7 +23,6 @@ public class MapMaker implements IMapMaker {
 	 * @param translate
 	 *            the translation of the query
 	 */
-
 	public MapMaker(TranslateMap translate) {
 		this.map = translate.getMap();
 		this.characterX = translate.getCharacterX();
@@ -37,13 +36,8 @@ public class MapMaker implements IMapMaker {
 	 * @param SET_SIZE
 	 *            the size of a sprite
 	 */
-
 	public void spritesCreation(final int SET_SIZE) {
 		ligne = 0;
-		// (new Thread(new Runnable() {
-		//
-		// @Override
-		// public void run() {
 		for (SpriteType sousSpitTp[] : map) {
 			x = 0;
 			colonne = 0;
@@ -84,15 +78,12 @@ public class MapMaker implements IMapMaker {
 		}
 	}
 
-	// })).start();
-
 	/**
 	 * Show the 880 sprites and their position
 	 * 
 	 * @param g
 	 * 
 	 */
-
 	public void drawMap(Graphics g) {
 		for (ISprite[] sousSpit : sprites) {
 			for (ISprite spit : sousSpit) {
@@ -105,7 +96,6 @@ public class MapMaker implements IMapMaker {
 	 * 
 	 * @return a two-dimensional table of Sprite
 	 */
-
 	public ISprite[][] getSprites() {
 		return sprites;
 	}
@@ -114,7 +104,6 @@ public class MapMaker implements IMapMaker {
 	 * 
 	 * @return a Sprite in the two-dimensional table
 	 */
-
 	public ISprite getCharacter(int colonne, int ligne) {
 		return sprites[ligne][colonne];
 	}
@@ -130,5 +119,4 @@ public class MapMaker implements IMapMaker {
 			}
 		}
 	}
-
 }
