@@ -11,8 +11,8 @@ import view.element.Background;
 import view.element.Monster;
 import view.element.Rock;
 
-public class GoToRight extends Move{
-	
+public class GoToRight extends Move {
+
 	public ISprite[][] goRight(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
 			image = ImageIO.read(new File("image/d1.png"));
@@ -31,18 +31,17 @@ public class GoToRight extends Move{
 			gameOver();
 			return sprites;
 		}
-		if (nextToRock(sprites[ligne][colonne + 1]) && nextToBackground(sprites[ligne][colonne + 2])){
+		if (nextToRock(sprites[ligne][colonne + 1]) && nextToBackground(sprites[ligne][colonne + 2])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() + 16);
 			sprite.setImage(image);
 			sprites[ligne][colonne + 1] = sprite;
 			sprites[ligne][colonne + 2] = new Rock((sprite.getX() + 16), sprite.getY());
 			return sprites;
-		}
-		else if (isSpriteOn(sprites[ligne][colonne + 1])) {
+		} else if (isSpriteOn(sprites[ligne][colonne + 1])) {
 			return sprites;
-		} 
-		 
+		}
+
 		else {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() + 16);

@@ -10,7 +10,7 @@ import view.ISprite;
 import view.element.Background;
 import view.element.Monster;
 
-public class GoToUp extends Move{
+public class GoToUp extends Move {
 
 	public ISprite[][] goUp(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
@@ -21,13 +21,12 @@ public class GoToUp extends Move{
 		}
 		if (nextToDiamond(sprites[ligne - 1][colonne])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
-		}else if (nextToOpenedExit(sprites[ligne - 1][colonne])) {
+		} else if (nextToOpenedExit(sprites[ligne - 1][colonne])) {
 			setVictory(true);
-		}
-		else if (nextToMonster(sprites[ligne - 1][colonne])) {
+		} else if (nextToMonster(sprites[ligne - 1][colonne])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() - 16);
-			sprites[ligne - 2][colonne] = new Monster(sprite.getX(), (sprite.getY() - 16));
+			sprites[ligne - 1][colonne] = new Monster(sprite.getX(), (sprite.getY() - 16));
 			gameOver();
 			return sprites;
 		}
@@ -40,6 +39,5 @@ public class GoToUp extends Move{
 			sprites[ligne - 1][colonne] = sprite;
 			return sprites;
 		}
-
 	}
 }

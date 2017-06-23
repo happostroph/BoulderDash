@@ -3,9 +3,7 @@ package controller;
 import java.awt.Window;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JOptionPane;
-
 import model.Permeability;
 import model.UserOrder;
 import view.*;
@@ -56,7 +54,7 @@ public class Controller implements IController, Observer {
 
 			Thread.sleep(100);
 			maker.setAllHasMovedToFalse(maker.getSprites());
-			monsterMove.toMoveTheMonsters(maker.getSprites());
+
 			colonne = sprite.getX() / SET_SIZE;
 			ligne = sprite.getY() / SET_SIZE;
 
@@ -79,25 +77,27 @@ public class Controller implements IController, Observer {
 			}
 			gravity.makeThemSlide(maker.getSprites());
 			gravity.makeThemFall(maker.getSprites());
-
+			monsterMove.toMoveTheMonsters(maker.getSprites());
 			stackOrder = UserOrder.NOOP;
-
-			if (panel.getDiamondsGet() == finalDiamonds) {
-				setExitToPermeable(maker.getSprites());
-			}
+			
 			if (gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()) {
 				panel.update();
 				JOptionPane.showMessageDialog(null, "Game Over!");
 				window.dispose();
 			}
+
+			if (panel.getDiamondsGet() >= finalDiamonds) {
+				setExitToPermeable(maker.getSprites());
+			}
+
 			if (move.isVictory()) {
 				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
 				panel.update();
 				JOptionPane.showMessageDialog(null, "Victory!");
 				window.dispose();
 			}
-
 			panel.update();
+
 		}
 	}
 

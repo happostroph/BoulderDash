@@ -10,7 +10,7 @@ import view.ISprite;
 import view.element.Background;
 import view.element.Monster;
 
-public class GoToDown extends Move{
+public class GoToDown extends Move {
 
 	public ISprite[][] goDown(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
@@ -23,10 +23,10 @@ public class GoToDown extends Move{
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
 		} else if (nextToOpenedExit(sprites[ligne + 1][colonne])) {
 			setVictory(true);
-		}else if (nextToMonster(sprites[ligne + 1][colonne])) {
+		} else if (nextToMonster(sprites[ligne + 1][colonne])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() + 16);
-			sprites[ligne + 1][colonne] = new Monster(sprite.getX(), sprite.getY());
+			sprites[ligne + 1][colonne] = new Monster(sprite.getX(), (sprite.getY() + 16));
 			gameOver();
 			return sprites;
 		}

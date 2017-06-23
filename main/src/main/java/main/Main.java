@@ -12,10 +12,10 @@ import view.CreateMenu;
 import view.Gravity;
 import view.LevelObservator;
 import view.MapMaker;
+import view.MonsterMove;
 import view.TranslateMap;
 import view.VictoryDiamonds;
 import view.Window;
-import view.element.MonsterMove;
 import view.move.Move;
 
 public class Main implements LevelObservator {

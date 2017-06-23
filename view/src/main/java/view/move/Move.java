@@ -1,25 +1,18 @@
 package view.move;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import model.Permeability;
 import view.IMove;
 import view.IPanel;
 import view.ISprite;
 import view.SpriteType;
-import view.element.Background;
-import view.element.Diamond;
-import view.element.Monster;
 
 public class Move implements IMove {
 	protected ISprite[][] sprites;
 	protected int SET_SIZE;
 	protected IPanel panel;
-	protected boolean gameOver = false, victory = false;
+	public boolean gameOver = false, victory = false;
 	protected Image image;
 
 	/**
