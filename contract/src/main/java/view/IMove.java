@@ -21,4 +21,6 @@ public interface IMove {
 	public void setVictory(boolean victory);
 	
 	public Boolean nextToBackground(ISprite sprite);
+	
+	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE);
 }

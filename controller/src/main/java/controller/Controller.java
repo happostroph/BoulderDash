@@ -56,6 +56,7 @@ public class Controller implements IController, Observer {
 
 	public final void directionControl() throws InterruptedException {
 		if (sprite.getType() == SpriteType.CHARACTER) {
+			
 			Thread.sleep(100);
 			maker.setAllHasMovedToFalse(maker.getSprites());
 			monsterMove.toMoveTheMonsters(maker.getSprites());
@@ -84,20 +85,23 @@ public class Controller implements IController, Observer {
 	
 
 			stackOrder = UserOrder.NOOP;
-			if(gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()){
-				JOptionPane.showMessageDialog(null, "Game Over!");
-				window.dispose();
-			}
+
 			if(panel.getDiamondsGet() == finalDiamonds){
 				setExitToPermeable(maker.getSprites());
 			}
-			
+			if(gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()){
+				panel.update();
+				JOptionPane.showMessageDialog(null, "Game Over!");
+				window.dispose();
+			}
 			if(move.isVictory()){
-//				maker.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
-//				panel.update();
+				
+				move.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
+				panel.update();
 				JOptionPane.showMessageDialog(null, "Victory!");
 				window.dispose();
 			}
+			
 			panel.update();
 		}
 	}

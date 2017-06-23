@@ -40,6 +40,10 @@ public class MapMaker implements IMapMaker {
 
 	public void spritesCreation(final int SET_SIZE) {
 		ligne = 0;
+		// (new Thread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
 		for (SpriteType sousSpitTp[] : map) {
 			x = 0;
 			colonne = 0;
@@ -80,6 +84,8 @@ public class MapMaker implements IMapMaker {
 		}
 	}
 
+	// })).start();
+
 	/**
 	 * Show the 880 sprites and their position
 	 * 
@@ -88,7 +94,7 @@ public class MapMaker implements IMapMaker {
 	 */
 
 	public void drawMap(Graphics g) {
-		for (ISprite[] sousSpit : this.getSprites()) {
+		for (ISprite[] sousSpit : sprites) {
 			for (ISprite spit : sousSpit) {
 				g.drawImage(spit.getImage(), spit.getX(), spit.getY(), null);
 			}
@@ -125,19 +131,4 @@ public class MapMaker implements IMapMaker {
 		}
 	}
 
-//	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE) {
-//		ligne = 0;
-//		for (ISprite sousSpit[] : sprites) {
-//			x = 0;
-//			colonne = 0;
-//			for (ISprite spit : sousSpit) {
-//				if (spit.getType() == SpriteType.BACKGROUND || spit.getType() == SpriteType.DIRT) {
-//					sprites[ligne][colonne] = new Diamond(x, y);
-//				}
-//				x = x + SET_SIZE;
-//			}
-//			y = y + SET_SIZE;
-//		}
-//		return sprites;
-//	}
 }

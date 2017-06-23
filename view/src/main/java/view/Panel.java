@@ -45,7 +45,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	
 	public void updateCount(Graphics g){
 		g.setColor(Color.white);
-		g.fillRect(10, 350, 200, 20);
+		g.fillRect(0, 0, 800, 500);
 	}
 	
 	public void paintComponent(Graphics g) {

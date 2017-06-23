@@ -21,7 +21,7 @@ public class Window extends JFrame implements IWindow {
 		 */
 		this.finalDiamonds = finalDiamonds;
 		this.setTitle("BoulderDash level " + title);
-		this.setSize(645, 410);
+		this.setSize(660, 420);
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

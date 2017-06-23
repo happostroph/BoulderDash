@@ -63,8 +63,8 @@ public int getFinalDiamonds() {
 				break;
 				
 			case 3:
-				//result = statement.executeQuery("call `procédure_LV3`");
-				result = statement.executeQuery("call `test`");
+				result = statement.executeQuery("call `procédure_LV3`");
+				//result = statement.executeQuery("call `test`");
 				
 				break;
 				
@@ -126,7 +126,6 @@ public int getFinalDiamonds() {
 	public void setQueryDiamonds() throws SQLException{
 		result.next();
 		finalDiamonds =  result.getInt(1);
-		System.out.println(finalDiamonds);
 	}
 
 	public void setQueryIntoTable() {
