@@ -6,4 +6,8 @@ public interface IPanel {
 	public void paintComponent(Graphics g);
 
 	public void update();
+	
+	public int getDiamonds();
+
+	public void setDiamonds(int diamonds);
 }

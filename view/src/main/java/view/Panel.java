@@ -13,7 +13,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 
 	protected Image buffer[][] = new Image[22][40];
 	Font font = new Font("Courier", Font.BOLD, 15);
-	int ligne = 0, colonne = 0;
+	private int ligne = 0, colonne = 0, diamonds = 0;
 	private IMapMaker maker;
 
 	/**
@@ -42,8 +42,9 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-		this.maker.drawMap(g);
 		this.compteurDiamond(g);
+		this.maker.drawMap(g);
+		
 	}
 
 	/**
@@ -53,5 +54,13 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	@Override
 	public void update() {
 		this.repaint();
+	}
+
+	public int getDiamonds() {
+		return diamonds;
+	}
+
+	public void setDiamonds(int diamonds) {
+		this.diamonds = diamonds;
 	}
 }

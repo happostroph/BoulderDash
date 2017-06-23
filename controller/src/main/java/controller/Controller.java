@@ -42,7 +42,7 @@ public class Controller implements IController, Observer {
 		this.maker = maker;
 		this.gravity = gravity;
 		this.window = window;
-		move.setMapModifier(maker.getSprites(), SET_SIZE);
+		move.setMapModifier(maker.getSprites(), SET_SIZE, panel);
 	}
 
 	/**

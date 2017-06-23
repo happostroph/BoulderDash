@@ -2,7 +2,7 @@ package view;
 
 public interface IMove {
 	
-	public void setMapModifier(ISprite[][] sprites, int SET_SIZE);
+	public void setMapModifier(ISprite[][] sprites, int SET_SIZE, IPanel panel);
 	
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite);
 

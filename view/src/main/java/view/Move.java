@@ -4,9 +4,9 @@ import model.Permeability;
 import view.Element.Background;
 
 public class Move implements IMove {
-	ISprite[][] sprites;
-	int SET_SIZE;
-	Panel panel;
+	private ISprite[][] sprites;
+	private int SET_SIZE;
+	private IPanel panel;
 
 	/**
 	 * initialize MapModifier
@@ -15,7 +15,7 @@ public class Move implements IMove {
 	 * @param SET_SIZE
 	 */
 	
-	public void setMapModifier(ISprite[][] sprites, int SET_SIZE) {
+	public void setMapModifier(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		this.sprites = sprites;
 		this.SET_SIZE = SET_SIZE;
 		this.panel = panel;
@@ -32,7 +32,7 @@ public class Move implements IMove {
 
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
 		if (nextToDiamond(sprite)){
-			this.panel.setDiamond(this.panel.getDiamond()+1);
+			this.panel.setDiamonds(this.panel.getDiamonds()+1);
 		}
 		if (isSpriteOn(this.sprites[ligne][colonne - 1])) {
 			return this.sprites;
@@ -55,6 +55,9 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
+		if (nextToDiamond(this.sprites[ligne][colonne + 1])){
+			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+		}
 		if (isSpriteOn(this.sprites[ligne][colonne + 1])) {
 			return this.sprites;
 		} else {
@@ -75,6 +78,9 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
+		if (nextToDiamond(this.sprites[ligne - 1][colonne])){
+			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+		}
 		if (isSpriteOn(this.sprites[ligne - 1][colonne])) {
 			return this.sprites;
 		} else {
@@ -96,6 +102,9 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
+		if (nextToDiamond(this.sprites[ligne + 1][colonne])){
+			this.panel.setDiamonds(this.panel.getDiamonds()+1);
+		}
 		if (isSpriteOn(this.sprites[ligne + 1][colonne])) {
 			return this.sprites;
 		} else {
