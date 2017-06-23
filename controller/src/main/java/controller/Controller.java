@@ -1,7 +1,10 @@
 package controller;
 
+import java.awt.Window;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.JOptionPane;
 
 import model.UserOrder;
 import view.IGravity;
@@ -19,6 +22,7 @@ public class Controller implements IController, Observer {
 	private IMapMaker maker;
 	private IMove move;
 	private IGravity gravity;
+	private Window window;
 
 	/**
 	 * Constructor of Controller
@@ -30,13 +34,14 @@ public class Controller implements IController, Observer {
 	 * @param maker
 	 */
 
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity, Window window) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
 		this.move = move;
 		this.maker = maker;
 		this.gravity = gravity;
+		this.window = window;
 		move.setMapModifier(maker.getSprites(), SET_SIZE);
 	}
 
@@ -73,6 +78,10 @@ public class Controller implements IController, Observer {
 			gravity.makeThemFall(maker.getSprites());
 			panel.update();
 			stackOrder = UserOrder.NOOP;
+			if(gravity.isGameOver()){
+				JOptionPane.showMessageDialog(null, "Game Over");
+				window.dispose();
+			}
 		}
 	}
 

@@ -6,4 +6,6 @@ public interface IGravity {
 	public Boolean isSpriteNextToBackground(ISprite sprites);
 	
 	public ISprite[][] makeThemSlide(ISprite[][] sprites);
+	
+	public boolean isGameOver();
 }

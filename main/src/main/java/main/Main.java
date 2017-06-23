@@ -51,10 +51,10 @@ public class Main implements LevelObservator {
 					Window window = new Window(maker, bdkeyListener);
 
 					Move move = new Move();
-					Gravity gravity = new Gravity(window);
+					Gravity gravity = new Gravity();
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, move, maker, gravity);
+							SET_SIZE, move, maker, gravity, window);
 					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
 

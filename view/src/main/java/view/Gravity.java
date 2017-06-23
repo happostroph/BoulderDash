@@ -1,44 +1,33 @@
 package view;
 
-import javax.swing.JOptionPane;
-
 import view.Element.Background;
 
 public class Gravity implements IGravity {
-	int ligne = 0, colonne = 0;
-	Window window;
-
-	public Gravity(Window window) {
-		this.window = window;
-	}
+	private int ligne = 0, colonne = 0;
+	private boolean gameOver = false;
 
 	public ISprite[][] makeThemFall(ISprite[][] sprites) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
-				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-						&& isSpriteNextToBackground(sprites[ligne + 1][colonne])
-						&& !sprites[ligne][colonne].isHasMoved()) {
-					sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
-					spit.setY(spit.getY() + 16);
-					spit.setHasMoved(true);
-					sprites[ligne + 1][colonne] = spit;
-					System.out.println("test2");
-					if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-							&& isSpriteAboveCharacter(sprites[ligne + 1][colonne])){
-							
+				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)) {
+
+					if (isSpriteNextToBackground(sprites[ligne + 1][colonne])) {
 						System.out.println("test1");
-						if (sprites[ligne][colonne].isNearCharacter()) {
-							sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
-							spit.setY(spit.getY() + 16);
-							spit.setHasMoved(true);
-							sprites[ligne + 1][colonne] = spit;
-							gameOver();
-						} else {
-							sprites[ligne][colonne].setNearCharacter(true);
-							System.out.println("test");
-						}
+						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
+						spit.setY(spit.getY() + 16);
+						spit.setHasMoved(true);
+						sprites[ligne + 1][colonne] = spit;
+
+					}
+					if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+						System.out.println("test2");
+						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
+						spit.setY(spit.getY() + 16);
+						spit.setHasMoved(true);
+						sprites[ligne + 1][colonne] = spit;
+						gameOver();
 					}
 				}
 				colonne++;
@@ -93,7 +82,10 @@ public class Gravity implements IGravity {
 	}
 
 	public void gameOver() {
-		JOptionPane.showMessageDialog(null, "Game Over");
-		this.window.dispose();
+		gameOver = true;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
 	}
 }
