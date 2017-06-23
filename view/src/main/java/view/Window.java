@@ -21,7 +21,7 @@ public class Window extends JFrame implements IWindow {
 
 		this.setTitle("Test");
 		this.setSize(645, 410);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setFocusable(true);

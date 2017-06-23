@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.Serializable;
@@ -10,9 +12,10 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
 
 	protected Image buffer[][] = new Image[22][40];
+	Font font = new Font("Courier", Font.BOLD, 15);
 	int ligne = 0, colonne = 0;
 	private IMapMaker maker;
-
+	int diamonds;
 	/**
 	 * The constructor of Panel
 	 * 
@@ -31,8 +34,16 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 * 
 	 */
 
+	public void compteurDiamond(Graphics g){
+		g.setFont(font);
+		g.setColor(Color.black);
+		g.drawString("Diamonds : " + diamonds , 10, 365);
+		
+	}
+	
 	public void paintComponent(Graphics g) {
 		this.maker.drawMap(g);
+		this.compteurDiamond(g);
 	}
 
 	/**

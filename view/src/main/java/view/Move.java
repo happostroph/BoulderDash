@@ -6,6 +6,7 @@ import view.Element.Background;
 public class Move implements IMove {
 	ISprite[][] sprites;
 	int SET_SIZE;
+	Panel panel;
 
 	/**
 	 * initialize MapModifier
@@ -13,9 +14,11 @@ public class Move implements IMove {
 	 * @param sprites
 	 * @param SET_SIZE
 	 */
+	
 	public void setMapModifier(ISprite[][] sprites, int SET_SIZE) {
 		this.sprites = sprites;
 		this.SET_SIZE = SET_SIZE;
+		this.panel = panel;
 	}
 
 	/**
@@ -28,6 +31,9 @@ public class Move implements IMove {
 	 */
 
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
+		if (nextToDiamond(sprite)){
+			this.panel.setDiamond(this.panel.getDiamond()+1);
+		}
 		if (isSpriteOn(this.sprites[ligne][colonne - 1])) {
 			return this.sprites;
 		} else {
@@ -100,7 +106,11 @@ public class Move implements IMove {
 		}
 	}
 
-	public Boolean isSpriteOn(ISprite sprites) {
-		return sprites.getPermeability() == Permeability.BLOCKING;
+	public Boolean isSpriteOn(ISprite sprite) {
+		return sprite.getPermeability() == Permeability.BLOCKING;
+	}
+	
+	public Boolean nextToDiamond (ISprite sprite){
+		return sprite.getType() == SpriteType.DIAMOND;
 	}
 }
