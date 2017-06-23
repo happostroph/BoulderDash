@@ -56,7 +56,8 @@ public class DAOTest implements IDAOTest {
 				break;
 				
 			case 3:
-				result = statement.executeQuery("call `procédure_LV3`");
+				//result = statement.executeQuery("call `procédure_LV3`");
+				result = statement.executeQuery("call `test`");
 				break;
 				
 			case 4:

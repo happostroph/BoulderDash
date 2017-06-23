@@ -20,7 +20,7 @@ public class Window extends JFrame implements IWindow {
 		 */
 
 		this.setTitle("Test");
-		this.setSize(645, 388);
+		this.setSize(645, 410);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

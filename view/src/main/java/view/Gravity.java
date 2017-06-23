@@ -29,6 +29,13 @@ public class Gravity implements IGravity {
 						sprites[ligne + 1][colonne] = spit;
 						gameOver();
 					}
+					if (isSpriteAboveMonster(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+						System.out.println("test2");
+						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
+						spit.setY(spit.getY() + 16);
+						spit.setHasMoved(true);
+						sprites[ligne + 1][colonne] = spit;
+					}
 				}
 				colonne++;
 			}
@@ -79,6 +86,10 @@ public class Gravity implements IGravity {
 
 	public Boolean isSpriteAboveCharacter(ISprite sprites) {
 		return sprites.getType() == SpriteType.CHARACTER;
+	}
+	
+	public Boolean isSpriteAboveMonster(ISprite sprites) {
+		return sprites.getType() == SpriteType.MONSTER;
 	}
 
 	public void gameOver() {
