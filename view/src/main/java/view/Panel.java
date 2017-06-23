@@ -15,7 +15,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	Font font = new Font("Courier", Font.BOLD, 15);
 	int ligne = 0, colonne = 0;
 	private IMapMaker maker;
-	int diamonds;
+
 	/**
 	 * The constructor of Panel
 	 * 

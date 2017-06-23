@@ -23,7 +23,7 @@ public class Controller implements IController, Observer {
 	private IMove move;
 	private IGravity gravity;
 	private Window window;
-
+	
 	/**
 	 * Constructor of Controller
 	 * 
