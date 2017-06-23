@@ -8,17 +8,11 @@ import javax.swing.JOptionPane;
 
 import model.Permeability;
 import model.UserOrder;
-import view.IGravity;
-import view.IMapMaker;
-import view.IMonsterMove;
-import view.IMove;
-import view.IPanel;
-import view.ISprite;
-import view.SpriteType;
+import view.*;
 
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
-	private int i = 0, SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
+	private int SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
 	private IPanel panel;
 	private ISprite sprite;
 	private IMapMaker maker;
@@ -26,6 +20,7 @@ public class Controller implements IController, Observer {
 	private IGravity gravity;
 	private Window window;
 	private IMonsterMove monsterMove;
+	private IVictoryDiamonds victoryDiamonds;
 	
 	/**
 	 * Constructor of Controller
@@ -37,7 +32,7 @@ public class Controller implements IController, Observer {
 	 * @param maker
 	 */
 
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity, Window window, IMonsterMove monsterMove, int finalDiamonds) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity, Window window, IMonsterMove monsterMove, int finalDiamonds, IVictoryDiamonds victoryDiamonds) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
@@ -47,6 +42,7 @@ public class Controller implements IController, Observer {
 		this.window = window;
 		this.monsterMove = monsterMove;
 		this.finalDiamonds = finalDiamonds;
+		this.victoryDiamonds = victoryDiamonds;
 		move.setMapModifier(maker.getSprites(), SET_SIZE, panel);
 	}
 
@@ -95,8 +91,7 @@ public class Controller implements IController, Observer {
 				window.dispose();
 			}
 			if(move.isVictory()){
-				
-				move.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
+				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
 				panel.update();
 				JOptionPane.showMessageDialog(null, "Victory!");
 				window.dispose();

@@ -1,4 +1,4 @@
-package view.Element;
+package view.element;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,21 +8,20 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-public class Monster extends Sprite{
-
-	public Monster(int x, int y){
+public class Exit extends Sprite{
+	
+	public Exit(int x, int y){
 		super();
-		this.permeability = Permeability.KILL;
+		this.permeability = Permeability.BLOCKING;
 		this.x = x;
 		this.y = y;
-		this.type = SpriteType.MONSTER;
+		this.type = SpriteType.EXIT;
 		
 		try {
-			image = ImageIO.read(new File("image/07.png"));
+			image = ImageIO.read(new File("image/06.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 }

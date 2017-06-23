@@ -1,4 +1,4 @@
-package view.Element;
+package view.element;
 
 import model.Permeability;
 import view.IMonsterMove;

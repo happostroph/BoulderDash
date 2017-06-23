@@ -1,6 +1,6 @@
 package view;
 
-import view.Element.Background;
+import view.element.Background;
 
 public class Gravity implements IGravity {
 	private int ligne = 0, colonne = 0;

@@ -2,15 +2,15 @@ package view;
 
 import java.awt.Graphics;
 
-import view.Element.Background;
-import view.Element.Character;
-import view.Element.Diamond;
-import view.Element.Dirt;
-import view.Element.Exit;
-import view.Element.Monster;
-import view.Element.Rock;
-import view.Element.Sprite;
-import view.Element.Unbreakable;
+import view.element.Background;
+import view.element.Character;
+import view.element.Diamond;
+import view.element.Dirt;
+import view.element.Exit;
+import view.element.Monster;
+import view.element.Rock;
+import view.element.Sprite;
+import view.element.Unbreakable;
 
 public class MapMaker implements IMapMaker {
 	private ISprite[][] sprites = new Sprite[22][40];

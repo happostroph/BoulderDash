@@ -12,10 +12,11 @@ import view.CreateMenu;
 import view.Gravity;
 import view.LevelObservator;
 import view.MapMaker;
-import view.Move;
 import view.TranslateMap;
+import view.VictoryDiamonds;
 import view.Window;
-import view.Element.MonsterMove;
+import view.element.MonsterMove;
+import view.move.Move;
 
 
 public class Main implements LevelObservator {
@@ -71,9 +72,10 @@ public class Main implements LevelObservator {
 					Move move = new Move();
 					Gravity gravity = new Gravity();
 					MonsterMove monsterMove = new MonsterMove();
+					VictoryDiamonds victoryDiamonds = new VictoryDiamonds();
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, move, maker, gravity, window, monsterMove, connectionBDD.getFinalDiamonds());
+							SET_SIZE, move, maker, gravity, window, monsterMove, connectionBDD.getFinalDiamonds(), victoryDiamonds);
 					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
 
