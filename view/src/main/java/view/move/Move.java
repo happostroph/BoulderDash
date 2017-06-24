@@ -12,7 +12,7 @@ public class Move implements IMove {
 	protected ISprite[][] sprites;
 	protected int SET_SIZE;
 	protected IPanel panel;
-	protected boolean gameOver = false, victory = false;
+	protected static boolean gameOver = false, victory = false;
 	protected Image image;
 
 	/**
@@ -137,7 +137,7 @@ public class Move implements IMove {
 	 * @see view.IMove#gameOver()
 	 */
 	public void gameOver(boolean gameOver) {
-		this.gameOver = gameOver;
+		Move.gameOver = gameOver;
 	}
 
 	/* (non-Javadoc)
@@ -158,7 +158,7 @@ public class Move implements IMove {
 	 * @see view.IMove#setVictory(boolean)
 	 */
 	
-	public void setVictory() {
-		this.victory = true;
+	public void setVictory(boolean victory) {
+		Move.victory = victory;
 	}
 }

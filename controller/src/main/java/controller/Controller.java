@@ -22,10 +22,9 @@ public class Controller implements IController, Observer {
 	private IVictoryDiamonds victoryDiamonds;
 	private IAudio audio;
 
-
-
 	/**
 	 * Constructor of Controller
+	 * 
 	 * @param sprite
 	 * @param panel
 	 * @param SET_SIZE
@@ -64,6 +63,7 @@ public class Controller implements IController, Observer {
 
 			Thread.sleep(100);
 			maker.setAllHasMovedToFalse(maker.getSprites());
+			move.setVictory(false);
 
 			colonne = sprite.getX() / SET_SIZE;
 			ligne = sprite.getY() / SET_SIZE;
@@ -87,21 +87,21 @@ public class Controller implements IController, Observer {
 			}
 			gravity.makeThemSlide(maker.getSprites());
 			gravity.makeThemFall(maker.getSprites());
-			monsterMove.toMoveTheMonsters(maker.getSprites());
-			stackOrder = UserOrder.NOOP;
-			
-			if(move.isGameOver()){
-				System.out.println("oui");
-			}
-			else{
-				System.out.println("non");
-			}
 
-			if (gravity.isGameOver() || monsterMove.isGameOver() || move.isGameOver()) {
+			if (move.isGameOver()) {
 				panel.update();
-				audio.stopSound();
 				JOptionPane.showMessageDialog(null, "Game Over!");
 				window.dispose();
+				audio.stopSound();
+			}
+
+			monsterMove.toMoveTheMonsters(maker.getSprites());
+
+			if (gravity.isGameOver() || monsterMove.isGameOver()) {
+				panel.update();
+				JOptionPane.showMessageDialog(null, "Game Over!");
+				window.dispose();
+				audio.stopSound();
 			}
 
 			if (panel.getDiamondsGet() >= finalDiamonds) {
@@ -111,12 +111,12 @@ public class Controller implements IController, Observer {
 			if (move.isVictory()) {
 				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
 				panel.update();
-				audio.stopSound();
 				JOptionPane.showMessageDialog(null, "Victory!");
 				window.dispose();
+				audio.stopSound();
 			}
+			stackOrder = UserOrder.NOOP;
 			panel.update();
-
 		}
 	}
 
@@ -127,7 +127,9 @@ public class Controller implements IController, Observer {
 		return stackOrder;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.IController#setStackOrder(model.UserOrder)
 	 */
 	public void setStackOrder(UserOrder stackOrder) {
@@ -153,6 +155,7 @@ public class Controller implements IController, Observer {
 
 	/**
 	 * Permit to exit
+	 * 
 	 * @param sprites
 	 */
 	public void setExitToPermeable(ISprite[][] sprites) {

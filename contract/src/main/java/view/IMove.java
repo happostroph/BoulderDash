@@ -56,7 +56,7 @@ public interface IMove {
 	/**
 	 * Set the boolean victory to true
 	 */
-	public void setVictory();
+	public void setVictory(boolean gameOver);
 	
 	/**
 	 * Looks if the sprite is a background

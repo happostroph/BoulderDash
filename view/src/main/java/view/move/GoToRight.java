@@ -41,7 +41,7 @@ public class GoToRight extends Move {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
 		}
 		if (nextToOpenedExit(sprites[ligne][colonne + 1])) {
-			setVictory();
+			setVictory(true);
 		}
 		if (nextToMonster(sprites[ligne][colonne + 1])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());

@@ -47,7 +47,7 @@ public class GoToDown extends Move {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
 		}
 		if (nextToOpenedExit(sprites[ligne + 1][colonne])) {
-			setVictory();
+			setVictory(true);
 		} 
 		if (nextToMonster(sprites[ligne + 1][colonne])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
