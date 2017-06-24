@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+
 import view.element.Background;
 
 public class MonsterMove implements IMonsterMove {
@@ -9,7 +11,7 @@ public class MonsterMove implements IMonsterMove {
 	/* (non-Javadoc)
 	 * @see view.IMonsterMove#toMoveTheMonsters(view.ISprite[][])
 	 */
-	public ISprite[][] toMoveTheMonsters(ISprite[][] sprites) {
+	public ISprite[][] toMoveTheMonsters(ISprite[][] sprites, IAudio audio) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
 			colonne = 0;
@@ -25,6 +27,7 @@ public class MonsterMove implements IMonsterMove {
 							spit.setY(spit.getY() + 16);
 							spit.setHasMoved(true);
 							sprites[ligne + 1][colonne] = spit;
+							audio.playSound(new File("music/die.wav"), 30.0f);
 							gameOver();
 						}
 						else if (isSpriteNearCharacter(sprites[ligne - 1][colonne]) && spit.getDirection() == 1) {
@@ -32,6 +35,7 @@ public class MonsterMove implements IMonsterMove {
 							spit.setY(spit.getY() - 16);
 							spit.setHasMoved(true);
 							sprites[ligne - 1][colonne] = spit;
+							audio.playSound(new File("music/die.wav"), 30.0f);
 							gameOver();
 						}
 						else if (spit.getDirection() == 1) {

@@ -28,19 +28,23 @@ public class Controller implements IController, Observer {
 	private Window window;
 	private MonsterMove monsterMove;
 	private VictoryDiamonds victoryDiamonds;
-	private Audio audio;
+	private Audio backSound;
+	private Audio start;
+	private Audio gravitySounds;
+	private Audio moveSounds;
+	private Audio gameOver;
 	private EndTheGame end;
 
-/**
- * Constructor of Controller
- * 
- * @param sprite
- * @param panel
- * @param SET_SIZE
- * @param maker
- * @param window
- * @param finalDiamonds
- */
+	/**
+	 * Constructor of Controller
+	 * 
+	 * @param sprite
+	 * @param panel
+	 * @param SET_SIZE
+	 * @param maker
+	 * @param window
+	 * @param finalDiamonds
+	 */
 	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, Window window, int finalDiamonds) {
 		this.panel = panel;
 		this.sprite = sprite;
@@ -53,9 +57,14 @@ public class Controller implements IController, Observer {
 		gravity = new Gravity();
 		monsterMove = new MonsterMove();
 		victoryDiamonds = new VictoryDiamonds();
-		audio = new Audio();
-		audio.playSound(new File("music/pokemon.wav"));
-		end = new EndTheGame(this.panel, this.window, this.audio);
+		backSound = new Audio();
+		backSound.playSound(new File("music/game.wav"), -20.0f);
+		start = new Audio();
+		start.playSound(new File("music/new.wav"), 40.0f);
+		gravitySounds = new Audio();
+		moveSounds = new Audio();
+		gameOver = new Audio();
+		end = new EndTheGame(this.panel, this.window);
 	}
 
 	/**
@@ -75,32 +84,34 @@ public class Controller implements IController, Observer {
 
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				maker.setSprites(move.digRight(colonne, ligne, sprite));
+				maker.setSprites(move.digRight(colonne, ligne, sprite, moveSounds));
 				break;
 			case LEFT:
-				maker.setSprites(move.digLeft(colonne, ligne, sprite));
+				maker.setSprites(move.digLeft(colonne, ligne, sprite, moveSounds));
 				break;
 			case DOWN:
-				maker.setSprites(move.digDown(colonne, ligne, sprite));
+				maker.setSprites(move.digDown(colonne, ligne, sprite, moveSounds));
 				break;
 			case UP:
-				maker.setSprites(move.digUp(colonne, ligne, sprite));
+				maker.setSprites(move.digUp(colonne, ligne, sprite, moveSounds));
 				break;
 			case NOOP:
 			default:
 				break;
 			}
 			gravity.makeThemSlide(maker.getSprites());
-			gravity.makeThemFall(maker.getSprites());
+			gravity.makeThemFall(maker.getSprites(), gravitySounds);
 
 			if (move.isGameOver()) {
-				end.gameOver();
+				backSound.stopSound();
+				end.gameOver(gameOver);
 			}
 
-			monsterMove.toMoveTheMonsters(maker.getSprites());
+			monsterMove.toMoveTheMonsters(maker.getSprites(), gravitySounds);
 
 			if (gravity.isGameOver() || monsterMove.isGameOver()) {
-				end.gameOver();
+				backSound.stopSound();
+				end.gameOver(gameOver);
 			}
 
 			if (panel.getDiamondsGet() >= finalDiamonds) {

@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+
 import javax.swing.JOptionPane;
 
 import view.Audio;
@@ -9,7 +11,6 @@ import view.Window;
 public class EndTheGame {
 	private IPanel panel;
 	private Window window;
-	private Audio audio;
 	
 	/**
 	 * Constructon of EndTheGame 
@@ -18,27 +19,29 @@ public class EndTheGame {
 	 * @param window
 	 * @param audio
 	 */
-	public EndTheGame(IPanel panel, Window window, Audio audio){
+	public EndTheGame(IPanel panel, Window window){
 		this.panel = panel;
 		this.window = window;
-		this.audio = audio;
 	}
 	
 	/**
+	 * Execute the gameOver routine
 	 * 
+	 * @param audio
 	 */
-	public void gameOver(){
+	public void gameOver(Audio audio){
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Game Over!");
+		audio.playSound(new File("music/GameOverSound.wav"), 20.0f);
 		window.dispose();
-		audio.stopSound();
 	}
 	
+	/**
+	 * Execute the victory routine
+	 */
 	public void victory(){
-		
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Victory!");
 		window.dispose();
-		audio.stopSound();
 	}
 }

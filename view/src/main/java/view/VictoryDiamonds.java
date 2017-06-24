@@ -17,7 +17,7 @@ public class VictoryDiamonds implements IVictoryDiamonds {
 			x = 0;
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
-				if (spit.getType() == SpriteType.BACKGROUND || spit.getType() == SpriteType.DIRT) {
+				if (spit.getType() != SpriteType.UNBREAKABLE && spit.getType() != SpriteType.CHARACTER) {
 					sprites[ligne][colonne] = new Diamond(x, y);
 				}
 				x = x + SET_SIZE;

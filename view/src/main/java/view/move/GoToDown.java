@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import view.IAudio;
 import view.IPanel;
 import view.ISprite;
 import view.element.Background;
@@ -34,9 +35,10 @@ public class GoToDown extends Move {
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
+	 * @param aaudio
 	 * @return sprites
 	 */
-	public ISprite[][] goDown(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
+	public ISprite[][] goDown(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {
 		try {
 			image = ImageIO.read(new File("image/11.png"));
 		} catch (IOException e) {
@@ -45,6 +47,7 @@ public class GoToDown extends Move {
 		}
 		if (nextToDiamond(sprites[ligne + 1][colonne])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
+			audio.playSound(new File("music/coin.wav"), 40.0f);
 		}
 		if (nextToOpenedExit(sprites[ligne + 1][colonne])) {
 			setVictory(true);
@@ -53,9 +56,11 @@ public class GoToDown extends Move {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() + 16);
 			sprites[ligne + 1][colonne] = new Monster(sprite.getX(), sprite.getY());
+			audio.playSound(new File("music/die.wav"), 40.0f);
 			gameOver(true);
 			return sprites;
 		} else if (isSpriteOn(sprites[ligne + 1][colonne])) {
+			audio.playSound(new File("music/touch.wav"), 40.0f);
 			return sprites;
 		} else {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());

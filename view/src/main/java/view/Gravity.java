@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+
 import view.element.Background;
 
 public class Gravity implements IGravity {
@@ -11,7 +13,7 @@ public class Gravity implements IGravity {
 	 * 
 	 * @see view.IGravity#makeThemFall(view.ISprite[][])
 	 */
-	public ISprite[][] makeThemFall(ISprite[][] sprites) {
+	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
 			colonne = 0;
@@ -28,6 +30,7 @@ public class Gravity implements IGravity {
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
+						audio.playSound(new File("music/die.wav"), 30.0f);
 						gameOver();
 					}
 				}

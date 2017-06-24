@@ -3,6 +3,7 @@ package view.move;
 import java.awt.Image;
 
 import model.Permeability;
+import view.IAudio;
 import view.IMove;
 import view.IPanel;
 import view.ISprite;
@@ -16,10 +17,12 @@ public class Move implements IMove {
 	protected Image image;
 
 	/**
-	 * initialize MapModifier
+	 * Constructor of Move
 	 * 
 	 * @param sprites
 	 * @param SET_SIZE
+	 * @param panel
+	 * @param audio
 	 */
 	public Move(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		this.sprites = sprites;
@@ -35,9 +38,9 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
+	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite, IAudio audio) {
 		GoToLeft left = new GoToLeft(sprites, ligne, panel);
-		return left.goLeft(colonne, ligne, sprite, this.sprites, this.panel);
+		return left.goLeft(colonne, ligne, sprite, this.sprites, this.panel, audio);
 	}
 
 	/**
@@ -49,9 +52,9 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
+	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite, IAudio audio) {
 		GoToRight right = new GoToRight(sprites, ligne, panel);
-		return right.goRight(colonne, ligne, sprite, this.sprites, this.panel);
+		return right.goRight(colonne, ligne, sprite, this.sprites, this.panel, audio);
 	}
 
 	/**
@@ -62,9 +65,9 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
+	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite, IAudio audio) {
 		GoToUp up = new GoToUp(sprites, ligne, panel);
-		return up.goUp(colonne, ligne, sprite, this.sprites, this.panel);
+		return up.goUp(colonne, ligne, sprite, this.sprites, this.panel, audio);
 
 	}
 
@@ -76,9 +79,9 @@ public class Move implements IMove {
 	 * @param sprite
 	 * @return sprites
 	 */
-	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
+	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite, IAudio audio) {
 		GoToDown down = new GoToDown(sprites, ligne, panel);
-		return down.goDown(colonne, ligne, sprite, this.sprites, this.panel);
+		return down.goDown(colonne, ligne, sprite, this.sprites, this.panel, audio);
 	}
 
 	/**

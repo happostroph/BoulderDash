@@ -9,7 +9,7 @@ public interface IMove {
 	 * @param sprite
 	 * @return table who contains the modified map
 	 */
-	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite);
+	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite, IAudio audio);
 
 	/**
 	 * Move the character to the right and replace the old position by background
@@ -18,7 +18,7 @@ public interface IMove {
 	 * @param sprite
 	 * @return table who contains the modified map
 	 */
-	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite);
+	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite, IAudio audio);
 
 	/**
 	 * Move the character up and replace the old position by background
@@ -27,7 +27,7 @@ public interface IMove {
 	 * @param sprite
 	 * @return table who contains the modified map
 	 */
-	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite);
+	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite, IAudio audio);
 	
 	/**
 	 * Move the character down and replace the old position by background
@@ -36,7 +36,7 @@ public interface IMove {
 	 * @param sprite
 	 * @return table who contains the modified map
 	 */
-	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite);
+	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite, IAudio audio);
 	
 	/**
 	 * Set the boolean gameOver to true

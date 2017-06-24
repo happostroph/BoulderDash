@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import view.IAudio;
 import view.IPanel;
 import view.ISprite;
 import view.element.Background;
@@ -28,9 +29,10 @@ public class GoToRight extends Move {
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
+	 * @param aaudio
 	 * @return sprites
 	 */
-	public ISprite[][] goRight(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
+	public ISprite[][] goRight(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {
 		try {
 			image = ImageIO.read(new File("image/d1.png"));
 		} catch (IOException e) {
@@ -39,6 +41,7 @@ public class GoToRight extends Move {
 		}
 		if (nextToDiamond(sprites[ligne][colonne + 1])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
+			audio.playSound(new File("music/coin.wav"), 40.0f);
 		}
 		if (nextToOpenedExit(sprites[ligne][colonne + 1])) {
 			setVictory(true);
@@ -47,6 +50,7 @@ public class GoToRight extends Move {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() + 16);
 			sprites[ligne][colonne + 1] = new Monster(sprite.getX(), sprite.getY());
+			audio.playSound(new File("music/die.wav"), 40.0f);
 			gameOver(true);
 			return sprites;
 		}
@@ -58,6 +62,7 @@ public class GoToRight extends Move {
 			sprites[ligne][colonne + 2] = new Rock((sprite.getX() + 16), sprite.getY());
 			return sprites;
 		} else if (isSpriteOn(sprites[ligne][colonne + 1])) {
+			audio.playSound(new File("music/touch.wav"), 40.0f);
 			return sprites;
 		}
 

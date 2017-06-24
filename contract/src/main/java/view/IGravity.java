@@ -4,9 +4,10 @@ public interface IGravity {
 	/**
 	 * Do the rocks and Diamonds fall
 	 * @param sprites
+	 * @param audio
 	 * @return
 	 */
-	public ISprite[][] makeThemFall(ISprite[][] sprites);
+	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio);
 	
 	/**
 	 * Verify if the sprite is a background

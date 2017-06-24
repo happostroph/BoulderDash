@@ -4,9 +4,10 @@ public interface IMonsterMove {
 	/**
 	 * Make the monsters move
 	 * @param sprites
+	 * @param audio
 	 * @return sprites
 	 */
-	public ISprite[][] toMoveTheMonsters(ISprite[][] sprites);
+	public ISprite[][] toMoveTheMonsters(ISprite[][] sprites, IAudio audio);
 
 	/**
 	 * verify if the sprite is the background
