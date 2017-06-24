@@ -6,8 +6,9 @@ public class Gravity implements IGravity {
 	private int ligne = 0, colonne = 0;
 	private boolean gameOver = false;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see view.IGravity#makeThemFall(view.ISprite[][])
 	 */
 	public ISprite[][] makeThemFall(ISprite[][] sprites) {
@@ -16,24 +17,18 @@ public class Gravity implements IGravity {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)) {
-					if (isSpriteNextToBackground(sprites[ligne + 1][colonne])) {
+					if (isSpriteNextToBackground(sprites[ligne + 1][colonne])
+							|| isSpriteAboveMonster(sprites[ligne + 1][colonne])) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
-					}
-					else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+					} else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
 						gameOver();
-					}
-					else if (isSpriteAboveMonster(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
-						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
-						spit.setY(spit.getY() + 16);
-						spit.setHasMoved(true);
-						sprites[ligne + 1][colonne] = spit;
 					}
 				}
 				colonne++;
@@ -43,7 +38,9 @@ public class Gravity implements IGravity {
 		return sprites;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see view.IGravity#makeThemSlide(view.ISprite[][])
 	 */
 	public ISprite[][] makeThemSlide(ISprite[][] sprites) {
@@ -75,14 +72,17 @@ public class Gravity implements IGravity {
 
 	/**
 	 * return true if the sprite is a rock or diamond
+	 * 
 	 * @param sprite
 	 * @return boolean
 	 */
 	public Boolean isSpriteAboveRockOrDiamond(ISprite sprite) {
-			return sprite.getType() == SpriteType.ROCK || sprite.getType() == SpriteType.DIAMOND;
+		return sprite.getType() == SpriteType.ROCK || sprite.getType() == SpriteType.DIAMOND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see view.IGravity#isSpriteNextToBackground(view.ISprite)
 	 */
 	public Boolean isSpriteNextToBackground(ISprite sprite) {
@@ -91,15 +91,17 @@ public class Gravity implements IGravity {
 
 	/**
 	 * return true if the sprite is a character
+	 * 
 	 * @param sprite
 	 * @return boolean
 	 */
 	public Boolean isSpriteAboveCharacter(ISprite sprite) {
 		return sprite.getType() == SpriteType.CHARACTER;
 	}
-	
+
 	/**
 	 * return true if the sprite is a monster
+	 * 
 	 * @param sprite
 	 * @return
 	 */
@@ -114,7 +116,9 @@ public class Gravity implements IGravity {
 		gameOver = true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see view.IGravity#isGameOver()
 	 */
 	public boolean isGameOver() {

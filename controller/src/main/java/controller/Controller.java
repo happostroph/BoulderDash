@@ -1,27 +1,20 @@
 package controller;
 
-import java.awt.Window;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JOptionPane;
 
 import model.Permeability;
 import model.UserOrder;
 import view.Audio;
 import view.Gravity;
-import view.IAudio;
-import view.IGravity;
-import view.IMapMaker;
-import view.IMonsterMove;
-import view.IMove;
 import view.IPanel;
 import view.ISprite;
-import view.IVictoryDiamonds;
+import view.MapMaker;
 import view.MonsterMove;
 import view.SpriteType;
 import view.VictoryDiamonds;
+import view.Window;
 import view.move.Move;
 
 public class Controller implements IController, Observer {
@@ -29,13 +22,14 @@ public class Controller implements IController, Observer {
 	private int SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
 	private IPanel panel;
 	private ISprite sprite;
-	private IMapMaker maker;
-	 private IMove move;
-	 private IGravity gravity;
+	private MapMaker maker;
+	private Move move;
+	private Gravity gravity;
 	private Window window;
-	 private IMonsterMove monsterMove;
-	 private IVictoryDiamonds victoryDiamonds;
-	 private IAudio audio;
+	private MonsterMove monsterMove;
+	private VictoryDiamonds victoryDiamonds;
+	private Audio audio;
+	private EndTheGame end;
 
 	/**
 	 * Constructor of Controller
@@ -52,23 +46,21 @@ public class Controller implements IController, Observer {
 	 * @param victoryDiamonds
 	 * @param audio
 	 */
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMapMaker maker, Window window, int finalDiamonds, Move move) {
-		
-
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, Window window, int finalDiamonds) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
 		this.maker = maker;
 		this.window = window;
 		this.finalDiamonds = finalDiamonds;
-		this.move = move;
-		
 
+		move = new Move(maker.getSprites(), SET_SIZE, window.getPanel());
 		gravity = new Gravity();
 		monsterMove = new MonsterMove();
 		victoryDiamonds = new VictoryDiamonds();
 		audio = new Audio();
 		audio.playSound(new File("music/pokemon.wav"));
+		end = new EndTheGame(this.panel, this.window, this.audio);
 	}
 
 	/**
@@ -107,19 +99,13 @@ public class Controller implements IController, Observer {
 			gravity.makeThemFall(maker.getSprites());
 
 			if (move.isGameOver()) {
-				panel.update();
-				JOptionPane.showMessageDialog(null, "Game Over!");
-				window.dispose();
-				audio.stopSound();
+				end.gameOver();
 			}
 
 			monsterMove.toMoveTheMonsters(maker.getSprites());
 
 			if (gravity.isGameOver() || monsterMove.isGameOver()) {
-				panel.update();
-				JOptionPane.showMessageDialog(null, "Game Over!");
-				window.dispose();
-				audio.stopSound();
+				end.gameOver();
 			}
 
 			if (panel.getDiamondsGet() >= finalDiamonds) {
@@ -128,10 +114,7 @@ public class Controller implements IController, Observer {
 
 			if (move.isVictory()) {
 				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
-				panel.update();
-				JOptionPane.showMessageDialog(null, "Victory!");
-				window.dispose();
-				audio.stopSound();
+				end.victory();
 			}
 			stackOrder = UserOrder.NOOP;
 			panel.update();
