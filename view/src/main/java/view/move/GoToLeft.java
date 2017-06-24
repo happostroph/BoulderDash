@@ -11,11 +11,23 @@ import view.element.Background;
 import view.element.Monster;
 import view.element.Rock;
 
+/**
+ * @author maxim
+ *
+ */
 public class GoToLeft extends Move {
 	public GoToLeft() {
 		super();
 	}
 
+	/**
+	 * @param colonne
+	 * @param ligne
+	 * @param sprite
+	 * @param sprites
+	 * @param panel
+	 * @return
+	 */
 	public ISprite[][] goLeft(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
 			image = ImageIO.read(new File("image/g1.png"));

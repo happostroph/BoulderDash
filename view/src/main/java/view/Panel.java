@@ -39,11 +39,17 @@ public class Panel extends JPanel implements Serializable, IPanel {
 		g.drawString("Diamonds : " + diamondsGet + "/" + finalDiamonds, 10, 365);
 	}
 	
+	/**
+	 * @param g
+	 */
 	public void updateCount(Graphics g){
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 800, 500);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		this.updateCount(g);
 		this.counterDiamond(g);

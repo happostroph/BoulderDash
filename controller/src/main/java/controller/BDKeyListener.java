@@ -6,6 +6,10 @@ import java.util.Observable;
 
 import model.UserOrder;
 
+/**
+ * @author maxim
+ *
+ */
 public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
 	IController controller;
 	

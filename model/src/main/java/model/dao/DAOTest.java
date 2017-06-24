@@ -8,6 +8,10 @@ import java.sql.Statement;
 
 import model.IDAOTest;
 
+/**
+ * @author maxim
+ *
+ */
 public class DAOTest implements IDAOTest {
 	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
 	private String LOGIN = "boulderdash";

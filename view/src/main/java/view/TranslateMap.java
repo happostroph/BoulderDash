@@ -63,10 +63,16 @@ public class TranslateMap implements ITranslateMap {
 		return map;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ITranslateMap#getCharacterX()
+	 */
 	public int getCharacterX() {
 		return characterX;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ITranslateMap#getCharacterY()
+	 */
 	public int getCharacterY() {
 		return characterY;
 	}

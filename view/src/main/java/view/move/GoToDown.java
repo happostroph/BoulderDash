@@ -10,8 +10,20 @@ import view.ISprite;
 import view.element.Background;
 import view.element.Monster;
 
+/**
+ * @author maxim
+ *
+ */
 public class GoToDown extends Move {
 
+	/**
+	 * @param colonne
+	 * @param ligne
+	 * @param sprite
+	 * @param sprites
+	 * @param panel
+	 * @return
+	 */
 	public ISprite[][] goDown(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
 			image = ImageIO.read(new File("image/11.png"));

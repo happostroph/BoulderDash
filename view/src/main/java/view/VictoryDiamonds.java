@@ -2,8 +2,15 @@ package view;
 
 import view.element.Diamond;
 
+/**
+ * @author maxim
+ *
+ */
 public class VictoryDiamonds implements IVictoryDiamonds {
 	
+	/* (non-Javadoc)
+	 * @see view.IVictoryDiamonds#setDirtAndBackgroundToDiamond(view.ISprite[][], int)
+	 */
 	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE) {		
 		int ligne = 0, colonne = 0, x = 0, y = 0;
 		for (ISprite sousSpit[] : sprites) {

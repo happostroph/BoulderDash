@@ -15,6 +15,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * @author maxim
+ *
+ */
+
+/**
+ * @author maxim
+ *
+ */
 public class CreateMenu extends JFrame {
 	/**
 	 * 
@@ -31,6 +40,9 @@ public class CreateMenu extends JFrame {
 		this.observators = observators;
 	}
 
+	/**
+	 * 
+	 */
 	public CreateMenu() {
 		setSize(new Dimension(700, 400));
 		setLayout(new BorderLayout());
@@ -71,6 +83,9 @@ public class CreateMenu extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * @return choice
+	 */
 	public int getChoice() {
 		return choice;
 	}

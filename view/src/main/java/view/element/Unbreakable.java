@@ -8,8 +8,16 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
+/**
+ * @author maxim
+ *
+ */
 public class Unbreakable extends Sprite{
 	
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Unbreakable(int x, int y){
 		super();
 		this.permeability = Permeability.BLOCKING;

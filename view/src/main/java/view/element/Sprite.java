@@ -6,6 +6,10 @@ import model.Permeability;
 import view.ISprite;
 import view.SpriteType;
 
+/**
+ * @author maxim
+ *
+ */
 public abstract class Sprite implements ISprite {
 	protected Image image;
 	protected int x = 0, y = 0;
@@ -22,10 +26,16 @@ public abstract class Sprite implements ISprite {
 		return x;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#isNearCharacter()
+	 */
 	public boolean isNearCharacter() {
 		return isNearCharacter;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#setNearCharacter(boolean)
+	 */
 	public void setNearCharacter(boolean isNearCharacter) {
 		this.isNearCharacter = isNearCharacter;
 	}

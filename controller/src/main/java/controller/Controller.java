@@ -8,6 +8,10 @@ import model.Permeability;
 import model.UserOrder;
 import view.*;
 
+/**
+ * @author maxime
+ *
+ */
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
 	private int SET_SIZE = 0, colonne = 0, ligne = 0, finalDiamonds = 0;
@@ -109,6 +113,9 @@ public class Controller implements IController, Observer {
 		this.stackOrder = stackOrder;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
 	public void update(Observable obs, Object obj) {
 		if (obs instanceof BDKeyListener) {
@@ -121,6 +128,9 @@ public class Controller implements IController, Observer {
 		}
 	}
 
+	/**
+	 * @param sprites
+	 */
 	public void setExitToPermeable(ISprite[][] sprites) {
 		for (ISprite[] sousSpit : sprites) {
 			for (ISprite spit : sousSpit) {

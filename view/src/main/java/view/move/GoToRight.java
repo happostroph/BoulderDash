@@ -11,8 +11,20 @@ import view.element.Background;
 import view.element.Monster;
 import view.element.Rock;
 
+/**
+ * @author maxim
+ *
+ */
 public class GoToRight extends Move {
 
+	/**
+	 * @param colonne
+	 * @param ligne
+	 * @param sprite
+	 * @param sprites
+	 * @param panel
+	 * @return
+	 */
 	public ISprite[][] goRight(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
 			image = ImageIO.read(new File("image/d1.png"));

@@ -31,6 +31,9 @@ public class Main implements LevelObservator {
 		menu.getObservators().add(game);
 	}
 
+	/* (non-Javadoc)
+	 * @see view.LevelObservator#onLevelSelected(int)
+	 */
 	@Override
 	public void onLevelSelected(int level) {
 		(new Thread(new Runnable() {

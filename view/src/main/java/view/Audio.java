@@ -6,6 +6,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
+/**
+ * @author maxim
+ *
+ */
 public class Audio implements IAudio{
 	
  /**

@@ -8,6 +8,10 @@ import view.IPanel;
 import view.ISprite;
 import view.SpriteType;
 
+/**
+ * @author maxim
+ *
+ */
 public class Move implements IMove {
 	protected ISprite[][] sprites;
 	protected int SET_SIZE;
@@ -81,42 +85,78 @@ public class Move implements IMove {
 		return down.goDown(colonne, ligne, sprite, this.sprites, this.panel);
 	}
 
+	/**
+	 * @param sprite
+	 * @return
+	 */
 	public Boolean isSpriteOn(ISprite sprite) {
 		return sprite.getPermeability() == Permeability.BLOCKING;
 	}
 
+	/**
+	 * @param sprite
+	 * @return
+	 */
 	public Boolean nextToDiamond(ISprite sprite) {
 		return sprite.getType() == SpriteType.DIAMOND;
 	}
 
+	/**
+	 * @param sprite
+	 * @return
+	 */
 	public Boolean nextToMonster(ISprite sprite) {
 		return sprite.getType() == SpriteType.MONSTER;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMove#nextToBackground(view.ISprite)
+	 */
 	public Boolean nextToBackground(ISprite sprite) {
 		return sprite.getType() == SpriteType.BACKGROUND;
 	}
 
+	/**
+	 * @param sprite
+	 * @return
+	 */
 	public Boolean nextToRock(ISprite sprite) {
 		return sprite.getType() == SpriteType.ROCK;
 	}
 
+	/**
+	 * @param sprite
+	 * @return
+	 */
 	public Boolean nextToOpenedExit(ISprite sprite) {
 		return (sprite.getType() == SpriteType.EXIT && sprite.getPermeability() == Permeability.PERMEABLE);
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMove#gameOver()
+	 */
 	public void gameOver() {
 		gameOver = true;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMove#isGameOver()
+	 */
 	public boolean isGameOver() {
 		return gameOver;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMove#isVictory()
+	 */
 	public boolean isVictory() {
 		return victory;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMove#setVictory(boolean)
+	 */
+	
 	public void setVictory(boolean victory) {
 		this.victory = victory;
 	}

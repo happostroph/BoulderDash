@@ -108,10 +108,16 @@ public class MapMaker implements IMapMaker {
 		return sprites[ligne][colonne];
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMapMaker#setSprites(view.ISprite[][])
+	 */
 	public void setSprites(ISprite[][] sprites) {
 		this.sprites = sprites;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMapMaker#setAllHasMovedToFalse(view.ISprite[][])
+	 */
 	public void setAllHasMovedToFalse(ISprite[][] sprites) {
 		for (ISprite sousSpit[] : sprites) {
 			for (ISprite spit : sousSpit) {

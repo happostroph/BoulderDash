@@ -8,8 +8,16 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
+/**
+ * @author maxim
+ *
+ */
 public class Monster extends Sprite{
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Monster(int x, int y){
 		super();
 		this.permeability = Permeability.KILL;

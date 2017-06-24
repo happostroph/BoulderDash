@@ -2,10 +2,19 @@ package view;
 
 import view.element.Background;
 
+/**
+ * @author maxim
+ *
+ */
+
 public class Gravity implements IGravity {
 	private int ligne = 0, colonne = 0;
 	private boolean gameOver = false;
 
+
+	/* (non-Javadoc)
+	 * @see view.IGravity#makeThemFall(view.ISprite[][])
+	 */
 	public ISprite[][] makeThemFall(ISprite[][] sprites) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
@@ -39,6 +48,9 @@ public class Gravity implements IGravity {
 		return sprites;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IGravity#makeThemSlide(view.ISprite[][])
+	 */
 	public ISprite[][] makeThemSlide(ISprite[][] sprites) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
@@ -66,6 +78,10 @@ public class Gravity implements IGravity {
 		return sprites;
 	}
 
+	/**
+	 * @param sprites
+	 * @return
+	 */
 	public Boolean isSpriteAboveRockOrDiamond(ISprite sprites) {
 		if (sprites.getType() == SpriteType.ROCK || sprites.getType() == SpriteType.DIAMOND) {
 			return true;
@@ -74,22 +90,39 @@ public class Gravity implements IGravity {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IGravity#isSpriteNextToBackground(view.ISprite)
+	 */
 	public Boolean isSpriteNextToBackground(ISprite sprites) {
 		return sprites.getType() == SpriteType.BACKGROUND;
 	}
 
+	/**
+	 * @param sprites
+	 * @return
+	 */
 	public Boolean isSpriteAboveCharacter(ISprite sprites) {
 		return sprites.getType() == SpriteType.CHARACTER;
 	}
 	
+	/**
+	 * @param sprites
+	 * @return
+	 */
 	public Boolean isSpriteAboveMonster(ISprite sprites) {
 		return sprites.getType() == SpriteType.MONSTER;
 	}
 
+	/**
+	 * 
+	 */
 	public void gameOver() {
 		gameOver = true;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IGravity#isGameOver()
+	 */
 	public boolean isGameOver() {
 		return gameOver;
 	}

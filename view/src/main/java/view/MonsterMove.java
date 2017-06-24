@@ -6,6 +6,9 @@ public class MonsterMove implements IMonsterMove {
 	private int ligne = 0, colonne = 0;
 	private boolean gameOver = false;
 
+	/* (non-Javadoc)
+	 * @see view.IMonsterMove#toMoveTheMonsters(view.ISprite[][])
+	 */
 	public ISprite[][] toMoveTheMonsters(ISprite[][] sprites) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
@@ -56,6 +59,11 @@ public class MonsterMove implements IMonsterMove {
 		return sprites;
 	}
 
+	/**
+	 * @param sprites
+	 * @param spit
+	 * @return
+	 */
 	public ISprite[][] MoveUp(ISprite[][] sprites, ISprite spit) {
 		sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 		spit.setY(spit.getY() - 16);
@@ -65,6 +73,11 @@ public class MonsterMove implements IMonsterMove {
 		return sprites;
 	}
 
+	/**
+	 * @param sprites
+	 * @param spit
+	 * @return
+	 */
 	public ISprite[][] MoveDown(ISprite[][] sprites, ISprite spit) {
 		sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 		spit.setY(spit.getY() + 16);
@@ -74,10 +87,16 @@ public class MonsterMove implements IMonsterMove {
 		return sprites;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMonsterMove#isSpriteNearToBackground(view.ISprite)
+	 */
 	public Boolean isSpriteNearToBackground(ISprite sprites) {
 		return sprites.getType() == SpriteType.BACKGROUND;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IMonsterMove#isSpriteNearCharacter(view.ISprite)
+	 */
 	public Boolean isSpriteNearCharacter(ISprite sprites) {
 		return sprites.getType() == SpriteType.CHARACTER;
 	}

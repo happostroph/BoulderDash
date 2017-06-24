@@ -8,8 +8,16 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
+/**
+ * @author maxim
+ *
+ */
 public class Character extends Sprite{
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Character(int x, int y){
 		super();
 		this.permeability = Permeability.PERMEABLE;
