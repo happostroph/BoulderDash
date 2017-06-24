@@ -3,6 +3,12 @@ package view;
 import java.io.File;
 
 public interface IAudio {
-	public static void PlaySound(File Sound) {
-	}
+	/**
+	 * Play the sound which correspond the the File
+	 * 
+	 * @param Sound
+	 */
+	public void playSound(File Sound);
+
+	public void stopSound();
 }

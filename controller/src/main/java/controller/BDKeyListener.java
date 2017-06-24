@@ -6,10 +6,6 @@ import java.util.Observable;
 
 import model.UserOrder;
 
-/**
- * @author maxim
- *
- */
 public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
 	IController controller;
 	
@@ -42,6 +38,9 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 		return userOrder;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
@@ -49,19 +48,32 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 		notifyObservers(keyEvent);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
 	
+	/* (non-Javadoc)
+	 * @see controller.IBDKeyListener#getController()
+	 */
 	public IController getController() {
 		return this.controller;
 	}
+
+	/* (non-Javadoc)
+	 * @see controller.IBDKeyListener#setController(controller.IController)
+	 */
 
 	public void setController(IController controller) {
 		this.controller =  controller;

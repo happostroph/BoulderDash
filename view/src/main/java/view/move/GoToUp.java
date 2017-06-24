@@ -10,19 +10,24 @@ import view.ISprite;
 import view.element.Background;
 import view.element.Monster;
 
-/**
- * @author maxim
- *
- */
 public class GoToUp extends Move {
 
+	public GoToUp(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
+		super(sprites, SET_SIZE, panel);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
+	 * Tries to move the character up, if he cross a diamond he will collect it,
+	 * if it's an opened exit he will win, if it's a monster he will die, if
+	 * it's a BLOCKING sprite he wouldn't move, otherwise he will go up
+	 * 
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @return
+	 * @return sprites
 	 */
 	public ISprite[][] goUp(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
@@ -33,13 +38,15 @@ public class GoToUp extends Move {
 		}
 		if (nextToDiamond(sprites[ligne - 1][colonne])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
-		} else if (nextToOpenedExit(sprites[ligne - 1][colonne])) {
-			setVictory(true);
-		} else if (nextToMonster(sprites[ligne - 1][colonne])) {
+		}
+		if (nextToOpenedExit(sprites[ligne - 1][colonne])) {
+			setVictory();
+		}
+		if (nextToMonster(sprites[ligne - 1][colonne])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() - 16);
 			sprites[ligne - 1][colonne] = new Monster(sprite.getX(), (sprite.getY() - 16));
-			gameOver();
+			gameOver(true);
 			return sprites;
 		}
 		if (isSpriteOn(sprites[ligne - 1][colonne])) {

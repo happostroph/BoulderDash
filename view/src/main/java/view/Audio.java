@@ -6,20 +6,16 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
-/**
- * @author maxim
- *
- */
 public class Audio implements IAudio{
-	
+	Clip clip;
  /**
   * Play a sound in wav formats
   * @param Sound
   * 			String which contain the path to the sound
   */
-	 public static void PlaySound(File Sound) {
+	 public  void playSound(File Sound) {
 		try{	
-		Clip clip = AudioSystem.getClip();
+		clip = AudioSystem.getClip();
 		clip.open(AudioSystem.getAudioInputStream(Sound));
 		clip.start();
 		FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -27,5 +23,14 @@ public class Audio implements IAudio{
 		}
 		catch(Exception e){
 		}
+		
+
+	}	
+	 
+	 /* (non-Javadoc)
+	 * @see view.IAudio#stopSound()
+	 */
+	public void stopSound(){
+		clip.stop();
 	}
 }

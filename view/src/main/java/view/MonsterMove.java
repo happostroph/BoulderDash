@@ -26,7 +26,8 @@ public class MonsterMove implements IMonsterMove {
 							spit.setHasMoved(true);
 							sprites[ligne + 1][colonne] = spit;
 							gameOver();
-						} else if (isSpriteNearCharacter(sprites[ligne - 1][colonne]) && spit.getDirection() == 1) {
+						}
+						else if (isSpriteNearCharacter(sprites[ligne - 1][colonne]) && spit.getDirection() == 1) {
 							sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 							spit.setY(spit.getY() - 16);
 							spit.setHasMoved(true);

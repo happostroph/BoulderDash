@@ -8,15 +8,11 @@ import view.IPanel;
 import view.ISprite;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Move implements IMove {
 	protected ISprite[][] sprites;
 	protected int SET_SIZE;
 	protected IPanel panel;
-	public boolean gameOver = false, victory = false;
+	protected boolean gameOver = false, victory = false;
 	protected Image image;
 
 	/**
@@ -25,7 +21,7 @@ public class Move implements IMove {
 	 * @param sprites
 	 * @param SET_SIZE
 	 */
-	public void setMapModifier(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
+	public Move(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		this.sprites = sprites;
 		this.SET_SIZE = SET_SIZE;
 		this.panel = panel;
@@ -40,7 +36,7 @@ public class Move implements IMove {
 	 * @return sprites
 	 */
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite) {
-		GoToLeft left = new GoToLeft();
+		GoToLeft left = new GoToLeft(sprites, ligne, panel);
 		return left.goLeft(colonne, ligne, sprite, this.sprites, this.panel);
 	}
 
@@ -54,7 +50,7 @@ public class Move implements IMove {
 	 * @return sprites
 	 */
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite) {
-		GoToRight right = new GoToRight();
+		GoToRight right = new GoToRight(sprites, ligne, panel);
 		return right.goRight(colonne, ligne, sprite, this.sprites, this.panel);
 	}
 
@@ -67,7 +63,7 @@ public class Move implements IMove {
 	 * @return sprites
 	 */
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite) {
-		GoToUp up = new GoToUp();
+		GoToUp up = new GoToUp(sprites, ligne, panel);
 		return up.goUp(colonne, ligne, sprite, this.sprites, this.panel);
 
 	}
@@ -81,29 +77,32 @@ public class Move implements IMove {
 	 * @return sprites
 	 */
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite) {
-		GoToDown down = new GoToDown();
+		GoToDown down = new GoToDown(sprites, ligne, panel);
 		return down.goDown(colonne, ligne, sprite, this.sprites, this.panel);
 	}
 
 	/**
+	 * return true if the sprite is BLOCKING
 	 * @param sprite
-	 * @return
+	 * @return boolean
 	 */
 	public Boolean isSpriteOn(ISprite sprite) {
 		return sprite.getPermeability() == Permeability.BLOCKING;
 	}
 
 	/**
+	 * return true if the sprite is a Diamond
 	 * @param sprite
-	 * @return
+	 * @return boolean
 	 */
 	public Boolean nextToDiamond(ISprite sprite) {
 		return sprite.getType() == SpriteType.DIAMOND;
 	}
 
 	/**
+	 * return true if the sprite is a Monster
 	 * @param sprite
-	 * @return
+	 * @return boolean
 	 */
 	public Boolean nextToMonster(ISprite sprite) {
 		return sprite.getType() == SpriteType.MONSTER;
@@ -117,16 +116,18 @@ public class Move implements IMove {
 	}
 
 	/**
+	 * return true if the sprite is a Rock
 	 * @param sprite
-	 * @return
+	 * @return boolean
 	 */
 	public Boolean nextToRock(ISprite sprite) {
 		return sprite.getType() == SpriteType.ROCK;
 	}
 
 	/**
+	 * return true if the sprite is the Exit and if it's PERMEABLE
 	 * @param sprite
-	 * @return
+	 * @return boolean
 	 */
 	public Boolean nextToOpenedExit(ISprite sprite) {
 		return (sprite.getType() == SpriteType.EXIT && sprite.getPermeability() == Permeability.PERMEABLE);
@@ -135,8 +136,8 @@ public class Move implements IMove {
 	/* (non-Javadoc)
 	 * @see view.IMove#gameOver()
 	 */
-	public void gameOver() {
-		gameOver = true;
+	public void gameOver(boolean gameOver) {
+		this.gameOver = gameOver;
 	}
 
 	/* (non-Javadoc)
@@ -157,7 +158,7 @@ public class Move implements IMove {
 	 * @see view.IMove#setVictory(boolean)
 	 */
 	
-	public void setVictory(boolean victory) {
-		this.victory = victory;
+	public void setVictory() {
+		this.victory = true;
 	}
 }

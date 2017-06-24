@@ -6,10 +6,6 @@ import model.Permeability;
 import view.ISprite;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public abstract class Sprite implements ISprite {
 	protected Image image;
 	protected int x = 0, y = 0;
@@ -26,19 +22,6 @@ public abstract class Sprite implements ISprite {
 		return x;
 	}
 
-	/* (non-Javadoc)
-	 * @see view.ISprite#isNearCharacter()
-	 */
-	public boolean isNearCharacter() {
-		return isNearCharacter;
-	}
-
-	/* (non-Javadoc)
-	 * @see view.ISprite#setNearCharacter(boolean)
-	 */
-	public void setNearCharacter(boolean isNearCharacter) {
-		this.isNearCharacter = isNearCharacter;
-	}
 
 	/**
 	 * @param x
@@ -70,34 +53,58 @@ public abstract class Sprite implements ISprite {
 		return image;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#setImage(java.awt.Image)
+	 */
 	@Override
 	public void setImage(Image image) {
 		this.image = image;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#getPermeability()
+	 */
 	public Permeability getPermeability() {
 		return permeability;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#setPermeability(model.Permeability)
+	 */
 	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#getType()
+	 */
 	public SpriteType getType() {
 		return type;
 	}
 
+	/* (non-Javadoc)
+	 * @see view.ISprite#isHasMoved()
+	 */
 	public boolean isHasMoved() {
 		return hasMoved;
 	}
 
-	public void setHasMoved(boolean hasMoved) {
+	/* (non-Javadoc)
+	 * @see view.ISprite#setHasMoved(boolean)
+	 */
+	public void setHasMoved(boolean hasMoved ) {
 		this.hasMoved = hasMoved;
 	}
 	
+	/* (non-Javadoc)
+	 * @see view.ISprite#getDirection()
+	 */
 	public int getDirection() {
 		return direction;
 	}
+	/* (non-Javadoc)
+	 * @see view.ISprite#setDirection(int)
+	 */
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}

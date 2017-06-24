@@ -2,11 +2,6 @@ package view;
 
 import view.element.Background;
 
-/**
- * @author maxim
- *
- */
-
 public class Gravity implements IGravity {
 	private int ligne = 0, colonne = 0;
 	private boolean gameOver = false;
@@ -27,14 +22,14 @@ public class Gravity implements IGravity {
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
 					}
-					if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+					else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
 						gameOver();
 					}
-					if (isSpriteAboveMonster(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+					else if (isSpriteAboveMonster(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
@@ -79,42 +74,41 @@ public class Gravity implements IGravity {
 	}
 
 	/**
-	 * @param sprites
-	 * @return
+	 * return true if the sprite is a rock or diamond
+	 * @param sprite
+	 * @return boolean
 	 */
-	public Boolean isSpriteAboveRockOrDiamond(ISprite sprites) {
-		if (sprites.getType() == SpriteType.ROCK || sprites.getType() == SpriteType.DIAMOND) {
-			return true;
-		} else {
-			return false;
-		}
+	public Boolean isSpriteAboveRockOrDiamond(ISprite sprite) {
+			return sprite.getType() == SpriteType.ROCK || sprite.getType() == SpriteType.DIAMOND;
 	}
 
 	/* (non-Javadoc)
 	 * @see view.IGravity#isSpriteNextToBackground(view.ISprite)
 	 */
-	public Boolean isSpriteNextToBackground(ISprite sprites) {
-		return sprites.getType() == SpriteType.BACKGROUND;
+	public Boolean isSpriteNextToBackground(ISprite sprite) {
+		return sprite.getType() == SpriteType.BACKGROUND;
 	}
 
 	/**
-	 * @param sprites
-	 * @return
+	 * return true if the sprite is a character
+	 * @param sprite
+	 * @return boolean
 	 */
-	public Boolean isSpriteAboveCharacter(ISprite sprites) {
-		return sprites.getType() == SpriteType.CHARACTER;
+	public Boolean isSpriteAboveCharacter(ISprite sprite) {
+		return sprite.getType() == SpriteType.CHARACTER;
 	}
 	
 	/**
-	 * @param sprites
+	 * return true if the sprite is a monster
+	 * @param sprite
 	 * @return
 	 */
-	public Boolean isSpriteAboveMonster(ISprite sprites) {
-		return sprites.getType() == SpriteType.MONSTER;
+	public Boolean isSpriteAboveMonster(ISprite sprite) {
+		return sprite.getType() == SpriteType.MONSTER;
 	}
 
 	/**
-	 * 
+	 * Set gameOver to true
 	 */
 	public void gameOver() {
 		gameOver = true;

@@ -8,13 +8,10 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Character extends Sprite{
 
 	/**
+	 * Constructor of Character
 	 * @param x
 	 * @param y
 	 */

@@ -11,8 +11,13 @@ public class Window extends JFrame implements IWindow {
 	Panel panel;
 	int finalDiamonds;
 
+
 	/**
 	 * The constructor of Window
+	 * @param maker
+	 * @param listener
+	 * @param finalDiamonds
+	 * @param title
 	 */
 	public Window(MapMaker maker, IBDKeyListener listener, int finalDiamonds, int title) {
 
@@ -37,6 +42,8 @@ public class Window extends JFrame implements IWindow {
 		 */
 		this.setContentPane(panel);
 		this.setVisible(true);
+		
+		
 	}
 	
 	

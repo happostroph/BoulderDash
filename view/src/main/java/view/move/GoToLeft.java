@@ -11,22 +11,24 @@ import view.element.Background;
 import view.element.Monster;
 import view.element.Rock;
 
-/**
- * @author maxim
- *
- */
 public class GoToLeft extends Move {
-	public GoToLeft() {
-		super();
+
+	public GoToLeft(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
+		super(sprites, SET_SIZE, panel);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * Tries to move the character left, if he cross a diamond he will collect
+	 * it, if it's an opened exit he will win, if it's a monster he will die, if
+	 * it's a BLOCKING sprite he wouldn't move, otherwise he will go left
+	 * 
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @return
+	 * @return sprites
 	 */
 	public ISprite[][] goLeft(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel) {
 		try {
@@ -37,13 +39,16 @@ public class GoToLeft extends Move {
 		}
 		if (nextToDiamond(sprites[ligne][colonne - 1])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
-		} else if (nextToOpenedExit(sprites[ligne][colonne - 1])) {
-			setVictory(true);
-		} else if (nextToMonster(sprites[ligne][colonne - 1])) {
+		}
+		if (nextToOpenedExit(sprites[ligne][colonne - 1])) {
+			setVictory();
+		}
+		if (nextToMonster(sprites[ligne][colonne - 1])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setX(sprite.getX() - 16);
 			sprites[ligne][colonne - 1] = new Monster(sprite.getX(), sprite.getY());
-			gameOver();
+			System.out.println("game of");
+			gameOver(true);
 			return sprites;
 		}
 		if (nextToRock(sprites[ligne][colonne - 1]) && nextToBackground(sprites[ligne][colonne - 2])) {
@@ -64,5 +69,6 @@ public class GoToLeft extends Move {
 			sprites[ligne][colonne - 1] = sprite;
 			return sprites;
 		}
+
 	}
 }

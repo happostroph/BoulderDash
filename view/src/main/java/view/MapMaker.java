@@ -15,7 +15,7 @@ import view.element.Unbreakable;
 public class MapMaker implements IMapMaker {
 	private ISprite[][] sprites = new Sprite[22][40];
 	private SpriteType map[][];
-	private int x = 0, y = 0, ligne = 0, colonne = 0, characterX = 0, characterY = 0;
+	private int x = 0, y = 0, ligne = 0, colonne = 0;
 
 	/**
 	 * The constructor of MapMaker,
@@ -25,8 +25,6 @@ public class MapMaker implements IMapMaker {
 	 */
 	public MapMaker(TranslateMap translate) {
 		this.map = translate.getMap();
-		this.characterX = translate.getCharacterX();
-		this.characterY = translate.getCharacterY();
 	}
 
 	/**

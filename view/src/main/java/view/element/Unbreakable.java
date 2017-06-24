@@ -8,13 +8,10 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Unbreakable extends Sprite{
 	
 	/**
+	 * Constructor of Unbreakable
 	 * @param x
 	 * @param y
 	 */

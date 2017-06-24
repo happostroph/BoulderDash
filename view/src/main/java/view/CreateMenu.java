@@ -15,33 +15,31 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- * @author maxim
- *
- */
 
-/**
- * @author maxim
- *
- */
 public class CreateMenu extends JFrame {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	int choice = 0;
 	List<LevelObservator> observators = new ArrayList<>();
 
+	/**
+	 * Getter of observators
+	 * @return observators
+	 */
 	public List<LevelObservator> getObservators() {
 		return observators;
 	}
 
+	/**
+	 * Setter of observators
+	 * @param observators
+	 */
 	public void setObservators(List<LevelObservator> observators) {
 		this.observators = observators;
 	}
 
 	/**
-	 * 
+	 * Method which create the Menu
 	 */
 	public CreateMenu() {
 		setSize(new Dimension(700, 400));
@@ -84,6 +82,7 @@ public class CreateMenu extends JFrame {
 	}
 
 	/**
+	 * Getter of choice
 	 * @return choice
 	 */
 	public int getChoice() {

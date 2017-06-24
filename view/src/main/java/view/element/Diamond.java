@@ -8,13 +8,10 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Diamond extends Sprite{
 
 	/**
+	 * Constructor of Diamond
 	 * @param x
 	 * @param y
 	 */

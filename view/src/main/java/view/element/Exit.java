@@ -8,13 +8,10 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Exit extends Sprite{
 	
 	/**
+	 * Constructor of Exit
 	 * @param x
 	 * @param y
 	 */

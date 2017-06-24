@@ -8,10 +8,6 @@ import java.sql.Statement;
 
 import model.IDAOTest;
 
-/**
- * @author maxim
- *
- */
 public class DAOTest implements IDAOTest {
 	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
 	private String LOGIN = "boulderdash";
@@ -58,8 +54,8 @@ public class DAOTest implements IDAOTest {
 				result = statement.executeQuery("call `procédure_LV2`");
 				break;
 			case 3:
-				result = statement.executeQuery("call `procédure_LV3`");
-				// result = statement.executeQuery("call `test`");
+				//result = statement.executeQuery("call `procédure_LV3`");
+				 result = statement.executeQuery("call `test`");
 				break;
 			case 4:
 				result = statement.executeQuery("call `procédure_LV4`");
@@ -77,6 +73,11 @@ public class DAOTest implements IDAOTest {
 		}
 	}
 
+	/**
+	 * Take in BD the number of diamonds corresponding to the map
+	 * @param choice
+	 * @throws SQLException
+	 */
 	public void executeDiamondQuery(int choice) throws SQLException {
 		switch (choice) {
 		case 1:
@@ -101,17 +102,18 @@ public class DAOTest implements IDAOTest {
 	}
 
 	/**
-	 * Take the data of the executed request and put character of the map in a
-	 * character table
-	 * 
+	 * Put the request in a attribute
 	 * @throws SQLException
 	 */
 
-	public void setQueryDiamonds() throws SQLException {
+	public void setQueryDiamondsInToInteger() throws SQLException {
 		result.next();
 		finalDiamonds = result.getInt(1);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IDAOTest#setQueryIntoTable()
+	 */
 	public void setQueryIntoTable() {
 		try {
 			int ligne = 0;
@@ -147,6 +149,9 @@ public class DAOTest implements IDAOTest {
 		return tab;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IDAOTest#getChoice()
+	 */
 	public int getChoice() {
 		return choice;
 	}

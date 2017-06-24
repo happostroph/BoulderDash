@@ -8,13 +8,10 @@ import javax.imageio.ImageIO;
 import model.Permeability;
 import view.SpriteType;
 
-/**
- * @author maxim
- *
- */
 public class Background extends Sprite {
 
 	/**
+	 * Constructor of Background
 	 * @param x
 	 * @param y
 	 */
