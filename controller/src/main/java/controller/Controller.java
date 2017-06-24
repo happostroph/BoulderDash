@@ -4,10 +4,25 @@ import java.awt.Window;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
+
 import javax.swing.JOptionPane;
+
 import model.Permeability;
 import model.UserOrder;
-import view.*;
+import view.Audio;
+import view.Gravity;
+import view.IAudio;
+import view.IGravity;
+import view.IMapMaker;
+import view.IMonsterMove;
+import view.IMove;
+import view.IPanel;
+import view.ISprite;
+import view.IVictoryDiamonds;
+import view.MonsterMove;
+import view.SpriteType;
+import view.VictoryDiamonds;
+import view.move.Move;
 
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
@@ -15,12 +30,12 @@ public class Controller implements IController, Observer {
 	private IPanel panel;
 	private ISprite sprite;
 	private IMapMaker maker;
-	private IMove move;
-	private IGravity gravity;
+	 private IMove move;
+	 private IGravity gravity;
 	private Window window;
-	private IMonsterMove monsterMove;
-	private IVictoryDiamonds victoryDiamonds;
-	private IAudio audio;
+	 private IMonsterMove monsterMove;
+	 private IVictoryDiamonds victoryDiamonds;
+	 private IAudio audio;
 
 	/**
 	 * Constructor of Controller
@@ -37,20 +52,22 @@ public class Controller implements IController, Observer {
 	 * @param victoryDiamonds
 	 * @param audio
 	 */
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMove move, IMapMaker maker, IGravity gravity,
-			Window window, IMonsterMove monsterMove, int finalDiamonds, IVictoryDiamonds victoryDiamonds,
-			IAudio audio) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, IMapMaker maker, Window window, int finalDiamonds, Move move) {
+		
+
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
-		this.move = move;
 		this.maker = maker;
-		this.gravity = gravity;
 		this.window = window;
-		this.monsterMove = monsterMove;
 		this.finalDiamonds = finalDiamonds;
-		this.victoryDiamonds = victoryDiamonds;
-		this.audio = audio;
+		this.move = move;
+		
+
+		gravity = new Gravity();
+		monsterMove = new MonsterMove();
+		victoryDiamonds = new VictoryDiamonds();
+		audio = new Audio();
 		audio.playSound(new File("music/pokemon.wav"));
 	}
 
@@ -64,6 +81,7 @@ public class Controller implements IController, Observer {
 			Thread.sleep(100);
 			maker.setAllHasMovedToFalse(maker.getSprites());
 			move.setVictory(false);
+			move.gameOver(false);
 
 			colonne = sprite.getX() / SET_SIZE;
 			ligne = sprite.getY() / SET_SIZE;

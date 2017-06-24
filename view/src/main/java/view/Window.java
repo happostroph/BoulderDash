@@ -47,7 +47,7 @@ public class Window extends JFrame implements IWindow {
 	}
 	
 	
-	public Panel getPanel() {
+	public IPanel getPanel() {
 		return panel;
 	}
 }

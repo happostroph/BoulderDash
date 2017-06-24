@@ -52,7 +52,7 @@ public class GoToDown extends Move {
 		if (nextToMonster(sprites[ligne + 1][colonne])) {
 			sprites[ligne][colonne] = new Background(sprite.getX(), sprite.getY());
 			sprite.setY(sprite.getY() + 16);
-			sprites[ligne + 1][colonne] = new Monster(sprite.getX(), (sprite.getY() + 16));
+			sprites[ligne + 1][colonne] = new Monster(sprite.getX(), sprite.getY());
 			gameOver(true);
 			return sprites;
 		} else if (isSpriteOn(sprites[ligne + 1][colonne])) {
