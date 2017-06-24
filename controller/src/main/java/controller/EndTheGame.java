@@ -11,12 +11,22 @@ public class EndTheGame {
 	private Window window;
 	private Audio audio;
 	
+	/**
+	 * Constructon of EndTheGame 
+	 *
+	 * @param panel
+	 * @param window
+	 * @param audio
+	 */
 	public EndTheGame(IPanel panel, Window window, Audio audio){
 		this.panel = panel;
 		this.window = window;
 		this.audio = audio;
 	}
 	
+	/**
+	 * 
+	 */
 	public void gameOver(){
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Game Over!");

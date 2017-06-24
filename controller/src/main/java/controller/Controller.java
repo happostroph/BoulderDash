@@ -31,21 +31,16 @@ public class Controller implements IController, Observer {
 	private Audio audio;
 	private EndTheGame end;
 
-	/**
-	 * Constructor of Controller
-	 * 
-	 * @param sprite
-	 * @param panel
-	 * @param SET_SIZE
-	 * @param move
-	 * @param maker
-	 * @param gravity
-	 * @param window
-	 * @param monsterMove
-	 * @param finalDiamonds
-	 * @param victoryDiamonds
-	 * @param audio
-	 */
+/**
+ * Constructor of Controller
+ * 
+ * @param sprite
+ * @param panel
+ * @param SET_SIZE
+ * @param maker
+ * @param window
+ * @param finalDiamonds
+ */
 	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, Window window, int finalDiamonds) {
 		this.panel = panel;
 		this.sprite = sprite;
