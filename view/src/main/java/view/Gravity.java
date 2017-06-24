@@ -49,8 +49,7 @@ public class Gravity implements IGravity {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)
-						&& isSpriteAboveRockOrDiamond(sprites[ligne + 1][colonne])
-						&& !sprites[ligne][colonne].isHasMoved()) {
+						&& isSpriteAboveRockOrDiamond(sprites[ligne + 1][colonne])) {
 					if (isSpriteNextToBackground(sprites[ligne][colonne + 1])
 							&& isSpriteNextToBackground(sprites[ligne + 1][colonne + 1])) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());

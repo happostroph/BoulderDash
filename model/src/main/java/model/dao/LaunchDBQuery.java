@@ -13,10 +13,18 @@ public class LaunchDBQuery {
 	protected static Statement statement = null;
 	protected static ResultSet result;
 	
+	/**
+	 * Constructor of LaunchDBQuery
+	 * 
+	 * @param level
+	 */
 	public LaunchDBQuery(int level){
 		LaunchDBQuery.level = level;
 	}
 	
+	/**
+	 * Contains all the query we need to execute
+	 */
 	public void launchQueries(){
 		connectionBDD = new DAOConnector(level);
 		connectionBDD.connection();
@@ -35,10 +43,20 @@ public class LaunchDBQuery {
 		}
 	}
 	
+	/**
+	 * Getters of tab
+	 * 
+	 * @return tab
+	 */
 	public char[][] getTab() {
 		return tab;
 	}
 	
+	/**
+	 * Getters of finalDiamonds
+	 * 
+	 * @return finalDiamonds
+	 */
 	public int getFinalDiamonds() {
 		return finalDiamonds;
 	}

@@ -12,8 +12,6 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 	 * Constructor of MapQuery
 	 * 
 	 * @param level
-	 * @param result
-	 * @param statement
 	 */
 	public MapQuery(int level) {
 		super(level);

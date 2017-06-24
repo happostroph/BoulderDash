@@ -12,8 +12,6 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 	 * Constructor of DiamondQuery
 	 * 
 	 * @param level
-	 * @param result
-	 * @param statement
 	 */
 	public DiamondQuery(int level) {
 		super(level);

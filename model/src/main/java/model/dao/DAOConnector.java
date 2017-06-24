@@ -9,12 +9,6 @@ import java.sql.Statement;
 import model.IDAOConnector;
 
 public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
-	
-	public DAOConnector(int level) {
-		super(level);
-		// TODO Auto-generated constructor stub
-	}
-
 	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
 	private String LOGIN = "boulderdash";
 	private String PASSWORD = "boulderdash";
@@ -22,6 +16,16 @@ public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
 
 
 	private int choice = 0;
+	
+	/**
+	 * Constructor of DAOConnector
+	 * 
+	 * @param level
+	 */
+	public DAOConnector(int level) {
+		super(level);
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * Connection to the remote database
@@ -46,10 +50,16 @@ public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
 		return choice;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IDAOConnector#getStatement()
+	 */
 	public Statement getStatement() {
 		return statement;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IDAOConnector#getResult()
+	 */
 	public ResultSet getResult() {
 		return result;
 	}
