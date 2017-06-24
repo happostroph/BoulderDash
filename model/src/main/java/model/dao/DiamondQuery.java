@@ -18,10 +18,8 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 		// TODO Auto-generated constructor stub
 	}
 	
-	/**
-	 * Take in BD the number of diamonds corresponding to the map
-	 * @param choice
-	 * @throws SQLException
+	/* (non-Javadoc)
+	 * @see model.IDiamondQuery#executeDiamondQuery(java.sql.ResultSet, java.sql.Statement)
 	 */
 	public ResultSet executeDiamondQuery(ResultSet result, Statement statement) throws SQLException {
 		switch (level) {
@@ -49,7 +47,6 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 	
 	/**
 	 * Put the request in a attribute
-	 * @throws SQLException
 	 */
 	public void setQueryDiamondsInToInteger(ResultSet result){
 		try {
