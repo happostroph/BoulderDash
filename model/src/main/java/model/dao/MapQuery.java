@@ -35,8 +35,8 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 				result = statement.executeQuery("call `procédure_LV2`");
 				break;
 			case 3:
-				// result = statement.executeQuery("call `procédure_LV3`");
-				result = statement.executeQuery("call `test`");
+				result = statement.executeQuery("call `procédure_LV3`");
+				//result = statement.executeQuery("call `test`");
 				break;
 			case 4:
 				result = statement.executeQuery("call `procédure_LV4`");
