@@ -40,7 +40,7 @@ public class EndTheGame {
 	 * Execute the victory routine
 	 */
 	public void victory(Audio audio){
-		audio.playSound(new File("music/victory.wav"), -20.0f);
+		audio.playSound(new File("music/victory.wav"), 10.0f);
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Victory!");
 		window.dispose();
