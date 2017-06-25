@@ -33,6 +33,7 @@ public class Controller implements IController, Observer {
 	private Audio gravitySounds;
 	private Audio moveSounds;
 	private Audio gameOver;
+	private Audio victory;
 	private EndTheGame end;
 
 	/**
@@ -64,6 +65,7 @@ public class Controller implements IController, Observer {
 		gravitySounds = new Audio();
 		moveSounds = new Audio();
 		gameOver = new Audio();
+		victory = new Audio();
 		end = new EndTheGame(this.panel, this.window);
 	}
 
@@ -74,7 +76,7 @@ public class Controller implements IController, Observer {
 	public final void directionControl() throws InterruptedException {
 		if (sprite.getType() == SpriteType.CHARACTER) {
 
-			Thread.sleep(100);
+			Thread.sleep(50);
 			maker.setAllHasMovedToFalse(maker.getSprites());
 			move.setVictory(false);
 			move.gameOver(false);
@@ -119,8 +121,10 @@ public class Controller implements IController, Observer {
 			}
 
 			if (move.isVictory()) {
+				backSound.stopSound();
 				victoryDiamonds.setDirtAndBackgroundToDiamond(maker.getSprites(), SET_SIZE);
-				end.victory();
+				end.victory(victory);
+				victory.stopSound();
 			}
 			stackOrder = UserOrder.NOOP;
 			panel.update();
