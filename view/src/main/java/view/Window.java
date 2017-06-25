@@ -8,7 +8,7 @@ import controller.IBDKeyListener;
 
 public class Window extends JFrame implements IWindow {
 	private static final long serialVersionUID = 8164118974463460991L;
-	Panel panel;
+	private Panel panel;
 	int finalDiamonds;
 
 
@@ -27,7 +27,7 @@ public class Window extends JFrame implements IWindow {
 		this.finalDiamonds = finalDiamonds;
 		this.setTitle("BoulderDash level " + title);
 		this.setSize(660, 420);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setFocusable(true);

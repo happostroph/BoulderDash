@@ -11,9 +11,9 @@ public interface IMapMaker {
 
 	/**
 	 * Draw the map
-	 * @param graphics
+	 * @param g
 	 */
-	public void drawMap(Graphics graphics);
+	public void drawMap(Graphics g);
 
 	/**
 	 * Getter of sprites

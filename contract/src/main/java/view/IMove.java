@@ -7,6 +7,7 @@ public interface IMove {
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
+	 * @param audio
 	 * @return table who contains the modified map
 	 */
 	public ISprite[][] digLeft(int colonne, int ligne, ISprite sprite, IAudio audio);
@@ -16,6 +17,7 @@ public interface IMove {
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
+	 * @param audio
 	 * @return table who contains the modified map
 	 */
 	public ISprite[][] digRight(int colonne, int ligne, ISprite sprite, IAudio audio);
@@ -25,6 +27,7 @@ public interface IMove {
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
+	 * @param audio
 	 * @return table who contains the modified map
 	 */
 	public ISprite[][] digUp(int colonne, int ligne, ISprite sprite, IAudio audio);
@@ -34,6 +37,7 @@ public interface IMove {
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
+	 * @param audio
 	 * @return table who contains the modified map
 	 */
 	public ISprite[][] digDown(int colonne, int ligne, ISprite sprite, IAudio audio);
@@ -55,8 +59,9 @@ public interface IMove {
 
 	/**
 	 * Set the boolean victory to true
+	 * @param victory
 	 */
-	public void setVictory(boolean gameOver);
+	public void setVictory(boolean victory);
 	
 	/**
 	 * Looks if the sprite is a background

@@ -9,12 +9,10 @@ import java.sql.Statement;
 import model.IDAOConnector;
 
 public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
-	private String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
-	private String LOGIN = "boulderdash";
-	private String PASSWORD = "boulderdash";
+	private final String URL = "jdbc:mysql://178.62.12.146:3306/boulderdash";
+	private final String LOGIN = "boulderdash";
+	private final String PASSWORD = "boulderdash";
 	private Connection connection = null;
-
-
 	private int choice = 0;
 	
 	/**

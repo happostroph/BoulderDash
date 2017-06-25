@@ -7,7 +7,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
 public class Audio implements IAudio{
-	Clip clip;
+	private Clip clip;
  /**
   * Play a sound in wav formats
   * @param Sound

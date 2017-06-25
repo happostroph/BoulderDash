@@ -82,6 +82,4 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 		// System.out.println("");
 		// }
 	}
-	
-
 }

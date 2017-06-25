@@ -10,11 +10,10 @@ import view.TranslateMap;
 import view.Window;
 
 public class Launcher implements LevelObservator {
-	static CreateMenu menu;
-	static MapMaker maker = null;
+	private static CreateMenu menu;
+	private static MapMaker maker = null;
 	static File music = null;
-	static boolean test = true;
-	final static int SET_SIZE = 16;
+	private final static int SET_SIZE = 16;
 
 	/**
 	 * Constructor of Launcher

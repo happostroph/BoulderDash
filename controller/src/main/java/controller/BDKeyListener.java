@@ -7,7 +7,7 @@ import java.util.Observable;
 import model.UserOrder;
 
 public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
-	IController controller;
+	private IController controller;
 	
 	/**
 	 * It return the direction corresponding to the key pressed
