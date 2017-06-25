@@ -35,7 +35,7 @@ public class GoToDown extends Move {
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @param aaudio
+	 * @param audio
 	 * @return sprites
 	 */
 	public ISprite[][] goDown(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {

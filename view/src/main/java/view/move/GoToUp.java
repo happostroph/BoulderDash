@@ -18,18 +18,19 @@ public class GoToUp extends Move {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	/**
 	 * Tries to move the character up, if he cross a diamond he will collect it,
 	 * if it's an opened exit he will win, if it's a monster he will die, if
 	 * it's a BLOCKING sprite he wouldn't move, otherwise he will go up
-	 * 
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @param aaudio
-	 * @return sprites
+	 * @param audio
+	 * @return
 	 */
 	public ISprite[][] goUp(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {
 		try {

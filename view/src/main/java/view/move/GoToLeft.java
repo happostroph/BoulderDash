@@ -29,7 +29,7 @@ public class GoToLeft extends Move {
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @param aaudio
+	 * @param audio
 	 * @return sprites
 	 */
 	public ISprite[][] goLeft(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {

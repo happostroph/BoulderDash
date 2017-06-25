@@ -19,18 +19,18 @@ public class GoToRight extends Move {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	/**
 	 * Tries to move the character right, if he cross a diamond he will collect
 	 * it, if it's an opened exit he will win, if it's a monster he will die, if
 	 * it's a BLOCKING sprite he wouldn't move, otherwise he will go right
-	 * 
 	 * @param colonne
 	 * @param ligne
 	 * @param sprite
 	 * @param sprites
 	 * @param panel
-	 * @param aaudio
-	 * @return sprites
+	 * @param audio
+	 * @return
 	 */
 	public ISprite[][] goRight(int colonne, int ligne, ISprite sprite, ISprite[][] sprites, IPanel panel, IAudio audio) {
 		try {

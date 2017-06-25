@@ -17,7 +17,6 @@ public class EndTheGame {
 	 *
 	 * @param panel
 	 * @param window
-	 * @param audio
 	 */
 	public EndTheGame(IPanel panel, Window window){
 		this.panel = panel;

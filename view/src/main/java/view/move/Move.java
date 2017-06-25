@@ -16,13 +16,12 @@ public class Move implements IMove {
 	protected static boolean gameOver = false, victory = false;
 	protected Image image;
 
+
 	/**
 	 * Constructor of Move
-	 * 
 	 * @param sprites
 	 * @param SET_SIZE
 	 * @param panel
-	 * @param audio
 	 */
 	public Move(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		this.sprites = sprites;
