@@ -19,19 +19,27 @@ public class Gravity implements IGravity {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)) {
-					if (isSpriteNextToBackground(sprites[ligne + 1][colonne])
-							|| isSpriteAboveMonster(sprites[ligne + 1][colonne])) {
+					if ((isSpriteNextToBackground(sprites[ligne + 1][colonne])
+							|| isSpriteAboveMonster(sprites[ligne + 1][colonne])) && !spit.isHasMoved()) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
+						spit.setBlocked(false);
 						sprites[ligne + 1][colonne] = spit;
-					} else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && spit.isHasMoved()) {
+					} else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && !spit.isHasMoved()
+							&& spit.isWasAboveCharacter() && !spit.isBlocked()) {
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);
 						sprites[ligne + 1][colonne] = spit;
 						audio.playSound(new File("music/die.wav"), 30.0f);
 						gameOver();
+					} else if (isSpriteAboveCharacter(sprites[ligne + 1][colonne]) && !spit.isHasMoved()
+							&& !spit.isWasAboveCharacter()) {
+						spit.setWasAboveCharacter(true);
+						spit.setBlocked(true);
+					} else if(isSpriteAboveDirt(sprites[ligne + 1][colonne])){
+						spit.setWasAboveCharacter(false);
 					}
 				}
 				colonne++;
@@ -109,6 +117,16 @@ public class Gravity implements IGravity {
 	 */
 	public Boolean isSpriteAboveMonster(ISprite sprite) {
 		return sprite.getType() == SpriteType.MONSTER;
+	}
+	
+	/**
+	 * return true if the sprite is a monster
+	 * 
+	 * @param sprite
+	 * @return
+	 */
+	public Boolean isSpriteAboveDirt(ISprite sprite) {
+		return sprite.getType() == SpriteType.DIRT;
 	}
 
 	/**

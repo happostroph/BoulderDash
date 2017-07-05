@@ -12,7 +12,9 @@ public abstract class Sprite implements ISprite {
 	protected Permeability permeability;
 	protected SpriteType type;
 	protected boolean hasMoved = false;
+	protected boolean blocked = false;
 	protected boolean isNearCharacter = false;
+	protected boolean wasAboveCharacter = false;
 	private int direction = 0;
 	
 	/**
@@ -107,5 +109,25 @@ public abstract class Sprite implements ISprite {
 	 */
 	public void setDirection(int direction) {
 		this.direction = direction;
+	}
+
+
+	public boolean isWasAboveCharacter() {
+		return wasAboveCharacter;
+	}
+
+
+	public void setWasAboveCharacter(boolean wasAboveCharacter) {
+		this.wasAboveCharacter = wasAboveCharacter;
+	}
+
+
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 }

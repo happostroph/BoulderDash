@@ -82,4 +82,12 @@ public interface ISprite {
 	 * @param direction
 	 */
 	public void setDirection(int direction);
+	
+	public boolean isWasAboveCharacter();
+
+	public void setWasAboveCharacter(boolean wasAboveCharacter);
+	
+	public boolean isBlocked();
+	
+	public void setBlocked(boolean blocked);
 }

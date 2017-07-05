@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 
 import model.dao.LaunchDBQuery;
+import view.Audio;
 import view.CreateMenu;
 import view.LevelObservator;
 import view.MapMaker;
@@ -43,14 +44,21 @@ public class Launcher implements LevelObservator {
 					maker = new MapMaker(translate);
 					maker.spritesCreation(SET_SIZE);
 
+					
 					BDKeyListener bdkeyListener = new BDKeyListener();
 					Window window = new Window(maker, bdkeyListener, launchDBQueries.getFinalDiamonds(), level);
+					EndTheGame end = new EndTheGame(window.getPanel(), window);
+					Audio backSound = new Audio();
 					Controller controller = new Controller(
 							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, maker, window, launchDBQueries.getFinalDiamonds());
-
+							SET_SIZE, maker, launchDBQueries.getFinalDiamonds(), end, backSound);
+					
 					bdkeyListener.addObserver(controller);
 					bdkeyListener.setController(controller);
+					
+					
+					GameLoop gameLoop = new GameLoop(maker, window.getPanel(), end, backSound);
+					gameLoop.loop();
 
 				} catch (Exception e1) {
 					e1.printStackTrace();

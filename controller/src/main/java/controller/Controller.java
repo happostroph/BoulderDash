@@ -7,14 +7,11 @@ import java.util.Observer;
 import model.Permeability;
 import model.UserOrder;
 import view.Audio;
-import view.Gravity;
 import view.IPanel;
 import view.ISprite;
 import view.MapMaker;
-import view.MonsterMove;
 import view.SpriteType;
 import view.VictoryDiamonds;
-import view.Window;
 import view.move.Move;
 
 public class Controller implements IController, Observer {
@@ -24,13 +21,9 @@ public class Controller implements IController, Observer {
 	private ISprite sprite;
 	private MapMaker maker;
 	private Move move;
-	private Gravity gravity;
-	private Window window;
-	private MonsterMove monsterMove;
 	private VictoryDiamonds victoryDiamonds;
 	private Audio backSound;
 	private Audio start;
-	private Audio gravitySounds;
 	private Audio moveSounds;
 	private Audio gameOver;
 	private Audio victory;
@@ -46,27 +39,23 @@ public class Controller implements IController, Observer {
 	 * @param window
 	 * @param finalDiamonds
 	 */
-	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, Window window, int finalDiamonds) {
+	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, int finalDiamonds, EndTheGame end, Audio backSound) {
 		this.panel = panel;
 		this.sprite = sprite;
 		this.SET_SIZE = SET_SIZE;
 		this.maker = maker;
-		this.window = window;
 		this.finalDiamonds = finalDiamonds;
 
-		move = new Move(maker.getSprites(), SET_SIZE, window.getPanel());
-		gravity = new Gravity();
-		monsterMove = new MonsterMove();
+		move = new Move(maker.getSprites(), SET_SIZE, panel);
 		victoryDiamonds = new VictoryDiamonds();
-		backSound = new Audio();
+		this.backSound = backSound;
 		backSound.playSound(new File("music/game.wav"), -20.0f);
 		start = new Audio();
 		start.playSound(new File("music/new.wav"), 40.0f);
-		gravitySounds = new Audio();
 		moveSounds = new Audio();
 		gameOver = new Audio();
 		victory = new Audio();
-		end = new EndTheGame(this.panel, this.window);
+		this.end = end;
 	}
 
 	/**
@@ -77,7 +66,6 @@ public class Controller implements IController, Observer {
 		if (sprite.getType() == SpriteType.CHARACTER) {
 
 			Thread.sleep(50);
-			maker.setAllHasMovedToFalse(maker.getSprites());
 			move.setVictory(false);
 			move.gameOver(false);
 
@@ -101,17 +89,8 @@ public class Controller implements IController, Observer {
 			default:
 				break;
 			}
-			gravity.makeThemSlide(maker.getSprites());
-			gravity.makeThemFall(maker.getSprites(), gravitySounds);
 
 			if (move.isGameOver()) {
-				backSound.stopSound();
-				end.gameOver(gameOver);
-			}
-
-			monsterMove.toMoveTheMonsters(maker.getSprites(), gravitySounds);
-
-			if (gravity.isGameOver() || monsterMove.isGameOver()) {
 				backSound.stopSound();
 				end.gameOver(gameOver);
 			}
