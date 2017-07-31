@@ -118,11 +118,14 @@ public class CreateMenu extends JFrame implements Observer, ICreateMenu {
 	public void update(Observable obs, Object obj) {
 		// TODO Auto-generated method stub
 		if (obs instanceof IPseudoKeyListener) {
+			System.out.println(this.pseudo);
 			this.menuPanel.update();
 		}
 	}
 	
 	public void drawPseudo(Graphics g){
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 800, 500);
 		g.drawImage(image, 175, 50, null);
 		g.setFont(font);
 		g.setColor(Color.black);
