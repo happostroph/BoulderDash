@@ -13,8 +13,8 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 	 * 
 	 * @param level
 	 */
-	public DiamondQuery(int level) {
-		super(level);
+	public DiamondQuery(int level, String name) {
+		super(level, name);
 		// TODO Auto-generated constructor stub
 	}
 	

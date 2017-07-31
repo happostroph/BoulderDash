@@ -9,6 +9,7 @@ import controller.IBDKeyListener;
 public class Window extends JFrame implements IWindow {
 	private static final long serialVersionUID = 8164118974463460991L;
 	private Panel panel;
+	private ScorePanel scorePanel;
 	int finalDiamonds;
 
 
@@ -46,6 +47,28 @@ public class Window extends JFrame implements IWindow {
 		
 	}
 	
+	public Window(String playerName){
+
+		/*
+		 * Create a new window
+		 */
+		this.setTitle("Score");
+		this.setSize(660, 420);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setFocusable(true);
+		/*
+		 * Create a new Panel
+		 */
+		scorePanel = new ScorePanel(playerName);
+
+		/*
+		 * Fill the panel
+		 */
+		this.setContentPane(scorePanel);
+		this.setVisible(true);
+	}
 	
 	public IPanel getPanel() {
 		return panel;

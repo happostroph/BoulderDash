@@ -13,8 +13,8 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 	 * 
 	 * @param level
 	 */
-	public MapQuery(int level) {
-		super(level);
+	public MapQuery(int level, String name) {
+		super(level, name);
 		
 		// TODO Auto-generated constructor stub
 	}

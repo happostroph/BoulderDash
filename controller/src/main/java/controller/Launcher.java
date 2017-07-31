@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 
 import model.dao.LaunchDBQuery;
 import view.Audio;
@@ -18,10 +19,14 @@ public class Launcher implements LevelObservator {
 
 	/**
 	 * Constructor of Launcher
+	 * @throws IOException 
 	 */
-	public Launcher() {
-		menu = new CreateMenu();
+	public Launcher() throws IOException {
+		PseudoKeyListener pseudoKeyListener = new PseudoKeyListener();
+		menu = new CreateMenu(pseudoKeyListener);
 		menu.getObservators().add(this);
+		pseudoKeyListener.addObserver(menu);
+		pseudoKeyListener.setCreateMenu(menu);
 	}
 
 	/*
@@ -30,39 +35,44 @@ public class Launcher implements LevelObservator {
 	 * @see view.LevelObservator#onLevelSelected(int)
 	 */
 	@Override
-	public void onLevelSelected(int level) {
+	public void onLevelSelected(int level, String name) {
 		(new Thread(new Runnable() {
 			@Override
 			public void run() {
-				LaunchDBQuery launchDBQueries = new LaunchDBQuery(level);
-				launchDBQueries.launchQueries();
-				TranslateMap translate;
+				if (level == 42) {
+					new Window(menu.getPseudo());
+				}
 
-				try {
+				else {
+					LaunchDBQuery launchDBQueries = new LaunchDBQuery(level, menu.getPseudo());
+					launchDBQueries.launchQueries();
+					TranslateMap translate;
 
-					translate = new TranslateMap(launchDBQueries.getTab());
-					maker = new MapMaker(translate);
-					maker.spritesCreation(SET_SIZE);
+					try {
 
-					
-					BDKeyListener bdkeyListener = new BDKeyListener();
-					Window window = new Window(maker, bdkeyListener, launchDBQueries.getFinalDiamonds(), level);
-					EndTheGame end = new EndTheGame(window.getPanel(), window);
-					Audio backSound = new Audio();
-					Controller controller = new Controller(
-							maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()), window.getPanel(),
-							SET_SIZE, maker, launchDBQueries.getFinalDiamonds(), end, backSound);
-					
-					bdkeyListener.addObserver(controller);
-					bdkeyListener.setController(controller);
-					
-					
-					GameLoop gameLoop = new GameLoop(maker, window.getPanel(), end, backSound);
-					gameLoop.loop();
+						translate = new TranslateMap(launchDBQueries.getTab());
+						maker = new MapMaker(translate);
+						maker.spritesCreation(SET_SIZE);
 
-				} catch (Exception e1) {
-					e1.printStackTrace();
+						BDKeyListener bdkeyListener = new BDKeyListener();
+						Window window = new Window(maker, bdkeyListener, launchDBQueries.getFinalDiamonds(), level);
 
+						EndTheGame end = new EndTheGame(window.getPanel(), window, launchDBQueries);
+						Audio backSound = new Audio();
+						Controller controller = new Controller(
+								maker.getCharacter(translate.getCharacterX(), translate.getCharacterY()),
+								window.getPanel(), SET_SIZE, maker, launchDBQueries.getFinalDiamonds(), end, backSound);
+
+						bdkeyListener.addObserver(controller);
+						bdkeyListener.setController(controller);
+
+						GameLoop gameLoop = new GameLoop(maker, window.getPanel(), end, backSound);
+						gameLoop.loop();
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+
+					}
 				}
 			}
 		})).start();

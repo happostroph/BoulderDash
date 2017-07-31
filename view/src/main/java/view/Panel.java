@@ -12,7 +12,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	private static final long serialVersionUID = 1L;
 	protected Image buffer[][] = new Image[22][40];
 	Font font = new Font("Courier", Font.BOLD, 15);
-	private int diamondsGet = 0;
+	private int diamondsGet = 0, score = 0;
 	private IMapMaker maker;
 	private int finalDiamonds;
 
@@ -39,6 +39,12 @@ public class Panel extends JPanel implements Serializable, IPanel {
 		g.drawString("Diamonds : " + diamondsGet + "/" + finalDiamonds, 10, 365);
 	}
 	
+	public void counterScore(Graphics g){
+		g.setFont(font);
+		g.setColor(Color.black);
+		g.drawString("Score : " + score, 10, 380);
+	}
+	
 	/**
 	 * @param g
 	 */
@@ -53,6 +59,7 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	public void paintComponent(Graphics g) {
 		this.updateCount(g);
 		this.counterDiamond(g);
+		this.counterScore(g);
 		this.maker.drawMap(g);
 	}
 
@@ -70,5 +77,13 @@ public class Panel extends JPanel implements Serializable, IPanel {
 
 	public void setDiamondsGet(int diamondsGet) {
 		this.diamondsGet = diamondsGet;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

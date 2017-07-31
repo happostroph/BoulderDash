@@ -4,10 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
 
-import model.UserOrder;
+import view.ICreateMenu;
 
-public class BDKeyListener extends Observable implements KeyListener, IBDKeyListener{
-	private IController controller;
+public class PseudoKeyListener extends Observable implements KeyListener, IPseudoKeyListener{
+	private ICreateMenu createMenu;
+	private String str = "";
 	
 	/**
 	 * It return the direction corresponding to the key pressed
@@ -16,28 +17,9 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 	 * @return userOrder
 	 */
 	
-	public UserOrder keyCodeToUserOrder(final int keyCode) {
-		UserOrder userOrder;
-		switch (keyCode) {
-		case KeyEvent.VK_RIGHT:
-			userOrder = UserOrder.RIGHT;
-			break;
-		case KeyEvent.VK_LEFT:
-			userOrder = UserOrder.LEFT;
-			break;
-		case KeyEvent.VK_UP:
-			userOrder = UserOrder.UP;
-			break;
-		case KeyEvent.VK_DOWN:
-			userOrder = UserOrder.DOWN;
-			break;
-		case KeyEvent.VK_A:
-			System.out.println((char)keyCode);
-		default:
-			userOrder = UserOrder.NOOP;
-			break;
-		}
-		return userOrder;
+	public String keyCodeToString(final int keyCode) {
+		str += (char)keyCode;
+		return str;
 	}
 
 	/* (non-Javadoc)
@@ -45,7 +27,8 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 	 */
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
-		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
+//		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
+		this.getCreateMenu().setPseudo(keyCodeToString(keyEvent.getKeyCode()));
 		setChanged();
 		notifyObservers(keyEvent);
 	}
@@ -69,15 +52,15 @@ public class BDKeyListener extends Observable implements KeyListener, IBDKeyList
 	/* (non-Javadoc)
 	 * @see controller.IBDKeyListener#getController()
 	 */
-	public IController getController() {
-		return this.controller;
+	public ICreateMenu getCreateMenu() {
+		return this.createMenu;
 	}
 
 	/* (non-Javadoc)
 	 * @see controller.IBDKeyListener#setController(controller.IController)
 	 */
 
-	public void setController(IController controller) {
-		this.controller =  controller;
+	public void setCreateMenu(ICreateMenu createMenu) {
+		this.createMenu =  createMenu;
 	}
 }

@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.swing.JOptionPane;
 
+import model.dao.LaunchDBQuery;
 import view.Audio;
 import view.IPanel;
 import view.Window;
@@ -11,6 +12,7 @@ import view.Window;
 public class EndTheGame {
 	private IPanel panel;
 	private Window window;
+	private LaunchDBQuery launchDBQueries;
 	
 	/**
 	 * Constructon of EndTheGame 
@@ -18,9 +20,10 @@ public class EndTheGame {
 	 * @param panel
 	 * @param window
 	 */
-	public EndTheGame(IPanel panel, Window window){
+	public EndTheGame(IPanel panel, Window window, LaunchDBQuery launchDBQueries){
 		this.panel = panel;
 		this.window = window;
+		this.launchDBQueries = launchDBQueries;
 	}
 	
 	/**
@@ -43,5 +46,6 @@ public class EndTheGame {
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Victory!");
 		window.dispose();
+		launchDBQueries.launchScoreQuery(panel.getScore());;
 	}
 }

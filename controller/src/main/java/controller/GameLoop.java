@@ -16,8 +16,8 @@ public class GameLoop {
 	private IPanel panel;
 	private EndTheGame end;
 	private boolean loop = true;
-	
-	public GameLoop(MapMaker maker, IPanel panel, EndTheGame end, Audio backSound){
+
+	public GameLoop(MapMaker maker, IPanel panel, EndTheGame end, Audio backSound) {
 		this.maker = maker;
 		this.panel = panel;
 		this.end = end;
@@ -27,13 +27,13 @@ public class GameLoop {
 		monsterMove = new MonsterMove();
 		gameOver = new Audio();
 	}
-	
-	public void loop() throws InterruptedException{
-		while(loop){
+
+	public void loop() throws InterruptedException {
+		while (loop) {
 			Thread.sleep(250);
 			maker.setAllHasMovedToFalse(maker.getSprites());
 			gravity.makeThemSlide(maker.getSprites());
-			gravity.makeThemFall(maker.getSprites(), gravitySounds);
+			gravity.makeThemFall(maker.getSprites(), gravitySounds, this.panel);
 			monsterMove.toMoveTheMonsters(maker.getSprites(), gravitySounds);
 			if (gravity.isGameOver() || monsterMove.isGameOver()) {
 				backSound.stopSound();
@@ -43,5 +43,4 @@ public class GameLoop {
 			panel.update();
 		}
 	}
-
 }

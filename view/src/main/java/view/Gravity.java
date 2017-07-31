@@ -13,7 +13,7 @@ public class Gravity implements IGravity {
 	 * 
 	 * @see view.IGravity#makeThemFall(view.ISprite[][])
 	 */
-	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio) {
+	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio, IPanel panel) {
 		ligne = 0;
 		for (ISprite sousSpit[] : sprites) {
 			colonne = 0;
@@ -21,6 +21,9 @@ public class Gravity implements IGravity {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)) {
 					if ((isSpriteNextToBackground(sprites[ligne + 1][colonne])
 							|| isSpriteAboveMonster(sprites[ligne + 1][colonne])) && !spit.isHasMoved()) {
+						if(isSpriteAboveMonster(sprites[ligne + 1][colonne])){
+							panel.setScore(panel.getScore() + 200);
+						}
 						sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 						spit.setY(spit.getY() + 16);
 						spit.setHasMoved(true);

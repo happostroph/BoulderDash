@@ -41,9 +41,11 @@ public class GoToUp extends Move {
 		}
 		if (nextToDiamond(sprites[ligne - 1][colonne])) {
 			panel.setDiamondsGet(panel.getDiamondsGet() + 1);
+			panel.setScore(panel.getScore() + 1000);
 			audio.playSound(new File("music/coin.wav"), 40.0f);	
 		}
 		if (nextToOpenedExit(sprites[ligne - 1][colonne])) {
+			panel.setScore(panel.getScore() + 10000);
 			setVictory(true);
 		}
 		if (nextToMonster(sprites[ligne - 1][colonne])) {

@@ -7,7 +7,7 @@ public interface IGravity {
 	 * @param audio
 	 * @return
 	 */
-	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio);
+	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio, IPanel panel);
 	
 	/**
 	 * Verify if the sprite is a background

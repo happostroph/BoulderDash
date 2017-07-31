@@ -25,8 +25,8 @@ public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
 	 * 
 	 * @param level
 	 */
-	public DAOConnector(int level) {
-		super(level);
+	public DAOConnector(int level, String name) {
+		super(level, name);
 		// TODO Auto-generated constructor stub
 	}
 
