@@ -6,34 +6,45 @@ import java.util.Observable;
 
 import view.ICreateMenu;
 
-public class PseudoKeyListener extends Observable implements KeyListener, IPseudoKeyListener{
+public class PseudoKeyListener extends Observable implements KeyListener, IPseudoKeyListener {
 	private ICreateMenu createMenu;
 	private String str = "";
-	
+
 	/**
 	 * It return the direction corresponding to the key pressed
+	 * 
 	 * @param keyCode
-	 * 			The value corresponding to the key pressed
+	 *            The value corresponding to the key pressed
 	 * @return userOrder
 	 */
-	
+
 	public String keyCodeToString(final int keyCode) {
-		str += (char)keyCode;
+		// if (Character.isLetterOrDigit(keyCode)) {
+		if (keyCode == 8) {
+			str = str.substring(0, str.length() - 1);
+		} else {
+			str += (char) keyCode;
+		}
+		// }
 		return str;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
-//		this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
+		// this.getController().setStackOrder(keyCodeToUserOrder(keyEvent.getKeyCode()));
 		this.getCreateMenu().setPseudo(keyCodeToString(keyEvent.getKeyCode()));
 		setChanged();
 		notifyObservers(keyEvent);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	@Override
@@ -41,26 +52,32 @@ public class PseudoKeyListener extends Observable implements KeyListener, IPseud
 		// TODO Auto-generated method stub
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.IBDKeyListener#getController()
 	 */
 	public ICreateMenu getCreateMenu() {
 		return this.createMenu;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.IBDKeyListener#setController(controller.IController)
 	 */
 
 	public void setCreateMenu(ICreateMenu createMenu) {
-		this.createMenu =  createMenu;
+		this.createMenu = createMenu;
 	}
 }
