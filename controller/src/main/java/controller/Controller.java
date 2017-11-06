@@ -36,7 +36,6 @@ public class Controller implements IController, Observer {
 	 * @param panel
 	 * @param SET_SIZE
 	 * @param maker
-	 * @param window
 	 * @param finalDiamonds
 	 */
 	public Controller(ISprite sprite, IPanel panel, int SET_SIZE, MapMaker maker, int finalDiamonds, EndTheGame end, Audio backSound) {

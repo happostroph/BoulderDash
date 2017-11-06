@@ -15,12 +15,7 @@ public class ScorePanel extends JPanel implements Serializable {
 	Font font = new Font("Courier", Font.BOLD, 15);
 	private String str = "";
 
-	/**
-	 * The constructor of Panel
-	 * 
-	 * @param maker
-	 *            the maker of the map
-	 */
+
 	public ScorePanel(String str) {
 		this.str = str;
 	}

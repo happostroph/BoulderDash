@@ -15,12 +15,7 @@ public class MenuPanel extends JPanel implements Serializable {
 	private Font font = new Font("Courier", Font.BOLD, 15);
 	private CreateMenu createMenu;
 
-	/**
-	 * The constructor of Panel
-	 * 
-	 * @param maker
-	 *            the maker of the map
-	 */
+
 	public MenuPanel(CreateMenu createMenu) {
 		this.createMenu = createMenu;
 	}
