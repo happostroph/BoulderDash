@@ -10,6 +10,6 @@ public class ScoreQuery extends LaunchDBQuery{
 	}
 
 	public void SetScoreIntoDatabase(Statement statement, int score, int level, String name) throws SQLException {
-		statement.executeUpdate("insert into Scores values (null, '" + name + "', '" + level + "','" + score + "')");
+		statement.executeUpdate("insert into scores values (null, '" + name + "', '" + level + "','" + score + "')");
 	}
 }
